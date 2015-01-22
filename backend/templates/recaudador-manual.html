@@ -5,88 +5,68 @@
 <div id="page-wrapper">
     <div class="container-fluid">
         <!-- Page Heading -->
-        <h3>Planilla de Recaudador Manual 
-        {% if r_actual %}<small> (Ruta: {{r_actual}})</small>{% endif %}</h3>
-        <br>
-        {% if user.role == "admin" %}
+        <h1>Previous Studies</h1>
+        <h3><small>Search by:</small></h3>
         <div class="row">
             <div class="col-md-8">
             <form>
-                <div class="form-group col-xs-6 col-lg-4">
+                <div class="form-group col-xs-6 col-lg-3">
                     <select class="form-control" name="urlkey_ruta">
-                            <option value="">Todas las rutas</option>
-                        {% for r in rutas %}
-                            <option value="{{r.key.urlsafe()}}" {% if r_actual.key==r.key %} selected {% endif %} >{{r.nombre}}</option>
-                        {% endfor %}
+                            <option value="">Country</option>
+                            <option value="">Kenya</option>
+                            <option value="">Ecuador</option>
+                            <option value="">Ghana</option>
+                            <option value="">Colombia</option>
+                            <option value="">United States</option>
+                            <option value="">Italy</option>
+                            <option value="">Filipines</option>
                     </select>
                 </div>
-                <div class="form-group col-xs-6 col-lg-4">
-                    <div class="input-group">
-                        <input type="text" class="form-control" id="fecha_string" name="fecha_str" placeholder="Fecha Crédito" autocomplete="off"><span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
-                    </div>
-                </div>
-                <div class="form-group col-xs-6  col-lg-2">
-                    <select class="form-control" name="num_dias">
-                            <option value="">Número de días</option>
-                            {% for i in range(1,6) %}
-                                <option value="{{i}}" {% if num_dias==i %} selected {% endif %}>{{i}}</option>
-                            {% endfor %}
+                <div class="form-group col-xs-6 col-lg-3">
+                    <select class="form-control" name="urlkey_ruta">
+                            <option value="">Policy's Name</option>
+                            <option value=""></option>
                     </select>
                 </div>
-                <div class="form-group col-xs-6 col-lg-2">
-                    <button class="btn btn-primary" type="submit">Seleccionar</button>
+                <div class="form-group col-xs-6 col-lg-3">
+                    <select class="form-control" name="urlkey_ruta">
+                            <option value="">Study's Name</option>
+                            <option value=""></option>
+                    </select>
+                </div>
+                <div class="form-group col-xs-6 col-lg-3">
+                    <button class="btn btn-primary" type="submit">Search study</button>
                 </div>
             </form>
             </div>
         </div>
-        {% else %}
-        <div class="row">
-            <div class="col-md-8">
-            <form>
-                <div class="form-group col-xs-4">
-                    <div class="input-group">
-                        <input type="text" class="form-control" id="fecha_string" name="fecha_str" placeholder="Fecha Crédito" autocomplete="off"><span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
-                    </div>
-                </div>
-                <button class="btn btn-primary col-xs-4" type="submit">Seleccionar</button>
-            </form>
-            </div>
-        </div>
-        {% endif %}
         <div class="row">
             <div class="col-xs-12">
                 <div class="panel panel-primary">
                     <div class="panel-heading">
-                        <h3 class="panel-title">Detalle Créditos con Abonos</h3>
+                        <h3 class="panel-title">Results</h3>
                     </div>
                     <div class="panel-body table-responsive">
                         <table class="table table-striped table-condensed table-bordered">
                         <thead>
                             <tr>
-                                <th>Código</th>
-                                <th>Fecha</th>
-                                <th>FUA</th>
-                                <th>Saldo</th>
-                                <th>Cuota</th>
-                                {% for f in fechas %}
-                                <th>{{(f|gmt6).strftime("%d/%m/%Y")}}</th>
-                                {% endfor %}
+                                <th>Study Name</th>
+                                <th>Country</th>
+                                <th>Creation Date</th>
+                                <th>Last Modified</th>
+                                <th>Policies</th>
+                                <th>Objectives</th>
                             </tr>
                         </thead>
                         <tbody>
-                            {% for c in creditos %}
                                 <tr>
-                                    <td>{{c.consecutivo}}</td>
-                                    <td>{{(c.creado|gmt6).strftime("%d/%m/%Y")}}</td>
-                                    <td>{{(c.fecha_ult_pago|gmt6).strftime("%d/%m/%Y")}}</td>
-                                    <td>{{c.saldo}}</td>
-                                    <td>{{c.valor_cuota}}</td>
-                                    {% for i in range(0,num_dias) %}
-                                        <td>
-                                        </td>
-                                    {% endfor %}
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
                                 </tr>
-                            {% endfor %}
                         </tbody>
                     </table>
                     </div>

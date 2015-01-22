@@ -22,13 +22,14 @@ from core.controllers import CuadreRutaController
 from core.controllers import RecaudadorAbonosController
 from core.controllers import RecaudadorManualController
 from core.controllers import RecaudadorController
+from core.controllers import IndexController
 
 
 app = webapp2.WSGIApplication([
     ('/', MainController),
     ('/login', LoginController),
     ('/logout', LogoutController),
-    ('/index', CuadreRutaController),
+    ('/index', IndexController),
     ('/admin', AdminController),
     ('/admin/ciudad', CiudadController),
     ('/admin/caja', CajaController),
@@ -46,6 +47,6 @@ app = webapp2.WSGIApplication([
     ('/gasto', ExpenseController),
     ('/reportes/cuadre-ruta', CuadreRutaController),
     ('/reportes/recaudador-abonos', RecaudadorAbonosController),
-    ('/reportes/recaudador-manual', RecaudadorManualController),
-    ('/reportes/recaudador', RecaudadorController)
+    ('/study', RecaudadorManualController),
+    ('/study/nuevo', RecaudadorController),
 ], debug=True)
