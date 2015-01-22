@@ -1,0 +1,102 @@
+{% extends "base.html" %}
+
+{% block body %}
+
+<div id="page-wrapper">
+    <div class="container-fluid">
+
+        <!-- Page Heading -->
+        <div class="col-lg-12">
+            <h3>Clientes
+                <a href="/cliente/nuevo" class="btn btn-md btn-success pull-right"><i class="fa fa-fw fa-plus"></i></a>
+            </h3>
+            </div>
+        <br>
+        {% if user.role == "admin" %}
+        <div class="col-lg-12">
+            <div class="row">
+                <div class="col-md-4">
+                <form>
+                    <div class="form-group col-xs-8 form-np">
+                        <select class="form-control" name="urlkey_ruta">
+                                <option value="">Todas las rutas</option>
+                            {% for r in rutas %}
+                                <option value="{{r.key.urlsafe()}}" {% if r_actual.key==r.key %} selected {% endif %}>{{r.nombre}}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <button class="btn btn-primary col-xs-4" type="submit">Seleccionar</button>
+                </form>
+                </div>
+            </div>
+        </div>
+        <br>
+        {% endif %}
+        <div class="col-lg-12">
+            <p class="bg-primary text-center">Clientes Existentes</p>
+        </div>
+        <div class="col-lg-12">
+            <div class="table-responsive">
+                <table class="table table-hover table-striped table-condensed table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Código</th>
+                            <th>Nombre</th>
+                            <th>Apellidos</th>
+                            <th>Documento</th>
+                            <th>Teléfono</th>
+                            <th>Celular</th>
+                            <th>Dirección casa</th>
+                            <th>Establecimiento</th>
+                            <th>Dirección establecimiento</th>
+                            <th>Ruta</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for c in clientes %}
+                        <tr {% if c.activo == False %} class="danger inactive" {% endif %}>
+                            <td>{{c.consecutivo}}</td>
+                            <td>{{c.nombres}}</td>
+                            <td>{{c.apellidos}}</td>
+                            <td>{{c.documento}}</td>
+                            <td>{{c.tel_casa}}</td>
+                            <td>{{c.celular}}</td>
+                            <td>{{c.dir_casa}}</td>
+                            <td>{{c.nombre_est}}</td>
+                            <td>{{c.dir_est}}</td>
+                            <td>{{c.ruta.get().nombre}}</td>
+                            <td style="min-width: 100px"> 
+                            {% if c.activo != False %}   
+                                <form action="/cliente/nuevo" method="post">
+                                    <input type="hidden" name="key" value="{{c.key.urlsafe()}}">
+                                    <button class="btn btn-warning pull-left" style="padding:1px 6px;"><i class="fa fa-fw fa-edit"></i></button>
+                                </form>
+                            {% endif %}
+                            {% if user.role == "admin" %}
+                                {% if c.activo == False %}
+                                <form action="/admin/activar" method="post">
+                                    <input type="hidden" name="key" value="{{c.key.urlsafe()}}">
+                                    <input type="hidden" name="url" value="/cliente">
+                                    <button class="btn btn-danger pull-right" style="padding:1px 6px;"><i class="fa fa-fw fa-check-circle"></i></button>
+                                </form>
+                                {% else %}
+                                <form action="/admin/desactivar" method="post">
+                                    <input type="hidden" name="key" value="{{c.key.urlsafe()}}">
+                                    <input type="hidden" name="url" value="/cliente">
+                                    <button class="btn btn-danger pull-right" style="padding:1px 6px;"><i class="fa fa-fw fa-times-circle"></i></button>
+                                </form>
+                                {% endif %}
+                            {% endif %}
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- /.container-fluid -->
+</div>
+<!-- /#page-wrapper -->
+{% endblock %}

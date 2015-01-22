@@ -1,0 +1,164 @@
+{% extends "base.html" %}
+
+{% block body %}
+
+<div id="page-wrapper">
+
+    <div class="container-fluid">
+
+        <!-- Page Heading -->
+        <div class="col-lg-12">
+            <h3>Créditos {% if r_actual %}en {{r_actual.nombre}}{% endif %}
+                <a href="/credito/nuevo" class="btn btn-md btn-success pull-right"><i class="fa fa-fw fa-plus"></i></a>
+            </h3>
+        </div>
+        <br>
+        {% if user.role == "admin" %}
+        <div class="col-lg-12">
+            <div class="row">
+                <div class="col-md-4">
+                <form>
+                    <div class="form-group col-xs-8 form-np">
+                        <select class="form-control" name="urlkey_ruta">
+                                <option value="">Todas las rutas</option>
+                            {% for r in rutas %}
+                                <option value="{{r.key.urlsafe()}}" {% if r_actual.key==r.key %} selected {% endif %}>{{r.nombre}}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <button class="btn btn-primary col-xs-4" type="submit">Seleccionar</button>
+                </form>
+                </div>
+            </div>
+        </div>
+        <br>
+        {% endif %}
+        <div class="col-lg-12">
+            <p class="bg-primary text-center">Información de créditos del cliente</p>
+            <div class="table-responsive">
+                <table class="table table-hover table-striped table-condensed size-12  table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Código</th>
+                            <th>Fecha Crédito</th>
+                            <th>Nombres</th>
+                            <th>Valor Cŕedito</th>
+                            <th>Interés %</th>
+                            <th>Estado</th>
+                            <th>Saldo</th>
+                            <th>Dias</th>
+                            <th>Último Pago</th>
+                            <th>Fecha Venc.</th>
+                            <th>No. Atrasos</th>
+                            <th>V. Total Atrasos</th>
+                            <th>Valor Cuota</th>
+                            <th>Ajustes</th>
+                            <th>Visitas</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for c in creditos %}
+                            <tr {% if c.activo == False %} class="danger inactive" {% endif %}>
+                                <td>{{c.consecutivo}}</td>
+                                <td>{{(c.fecha_cre|gmt6).strftime("%d/%m/%Y")}}</td>
+                                <td>{{c.cliente.get().nombres}} {{c.cliente.get().apellidos}}</td>
+                                <td>{{c.valor}}</td>
+                                <td>{{c.tasa}}</td>
+                                <td>{{c.estado}}</td>
+                                <td>{{c.saldo}}</td>
+                                <td>{{c.dias}}</td>
+                                <td>{{c.fecha_ult_pago}}</td>
+                                <td>{{c.fecha_ven}}</td>
+                                <td>{{c.num_atrasos}}</td>
+                                <td>{{c.valor_atrasos}}</td>
+                                <td>{{c.valor_cuota}}</td>
+                                <td>{{c.ajustes}}</td>
+                                <td>{{c.visitas}}</td>
+                                <td style="min-width: 120px">
+                                    <form action="/credito" method="post">
+                                        <input type="hidden" name="key" value="{{c.key.urlsafe()}}">
+                                        <button class="btn btn-success pull-left" style="padding:1px 6px; margin-right:7px;"><i class="fa fa-fw fa-chevron-down"></i></button>
+                                    </form>      
+                                    {% if c.activo != False %}
+                                    <form action="/edit" method="post">
+                                        <input type="hidden" name="key" value="{{c.key.urlsafe()}}">
+                                        <button class="btn btn-warning pull-left" style="padding:1px 6px;"><i class="fa fa-fw fa-edit"></i></button>
+                                    </form>
+                                    {% endif %}                                
+                                    {% if user.role == "admin" %}
+                                        {% if c.activo == False %}
+                                        <form action="/admin/activar" method="post">
+                                            <input type="hidden" name="key" value="{{c.key.urlsafe()}}">
+                                            <input type="hidden" name="url" value="/credito">
+                                            <button class="btn btn-danger pull-right" style="padding:1px 6px;"><i class="fa fa-fw fa-check-circle"></i></button>
+                                        </form>
+                                        {% else %}
+                                        <form action="/admin/desactivar" method="post">
+                                            <input type="hidden" name="key" value="{{c.key.urlsafe()}}">
+                                            <input type="hidden" name="url" value="/credito">
+                                            <button class="btn btn-danger pull-right" style="padding:1px 6px;"><i class="fa fa-fw fa-times-circle"></i></button>
+                                        </form>
+                                        {% endif %}
+                                    {% endif %}
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        {% if c_actual %} 
+        <div class="col-lg-12">
+            <p class="bg-primary text-center">Abonos de <strong>{{c_actual.cliente.get().nombres}} {{c_actual.cliente.get().apellidos}}</strong> al crédito <strong>#{{c_actual.consecutivo}}</strong></p>
+            {% if abonos %} 
+            <div class="table-responsive">
+                <table class="table table-hover table-striped table-condensed size-12  table-bordered">
+                    <thead>
+                        <tr> 
+                            <th class="col-xs-3">Código Abono</th>
+                            <th class="col-xs-3"># Cuota</th>
+                            <th class="col-xs-3">Fecha Abono</th>
+                            <th class="col-xs-3">Valor</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for a in abonos %}
+                            <tr>
+                                <td>{{a.consecutivo}}</td>
+                                <td>{{a.num_cuota}}</td>
+                                <td>{{(a.creado|gmt6).strftime("%d/%m/%Y")}}</td>
+                                <td>{{a.valor}}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            {% else %}
+            <h5>El cliente aún no ha realizado abonos a este crédito</h5>
+            {% endif %}
+        </div>
+        </div>
+        {% endif %}
+        <!-- /.row -->
+    </div>
+    <br>
+    <br>
+    <br>
+    <!-- /.container-fluid -->
+</div>
+
+<script type="text/javascript">
+    $('select').change(function() {
+        if ($(this).children('option:first-child').is(':selected')) {
+            $(this).addClass('placeholder');
+        } else {
+            $(this).removeClass('placeholder');
+        }
+    });
+    // $('#inputName').change(function () {
+    //     var str = $('#inputName').val(),nombre;
+    //     $('#divNombre').text( str );
+    //   });
+</script>
+<!-- /#page-wrapper -->
+{% endblock %}

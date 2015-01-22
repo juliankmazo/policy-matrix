@@ -1,0 +1,419 @@
+{% extends "base.html" %}
+
+{% block body %}
+
+<div id="page-wrapper">
+
+    <div class="btn-group btn-group-justified smallscreen" role="group" aria-label="caja">
+        <a href="/abono" class="btn btn-primary">Abono</a>
+        <a href="/gasto" class="btn btn-default blue">Gasto</a>
+    </div>
+
+    <div class="container-fluid">
+
+        <!-- Page Heading -->
+       <!--  <div class="text-center">
+            <ul class="pagination" style="margin-bottom:0px;">
+              <li class="active"><a href="/abono">Abono</a></li>
+              <li><a href="/gasto">Gasto</a></li>
+            </ul>
+        </div> -->
+        <div class="col-lg-12">
+            <h3>
+                Abonos {% if r_actual %}en {{r_actual.nombre}}{% endif %}
+            </h3>
+        </div>
+        {% if user.role == "admin" %}
+        <div class="col-lg-12">
+            <div class="row">
+                <div class="col-md-4">
+                <form>
+                    <div class="form-group col-xs-8 form-np">
+                        <select class="form-control" name="urlkey_ruta">
+                                <option value="">Todas las rutas</option>
+                            {% for r in rutas %}
+                                <option value="{{r.key.urlsafe()}}" {% if r_actual.key==r.key %} selected {% endif %}>{{r.nombre}}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <button class="btn btn-primary col-xs-4" type="submit">Seleccionar</button>
+                </form>
+                </div>
+            </div>
+        </div>
+        <br>
+        {% endif %}
+        <div class="col-lg-12">
+            <p class="bg-primary text-center">Créditos Activos</p>
+            <div class="table-responsive">
+                <table class="table table-hover table-striped table-condensed size-12  table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Código</th>
+                            <th>Cliente</th>
+                            <th>Saldo</th>
+                            <th>Cuotas faltantes</th>
+                            <th>Cuota</th>
+                            <th>Pagar</th>
+                            <th></th>
+<!--                                 <th></th>
+                            <th></th> -->
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for c in creditos_activos %}
+                            <tr>
+                                <td>{{c.consecutivo}}</td>
+                                <td>{{c.cliente.get().nombres}} {{c.cliente.get().apellidos}}</td>
+                                <td>{{c.saldo}}</td>
+                                <td>{{c.cuotas_faltantes}}</td>
+                                <form method="post" id="form{{c.key.id()}}">
+                                    <td>
+                                        <input name="valor" value="{{c.valor_cuota}}" type="number" id="input{{c.key.id()}}">
+                                        <input type="hidden" value="{{c.key.urlsafe()}}" name="urlkey_credito">
+                                    </td>
+                                    <td><button type="submit" class="btn btn-success" style="padding:1px 6px;" {% if c.fecha_ult_pago == hoy %}disabled{% endif %}>
+                                            Abonar
+                                        </button>
+                                    </td>
+                                </form>
+                                <td>
+                                    <button type="button" class="btn btn-danger" id="nopago{{c.key.id()}}" style="padding:1px 6px;" {% if c.fecha_ult_pago == hoy %}disabled{% endif %}>No pago</button>
+                                </td>
+<!--                                     <td>
+                                    <button type="submit" class="btn btn-primary" style="padding:1px 6px;">Extracto</button>
+                                </td>
+                                <td>
+                                    <button type="submit" class="btn btn-primary" style="padding:1px 6px;">Ajustes</button>
+                                </td> -->
+                                <script type="text/javascript">
+                                    $('#nopago{{c.key.id()}}').click( function() {
+                                        $('#input{{c.key.id()}}').val(0);
+                                        $('#form{{c.key.id()}}').submit();
+                                    })
+                                </script>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!-- /.row -->
+<!--         <form>
+        <div class="row">
+            <p class="bg-primary text-center">Datos sobre el abono</p>
+            <div class="col-lg-4">
+                <div class="form-horizontal form-group-sm">
+                    <div class="form-group m-5">
+                        <label for="inputFecha" class="col-sm-5 control-label">Fecha</label>
+                        <div class="col-sm-7">
+                            <div class="input-group">
+                                <input type="text" class="form-control" data-date-format="mm/dd/yyyy" id="dateFecha" name="inputFecha" placeholder="Día Contable" autocomplete="off" required><span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group m-5">
+                        <label for="inputRuta" class="col-sm-5 control-label">Ruta</label>
+                        <div class="col-sm-7">
+                            <input type="text" class="form-control" name="inputRuta" placeholder="Ruta" autocomplete="off" required>
+                        </div>
+                    </div>
+                    <div class="form-group m-5">
+                        <label for="inputTiempoDias" class="col-sm-5 control-label">Código</label>
+                        <div class="col-sm-7">
+                            <input type="text" class="form-control" name="inputCodigo" placeholder="Código Crédito" autocomplete="off" required>
+                        </div>
+                    </div>
+                    <div class="form-group m-5">
+                        <label for="inputName" class="col-sm-5 control-label">Nombre</label>
+                        <div class="col-sm-7">
+                            <select class="form-control placeholder" name="inputName" required>
+                                <option value="" disabled selected>Nombre</option>
+                                <option value="Medellin">Daniel Mazo</option>
+                                <option value="Bogota">Julián Serrano</option>
+                                <option value="Sabaneta">Álvaro Rico</option>
+                                <option value="Envigado">Andrés Cárdenas</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group m-5">
+                        <label for="inputSaldo" class="col-sm-5 control-label">Saldo</label>
+                        <div class="col-sm-7">
+                            <input type="number" class="form-control" name="inputSaldo" placeholder="Saldo" autocomplete="off">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="form-horizontal form-group-sm">
+                    <div class="form-group m-5">
+                        <label for="inputFechaCred" class="col-sm-5 control-label">Fecha Crédito</label>
+                        <div class="col-sm-7">
+                            <div class="input-group">
+                                <input type="text" class="form-control" data-date-format="mm/dd/yyyy" id="dateFechaCre" name="inputFechaCre" placeholder="Fecha Crédito" autocomplete="off"><span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group m-5">
+                        <label for="inputFechaVen" class="col-sm-5 control-label">Fecha Venc.</label>
+                        <div class="col-sm-7">
+                            <div class="input-group">
+                                <input type="text" class="form-control" data-date-format="mm/dd/yyyy" id="dateFechaVen" name="inputFechaVen" placeholder="Fecha Vencimiento" autocomplete="off"><span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group m-5">
+                        <label for="inputFechaProxPago" class="col-sm-5 control-label">Próx. Pago</label>
+                        <div class="col-sm-7">
+                            <div class="input-group">
+                                <input type="text" class="form-control" data-date-format="mm/dd/yyyy" id="dateFechaProxPago" name="inputFechaProxPago" placeholder="Fecha Próximo Pago" autocomplete="off"><span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group m-5">
+                        <label for="inputTipo" class="col-sm-5 control-label">Tipo</label>
+                        <div class="col-sm-7">
+                            <select class="form-control placeholder" name="inputTipo" required>
+                                <option value="" disabled selected>Tipo de abono*</option>
+                                <option value="">Normal</option>
+                                <option value="">Renovación</option>
+                                <option value="">Atraso</option>
+                                <option value="">Microseguro</option>
+                                <option value="">Mensajería</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group m-5">
+                        <label for="inputValor" class="col-sm-5 control-label">Abono</label>
+                        <div class="col-sm-7">
+                            <input type="number" class="form-control" name="inputValor" placeholder="Valor del abono" autocomplete="off" required>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 text-center">
+                <div class="row">
+                
+                    <button type="reset" class="btn btn-danger" style="margin:15px;">Limpiar</button>
+                
+                    <button type="submit" class="btn btn-success" style="margin:15px;">Buscar</button>
+                </div>
+            </div>
+        </div>
+        </form>
+        <br>
+        <div class="row">
+            <div class="col-sm-10 col-lg-12">
+                <p class="bg-primary text-center">Datos personales del cliente</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-5">
+                <div class="form-group form-group-sm">
+                    <label class="col-sm-5 control-label">Documento</label>
+                    <div class="col-sm-7">
+                        <p class="form-control-static" style="padding-top:0px;">email@example.com</p>
+                    </div>
+                    <label class="col-sm-5 control-label">Nombre</label>
+                    <div class="col-sm-7">
+                        <p class="form-control-static" style="padding-top:0px;">email@example.com</p>
+                    </div>
+                     <label class="col-sm-5 control-label">Celular</label>
+                    <div class="col-sm-7">
+                        <p class="form-control-static" style="padding-top:0px;">email@example.com</p>
+                    </div>
+                    <label class="col-sm-5 control-label">Barrio</label>
+                    <div class="col-sm-7">
+                        <p class="form-control-static" style="padding-top:0px;">email@example.com</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-7">
+                <div class="form-group form-group-sm">
+                    <label class="col-sm-5 control-label">Ciudad de Residencia</label>
+                    <div class="col-sm-7">
+                        <p class="form-control-static" style="padding-top:0px;">email@example.com</p>
+                    </div>
+                    <label class="col-sm-5 control-label">Dirección de Residencia</label>
+                    <div class="col-sm-7">
+                        <p class="form-control-static" style="padding-top:0px;">email@example.com</p>
+                    </div>
+                    <label class="col-sm-5 control-label">Télefono de Residencia</label>
+                    <div class="col-sm-7">
+                        <p class="form-control-static" style="padding-top:0px;">email@example.com</p>
+                    </div>
+                    <label class="col-sm-5 control-label">Causa de Inactivación</label>
+                    <div class="col-sm-7">
+                        <p class="form-control-static" style="padding-top:0px;">email@example.com</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br> -->
+        <!-- row -->
+       <!--  <div class="row">
+            <div class="col-sm-10 col-lg-12">
+                <p class="bg-primary text-center">Información de créditos del cliente</p>
+                <div class="table-responsive">
+                    <table class="table table-hover table-striped table-condensed size-12 table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Código</th>
+                                <th>Fecha Crédito</th>
+                                <th>Valor Cŕedito</th>
+                                <th>Interés %</th>
+                                <th>Estado</th>
+                                <th>Saldo</th>
+                                <th>Periodo</th>
+                                <th>Tiempo</th>
+                                <th>Último Pago</th>
+                                <th>Fecha Venc.</th>
+                                <th>No. Atrasos</th>
+                                <th>V. Total Atrasos</th>
+                                <th>Valor Cuota</th>
+                                <th>Ajustes</th>
+                                <th>Visitas</th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>000255</td>
+                                <td>02/01/2015</td>
+                                <td>1000</td>
+                                <td>20</td>
+                                <td>A</td>
+                                <td>480</td>
+                                <td>Diario</td>
+                                <td>20</td>
+                                <td>07/01/2015</td>
+                                <td>04/02/2015</td>
+                                <td>8</td>
+                                <td>0</td>
+                                <td>60</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>
+                                    <button type="button" class="btn btn-success" style="padding:1px 6px;">Mvts</button>
+                                </td>
+                                <td>
+                                    <button type="submit" class="btn btn-primary" style="padding:1px 6px;">Extracto</button>
+                                </td>
+                                <td>
+                                    <button type="submit" class="btn btn-primary" style="padding:1px 6px;">Ajustes</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>000255</td>
+                                <td>02/01/2015</td>
+                                <td>1000</td>
+                                <td>20</td>
+                                <td>A</td>
+                                <td>480</td>
+                                <td>Diario</td>
+                                <td>20</td>
+                                <td>07/01/2015</td>
+                                <td>04/02/2015</td>
+                                <td>8</td>
+                                <td>0</td>
+                                <td>60</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>
+                                    <button type="button" class="btn btn-success" style="padding:1px 6px;">Mvts</button>
+                                </td>
+                                <td>
+                                    <button type="submit" class="btn btn-primary" style="padding:1px 6px;">Extracto</button>
+                                </td>
+                                <td>
+                                    <button type="submit" class="btn btn-primary" style="padding:1px 6px;">Ajustes</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div> -->
+       
+        <!-- <div class="row">
+            <div class="col-sm-10 col-lg-12">
+                <p class="bg-primary text-center">Abonos - Movimientos de Caja</p>
+                <div class="table-responsive">
+                    <table class="table table-hover table-striped table-condensed size-12 table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Fecha</th>
+                                <th>Hora</th>
+                                <th>Valor</th>
+                                <th>Estado</th>
+                                <th>Tipo</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>000255</td>
+                                <td>02/01/2015</td>
+                                <td>1000</td>
+                                <td>20</td>
+                                <td>20</td>
+                                <td>
+                                    <button type="submit" class="btn btn-primary" style="padding:1px 6px;">Imprimir</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>000255</td>
+                                <td>02/01/2015</td>
+                                <td>1000</td>
+                                <td>20</td>
+                                <td>20</td>
+                                <td>
+                                    <button type="submit" class="btn btn-primary" style="padding:1px 6px;">Imprimir</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>000255</td>
+                                <td>02/01/2015</td>
+                                <td>1000</td>
+                                <td>20</td>
+                                <td>20</td>
+                                <td>
+                                    <button type="submit" class="btn btn-primary" style="padding:1px 6px;">Imprimir</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>000255</td>
+                                <td>02/01/2015</td>
+                                <td>1000</td>
+                                <td>20</td>
+                                <td>20</td>
+                                <td>
+                                    <button type="submit" class="btn btn-primary" style="padding:1px 6px;">Imprimir</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div> -->
+    <!-- /.container-fluid -->
+</div>
+
+<script type="text/javascript">
+    $('select').change(function() {
+        if ($(this).children('option:first-child').is(':selected')) {
+            $(this).addClass('placeholder');
+        } else {
+            $(this).removeClass('placeholder');
+        }
+    });
+    $( "#dateFecha" ).datepicker();
+    $( "#dateFechaCre" ).datepicker();
+    $( "#dateFechaVen" ).datepicker();
+    $( "#dateFechaProxPago" ).datepicker();
+</script>
+<!-- /#page-wrapper -->
+{% endblock %}
