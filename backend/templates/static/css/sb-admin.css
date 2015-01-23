@@ -394,8 +394,13 @@ h4 .btn { display: inline-block; }
     background-color:#36a1d7;
     color: white;
 }
-.btn-dark-purple{
+.btn-primary-blue:hover{
     background-color:#444;
+    color: white;
+}
+
+.btn-dark-purple{
+    background-color:#321c59;
     color: white;
 }
 .btn-orangeish{
@@ -421,4 +426,101 @@ h4 .btn { display: inline-block; }
 .btn-light-blue{
     background-color:#6bcfba;
     color: white;
+}
+
+.bg-primary-blue {
+    color: #fff;
+    background-color: #36a1d7;
+ }
+
+.panel-primary-blue {
+    border-color: #36a1d7;
+}
+.panel-primary-blue > .panel-heading {
+    color: #fff;
+    background-color: #36a1d7;
+    border-color: #36a1d7;
+}
+.panel-primary-blue > .panel-heading + .panel-collapse > .panel-body {
+    border-top-color: #36a1d7;
+}
+.panel-primary-blue > .panel-heading .badge {
+    color: #36a1d7;
+    background-color: #36a1d7;
+}
+.panel-primary-blue > .panel-footer + .panel-collapse > .panel-body {
+    border-bottom-color: #36a1d7;
+}
+
+
+
+.panel-orangeish {
+    border-color: #f6850a;
+}
+.panel-orangeish > .panel-heading {
+    color: #fff;
+    background-color: #f6850a;
+    border-color: #f6850a;
+}
+.panel-orangeish > .panel-heading + .panel-collapse > .panel-body {
+    border-top-color: #f6850a;
+}
+.panel-orangeish > .panel-heading .badge {
+    color: #f6850a;
+    background-color: #f6850a;
+}
+.panel-orangeish > .panel-footer + .panel-collapse > .panel-body {
+    border-bottom-color: #f6850a;
+}
+.panel-orangeish > a{
+    color: #f6850a;
+}
+
+
+
+.panel-dark-purple {
+    border-color: #321c59;
+}
+.panel-dark-purple > .panel-heading {
+    color: #fff;
+    background-color: #321c59;
+    border-color: #321c59;
+}
+.panel-dark-purple > .panel-heading + .panel-collapse > .panel-body {
+    border-top-color: #321c59;
+}
+.panel-dark-purple > .panel-heading .badge {
+    color: #321c59;
+    background-color: #321c59;
+}
+.panel-dark-purple > .panel-footer + .panel-collapse > .panel-body {
+    border-bottom-color: #321c59;
+}
+
+.panel-dark-purple > a{
+    color: #321c59;
+}
+
+
+
+.panel-yellowish {
+    border-color: #444;
+}
+.panel-yellowish > .panel-heading {
+    color: #fff;
+    background-color: #444;
+    border-color: #444;
+}
+.panel-yellowish > .panel-heading + .panel-collapse > .panel-body {
+    border-top-color: #444;
+}
+.panel-yellowish > .panel-heading .badge {
+    color: #444;
+    background-color: #444;
+}
+.panel-yellowish > .panel-footer + .panel-collapse > .panel-body {
+    border-bottom-color: #444;
+}
+.panel-yellowish > a{
+    color: #444;
 }

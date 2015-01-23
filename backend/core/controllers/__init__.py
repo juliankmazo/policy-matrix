@@ -32,3 +32,8 @@ from reportes_controller import CuadreRutaController
 from reportes_controller import RecaudadorAbonosController
 from reportes_controller import RecaudadorManualController
 from reportes_controller import RecaudadorController
+
+from study_controller import StudyController
+from study_controller import NewStudyController
+from study_controller import NewVariableController
+from study_controller import NewIssueController

@@ -1,0 +1,134 @@
+{% extends "base.html" %}
+
+{% block body %}
+
+<div id="page-wrapper">
+
+	<div class="container-fluid">
+        <!-- Page Heading -->
+        <div class="row">
+            <div class="col-lg-11">
+                <h3>
+                    Add New Variable
+                </h3>
+                <p class="bg-primary-blue text-center">Variable Information</p>
+            </div>
+        </div>
+        <!-- /.row -->
+        <form method="post">
+        <div class="row">
+            <div class="col-lg-11">
+                <div class="form-horizontal form-group-sm" >
+                    <div class="form-group m-5">
+                        <label for="inputName" class="col-sm-2 control-label">Title</label>
+                        <div class="col-sm-10">
+                            <input type="text" placeholder="Write the title of the variable" class="form-control" name="nombres"autocomplete="off" value="{{cliente.nombres}}" required>
+                        </div>
+                    </div>
+                    <div class="form-group m-5">
+                        <label for="inputName" class="col-sm-2 control-label">Description</label>
+                        <div class="col-sm-10">
+                            <textarea class="form-control" rows="3" placeholder="Write the description of this variable"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-lg-5">
+                <form class="form-inline" method="post" action="/admin/ciudad">
+                    <div class="form-group form-group-sm">
+                        <div class="col-xs-8 form-np">
+                            <input type="text" placeholder="Write new keyword" name="nombre" class="form-control" autocomplete="off" required>
+                        </div>
+                        <div class="col-xs-4 button-np">
+                            <button type="submit" class="btn btn-primary-blue pull-right" style="padding:5px 6px;">Add New Keyword</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="col-lg-5 col-lg-offset-1">
+                <form class="form-inline" method="post" action="/admin/ruta">
+                    <div class="form-group form-group-sm">
+                        <div class="col-xs-11 col-lg-11 form-np">
+                            <div class="col-xs-12 col-md-6 form-np">
+                                <input type="text" name="nombre" placeholder="Concept" class="form-control" autocomplete="off" required>
+                            </div>
+                            <div class="col-xs-12 col-md-6 form-np">
+                                <input type="text" name="nombre" placeholder="Definition" class="form-control" autocomplete="off" required>
+                            </div>
+                        </div>
+                        <div class="col-xs-3 col-lg-1 form-np text-center button-np">
+                            <button type="submit" class="btn btn-primary-blue pull-right" style="padding:5px 6px; margin-left:10px; vertical-align: center;">Add</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-5">
+                <div class="panel panel-primary-blue">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Variable Keywords</h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="list-group text-center">
+                            <span class="badge">Cooperative</span>
+                            <span class="badge">farmer based organization</span> 
+                            <span class="badge">Producer Organizations</span> 
+                            <span class="badge">Pooling</span>
+                            <span class="badge">Federations</span> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-5 col-lg-offset-1">
+                <div class="panel panel-primary-blue">
+                    <div class="panel-heading">
+                        <h3 class="panel-title"></i> Basic Definitions</h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-hover table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Concept</th>
+                                        <th>Definition</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>Governance</strong></td>
+                                        <td>It relates to "the processes of interaction and decision-making among the actors involved in a collective problem that lead to the creation, reinforcement, or reproduction of social norms and institutions.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-12 text-center">
+            <div class="row">        
+                <button type="reset" class="btn btn-default" style="margin:15px;">Cancel</button>            
+                <button type="submit" class="btn btn-primary-blue" style="margin:15px;">Save Changes</button>
+            </div>
+        </div>
+        </form>
+        <!-- /.row -->
+    </div>
+    <!-- /.container-fluid -->
+</div>
+
+<script type="text/javascript">
+    $('select').change(function() {
+        if ($(this).children('option:first-child').is(':selected')) {
+            $(this).addClass('placeholder');
+        } else {
+            $(this).removeClass('placeholder');
+        }
+    });
+</script>
+<!-- /#page-wrapper -->
+{% endblock %}
