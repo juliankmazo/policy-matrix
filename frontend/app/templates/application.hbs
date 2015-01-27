@@ -1,0 +1,90 @@
+    <div id="wrapper">
+        <!-- Navigation -->
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="bigscreen">
+                <div class="navbar-header">
+                    <h3 style="margin-top: 0px;">
+                        <a class="navbar-brand fa" href="/index"><i class="fa fa-fw fa-globe"></i><small>PM </small><strong>Matrix</strong><small> by FAO </small></a>
+                    </h3>
+                </div>
+                <!-- Top Menu Items -->
+                <ul class="nav navbar-right top-nav">
+                    <li><a href="#" class="disabled"><i class="fa fa-fw fa-user"></i> {{user.usuario}}</a></li>
+                    <li>
+                        <a href="/logout"><i class="fa fa-fw fa-power-off"></i>Log out</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="smallscreen">
+                <ul class="nav navbar-right top-nav pull-left" id="back-btn">
+                    <li>
+                        <a onclick="back()" style="padding: 15px 10px;"><i class="fa fa-fw fa-chevron-left" style="font-size:20px;"></i></a>
+                    </li>
+                </ul>>
+                <div class="navbar-header">
+                    <h4 style="margin-top: 0px;">
+                    <a class="navbar-brand fa" href="/index" style="padding:15px 10px;"><strong>PMM</strong><small> by FAO</small></a>
+                    </h4>
+                </div>
+                <!-- Top Menu Items -->
+                <ul class="nav navbar-right top-nav pull-right">
+                    <li>
+                        <a href="#" class="disabled"><i class="fa fa-fw fa-user"></i> {{user.usuario}}</a>
+                    </li>
+                    <li>
+                        <a href="/logout" style="padding:15px 10px;"><i class="fa fa-fw fa-power-off" style="font-size:20px;"></i></a>
+                    </li>
+                </ul>
+            </div>
+            <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul class="nav navbar-nav side-nav">
+                    <br>
+                    <li>
+                        <a href="/study"><i class="fa fa-fw fa-clock-o"></i> Previous Files/Studies</a>
+                    </li>
+                    <li>
+                        <a href="/study/new" data-toggle="collapse" data-target="#demo2"><i class="fa fa-fw fa-sitemap"></i> Create New Study</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </nav>
+        {{outlet}}
+        <nav class="navbar navbar-inverse navbar-fixed-bottom hidden-print" role="navigation">
+            <div class="foot-nav">
+                <div class="row">
+                    <div class="col-xs-3 text-center">
+                        <li>
+                            <br>
+                            <a href="/admin" class="foot-a">Guidelines</a>
+                            <br>
+                        </li>
+                    </div>
+                    <div class="col-xs-3 text-center">
+                        <li>
+                            <br>
+                            <a href="/cliente" class="foot-a">User Manual</a>
+                            <br>
+                        </li>
+                    </div>
+                    <div class="col-xs-3 text-center">
+                        <li>
+                            <br>
+                            <a href="/credito" class="foot-a">Policy Repository</a>
+                            <br>
+                        </li>
+                    </div>
+                    <div class="col-xs-3 text-center">
+                        <li>
+                            <br>
+                            <a href="/credito" class="foot-a">Contact for Support</a>
+                            <br>
+                        </li>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+    </div>
