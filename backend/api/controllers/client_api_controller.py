@@ -1,13 +1,13 @@
 import endpoints
 from protorpc import message_types
 
-from api import eagle_api
+from api import pmm_api
 from api.controllers import BaseApiController
 from api.helpers import ClientApiHelper
 
 from api.messages import ClientListResponse
 from api.messages import ClientRequest
-from api.messages import ID_resource
+from api.messages import Client_resource
 
 from core.models import Cliente
 from core.helpers import ClientHelper
@@ -15,7 +15,7 @@ from core.helpers import ClientHelper
 import time
 
 
-@eagle_api.api_class(resource_name='clientes', path='cliente')
+@pmm_api.api_class(resource_name='clientes', path='cliente')
 class ClientEndpoint(BaseApiController):
 
     @endpoints.method(message_types.VoidMessage, ClientListResponse,
@@ -40,7 +40,7 @@ class ClientEndpoint(BaseApiController):
         clientes = Cliente.query().fetch()
         return ClientListResponse(clientes=[ClientApiHelper().to_message(cliente) for cliente in clientes if clientes])
 
-    @endpoints.method(ID_resource, ClientListResponse,
+    @endpoints.method(Client_resource, ClientListResponse,
                       path='{id}', http_method='PUT',
                       name='update')
     def update_client(self, request):
@@ -58,7 +58,7 @@ class ClientEndpoint(BaseApiController):
         clientes = Cliente.query().fetch()
         return ClientListResponse(clientes=[ClientApiHelper().to_message(cliente) for cliente in clientes if clientes])
 
-    @endpoints.method(ID_resource, ClientListResponse,
+    @endpoints.method(Client_resource, ClientListResponse,
                       path='{id}', http_method='DELETE',
                       name='delete')
     def delete_client(self, request):

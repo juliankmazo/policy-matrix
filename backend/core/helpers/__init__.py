@@ -10,7 +10,8 @@ from admin_helper import RutaHelper
 from credit_helper import CreditHelper
 from admin_helper import UsuarioHelper
 from admin_helper import AdminHelper
-from credit_helper import CreditHelper
 from cashbox_helper import AbonoHelper
 from cashbox_helper import TransaccionHelper
 from reportes_helper import ReportesHelper
+
+from study_helper import StudyHelper

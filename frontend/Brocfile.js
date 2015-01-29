@@ -17,4 +17,16 @@ var app = new EmberApp();
 // please specify an object with the list of modules as keys
 // along with the exports of each module as its value.
 
-module.exports = app.toTree();
+app.import('bower_components/flag-icon-css/css/flag-icon.css');
+// app.import('bower_components/flag-icon-css/flags');
+
+// module.exports = app.toTree();
+
+var mergeTrees = require('broccoli-merge-trees');
+var pickFiles = require('broccoli-static-compiler');
+var flagAssets = pickFiles('bower_components/flag-icon-css/flags',{
+    srcDir: '/', 
+    destDir: '/flags'
+});
+
+module.exports = mergeTrees([app.toTree(), flagAssets]);

@@ -10,3 +10,5 @@ from abono import Abono
 from gasto import Gasto
 from transaccion import Transaccion
 from stats_diarias import StatsDiarias
+
+from study import Study

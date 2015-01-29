@@ -1,1 +1,1 @@
-from eagle_endpoint import eagle_api
+from pmm_endpoint import pmm_api
