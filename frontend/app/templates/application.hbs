@@ -6,7 +6,7 @@
             <div class="bigscreen">
                 <div class="navbar-header">
                     <h3 style="margin-top: 0px;">
-                        <a class="navbar-brand fa" href="/index"><i class="fa fa-fw fa-globe"></i><small>PM </small><strong>Matrix</strong><small> by FAO </small></a>
+                        {{#link-to 'index' class="navbar-brand fa"}}<i class="fa fa-fw fa-globe"></i><small>PM </small><strong>Matrix</strong><small> by FAO </small>{{/link-to}}
                     </h3>
                 </div>
                 <!-- Top Menu Items -->
@@ -43,16 +43,20 @@
                 <ul class="nav navbar-nav side-nav">
                     <br>
                     <li>
-                        <a href="/study"><i class="fa fa-fw fa-clock-o"></i> Previous Files/Studies</a>
+                        {{#link-to 'study.index' data-toggle="collapse" data-target="#demo2"}}<i class="fa fa-fw fa-clock-o"></i> Previous Files/Studies{{/link-to}}
                     </li>
                     <li>
-                        <a href="/study/new" data-toggle="collapse" data-target="#demo2"><i class="fa fa-fw fa-sitemap"></i> Create New Study</a>
+                        {{#link-to 'study.new' data-toggle="collapse" data-target="#demo2"}}<i class="fa fa-fw fa-sitemap"></i> Create New Study{{/link-to}}
                     </li>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
         </nav>
-        {{outlet}}
+        <div id="page-wrapper">
+            <div class="container-fluid">
+                {{outlet}}
+            </div>
+        </div>
         <nav class="navbar navbar-inverse navbar-fixed-bottom hidden-print" role="navigation">
             <div class="foot-nav">
                 <div class="row">
