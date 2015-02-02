@@ -1,3 +1,6 @@
+<h1>New Study</h1> 
+<h4>Study General Information</h4>
+
 <form {{action "save" on="submit"}}>
 	<h2>{{errorMessage}}</h2>
 	<p>
@@ -10,11 +13,6 @@
 			{{input value=model.country}}
 		</label>
 	</p>
-	<div>
-		<h2>Study Details</h2>
-		<p>{{model.title}}</p>
-		<p>{{model.country}}</p>
-	</div>
 	<input type="submit" value="Save"/>
 	<button {{action "cancel"}}>Cancel</button>
 </form>

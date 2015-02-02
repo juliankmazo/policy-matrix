@@ -1,0 +1,21 @@
+
+<form {{action "save" on="submit"}}>
+	<h2>{{errorMessage}}</h2>
+	<p>
+		<label>Variable Title:
+			{{input value=variable.title}}
+		</label>
+	</p>
+	<p>
+		<label>Type:
+			{{input value=variable.type}}
+		</label>
+	</p>
+	<p>
+		<label>Description:
+			{{input value=variable.description}}
+		</label>
+	</p>
+	<input type="submit" value="Save Variable"/>
+	<button {{action "cancel"}}>Cancel</button>
+</form>

@@ -4,8 +4,10 @@
 
 {{#each study in model}}
 
-<ul>		
-		<li><strong>ID: </strong>{{study.id}}</li> 
+<ul> 
+	{{#link-to 'study' study}}		
+		<li><strong>ID: </strong>{{study.id}}</li>
+	{{/link-to}} 
 		<li><strong>Title: </strong>{{study.title}}</li>
 		<li><strong>Country: </strong>{{study.country}}</li>
 </ul>

@@ -1,0 +1,42 @@
+<form {{action "save" on="submit"}}>
+	<h2>{{errorMessage}}</h2>
+	<p>
+		<label>Study Title:
+			{{input value=model.title}}
+		</label>
+	</p>
+	<p>
+		<label>Country:
+			{{input value=model.country}}
+		</label>
+	</p>
+	<div>
+		<h2>Study Details</h2>
+		<p>{{model.title}}</p>
+		<p>{{model.country}}</p>
+	</div>
+	<br>
+	<br>
+	<div>
+		<h2>Variable Details</h2>
+		{{#each variable in model.variables}}
+			<ul>
+				<li>Variable Name: {{variable.title}}</li>
+			</ul>
+		{{/each}}
+		{{!-- {{#each myArrayWithIndeces}}
+			<ul>
+				<li>{{this.index}}. Variable Name: {{this.item}}</li>
+			</ul>
+		{{/each}} --}}
+	</div>
+	{{#if isShownForm}}
+		<button {{action "hideVariableForm"}}>Cancel variable</button>
+		{{variable-new variable=variable}}
+	{{else}}
+		<button {{action "showVariableForm"}}>Add variable</button>
+	{{/if}}
+	<br>
+	<input type="submit" value="Save"/>
+	<button {{action "cancel"}}>Cancel</button>
+</form>

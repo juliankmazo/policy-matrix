@@ -6,13 +6,15 @@ var Router = Ember.Router.extend({
 });
 
 Router.map(function() {
-  this.resource('study', function() {
+  this.resource("studies", function() {
     this.route("new");
-    this.route("list", { path: ':study_id' });
-    this.route("existing");
   });
-  this.resource("variables", function() {
-  	
+
+  this.resource("study", { path: '/study/:study_id' }, function() {
+    this.resource("variables", function() {
+      this.route("new");
+    });
+    this.resource("variable", { path: '/variable/:variable_id' }, function() {});
   });
 });
 
