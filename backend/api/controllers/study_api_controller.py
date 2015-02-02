@@ -12,8 +12,6 @@ from api.messages import Study_resource
 from core.models import Study
 from core.helpers import StudyHelper
 
-import time
-
 
 @pmm_api.api_class(resource_name='studies', path='studies')
 class StudyEndpoint(BaseApiController):
@@ -23,7 +21,16 @@ class StudyEndpoint(BaseApiController):
                       name='get_all')
     def get_studies(self, request):
         studies = Study.query().fetch()
-        return StudyListResponse(study=[StudyApiHelper().to_message(study) for study in studies if studies])
+        return StudyListResponse(studies=[StudyApiHelper().to_message(study) for study in studies if studies])
+
+    @endpoints.method(Study_resource, StudyListResponse,
+                      path='{id}', http_method='GET',
+                      name='get_one')
+    def get_study(self, request):
+        study = Study.get_by_id(request.id)
+        if not study:
+            raise endpoints.BadRequestException("That study ID doesn't exist")
+        return StudyListResponse(studies=[StudyApiHelper().to_message(study)])
 
     @endpoints.method(StudyRequest, StudyListResponse,
                       path='/studies', http_method='POST',
@@ -31,37 +38,31 @@ class StudyEndpoint(BaseApiController):
     def create_study(self, request):
         if not (request.title and request.country):
             raise endpoints.BadRequestException('The data: title, country are obligatory.')
-        alert = StudyHelper.create(request.title, request.country)
-        if not alert:
+        study = StudyHelper.create(request.title, request.country)
+        if not study:
             raise endpoints.BadRequestException('It was not possible to create the study')
-        time.sleep(1)
-        studies = Study.query().fetch()
-        return StudyListResponse(study=[StudyApiHelper().to_message(study) for study in studies if studies])
+        return StudyListResponse(studies=[StudyApiHelper().to_message(study.get())])
 
     @endpoints.method(Study_resource, StudyListResponse,
                       path='{id}', http_method='PUT',
                       name='update')
     def update_study(self, request):
         study = Study.get_by_id(request.id)
-        if not study:  # If the stock doesn't exist, raise an error
+        if not study:
             raise endpoints.BadRequestException("That study ID doesn't exist")
         if not (request.title and request.country):
             raise endpoints.BadRequestException('The data: title, country are obligatory.')
-        alert = StudyHelper.update(study.key, request.title, request.country)
-        if not alert:
+        study = StudyHelper.update(study.key, request.title, request.country)
+        if not study:
             raise endpoints.BadRequestException('It was not possible to create the study')
-        time.sleep(1)
-        studies = Study.query().fetch()
-        return StudyListResponse(study=[StudyApiHelper().to_message(study) for study in studies if studies])
+        return StudyListResponse(studies=[StudyApiHelper().to_message(study.get())])
 
-    @endpoints.method(Study_resource, StudyListResponse,
+    @endpoints.method(Study_resource, message_types.VoidMessage,
                       path='{id}', http_method='DELETE',
                       name='delete')
     def delete_study(self, request):
         study = Study.get_by_id(request.id)
-        if not study:  # If the stock doesn't exist, raise an error
+        if not study:
             raise endpoints.BadRequestException("That study ID doesn't exist")
-        study.key.delete()  # If the stock exists, it removes it from the database
-        time.sleep(1)
-        studies = Study.query().fetch()
-        return StudyListResponse(study=[StudyApiHelper().to_message(study) for study in studies if studies])
+        study.key.delete()
+        return message_types.VoidMessage()

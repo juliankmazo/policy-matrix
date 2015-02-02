@@ -13,8 +13,8 @@ class StudyHelper(BaseHelper):
     @classmethod
     def create(cls, title, country):
         if title and country:
-            Study(title=title, country=country).put()
-            return True
+            study = Study(title=title, country=country).put()
+            return study
         return False
 
     @classmethod
@@ -24,5 +24,5 @@ class StudyHelper(BaseHelper):
             study.title = title
             study.country = country
             study.put()
-            return True
+            return study
         return False

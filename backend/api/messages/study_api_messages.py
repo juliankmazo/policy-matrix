@@ -9,7 +9,7 @@ class StudyResponse(messages.Message):
 
 
 class StudyListResponse(messages.Message):
-    study = messages.MessageField(StudyResponse, 1, repeated=True)
+    studies = messages.MessageField(StudyResponse, 1, repeated=True)
     count = messages.IntegerField(2)
 
 
