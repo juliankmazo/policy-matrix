@@ -9,6 +9,10 @@ Router.map(function() {
   this.resource('study', function() {
     this.route("new");
     this.route("list", { path: ':study_id' });
+    this.route("existing");
+  });
+  this.resource("variables", function() {
+  	
   });
 });
 

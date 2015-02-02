@@ -15,8 +15,8 @@ handlers:
 - url: /_ah/spi/.*
   script: services.APPLICATION
 
-# - url: /.*
-#   script: main.app
+- url: /.*
+  script: main.app
 
 # - url: /fonts
 #   static_dir: dist/fonts

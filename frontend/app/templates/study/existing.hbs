@@ -1,0 +1,14 @@
+<h1>Previous Studies</h1>
+
+<h4>Total created studies: {{model.length}}</h4>
+
+{{#each study in model}}
+
+<ul>		
+		<li><strong>ID: </strong>{{study.id}}</li> 
+		<li><strong>Title: </strong>{{study.title}}</li>
+		<li><strong>Country: </strong>{{study.country}}</li>
+</ul>
+{{/each}}
+
+{{outlet}}

@@ -23,7 +23,7 @@ class StudyEndpoint(BaseApiController):
                       name='get_all')
     def get_studies(self, request):
         studies = Study.query().fetch()
-        return StudyListResponse(studies=[StudyApiHelper().to_message(study) for study in studies if studies])
+        return StudyListResponse(study=[StudyApiHelper().to_message(study) for study in studies if studies])
 
     @endpoints.method(StudyRequest, StudyListResponse,
                       path='/studies', http_method='POST',
@@ -36,7 +36,7 @@ class StudyEndpoint(BaseApiController):
             raise endpoints.BadRequestException('It was not possible to create the study')
         time.sleep(1)
         studies = Study.query().fetch()
-        return StudyListResponse(studies=[StudyApiHelper().to_message(study) for study in studies if studies])
+        return StudyListResponse(study=[StudyApiHelper().to_message(study) for study in studies if studies])
 
     @endpoints.method(Study_resource, StudyListResponse,
                       path='{id}', http_method='PUT',
@@ -52,7 +52,7 @@ class StudyEndpoint(BaseApiController):
             raise endpoints.BadRequestException('It was not possible to create the study')
         time.sleep(1)
         studies = Study.query().fetch()
-        return StudyListResponse(studies=[StudyApiHelper().to_message(study) for study in studies if studies])
+        return StudyListResponse(study=[StudyApiHelper().to_message(study) for study in studies if studies])
 
     @endpoints.method(Study_resource, StudyListResponse,
                       path='{id}', http_method='DELETE',
@@ -64,4 +64,4 @@ class StudyEndpoint(BaseApiController):
         study.key.delete()  # If the stock exists, it removes it from the database
         time.sleep(1)
         studies = Study.query().fetch()
-        return StudyListResponse(studies=[StudyApiHelper().to_message(study) for study in studies if studies])
+        return StudyListResponse(study=[StudyApiHelper().to_message(study) for study in studies if studies])
