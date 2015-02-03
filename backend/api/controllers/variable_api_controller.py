@@ -8,6 +8,7 @@ from api.helpers import VariableApiHelper
 from api.messages import VariableRequest
 from api.messages import VariableResponse
 from api.messages import VariableListResponse
+from api.messages import variable_resource
 
 from core.models import Variable
 
@@ -20,13 +21,24 @@ class VariableEndpoint(BaseApiController):
     def get_variables(self, request):
         variables = Variable.get_all()
         return VariableListResponse(
-            variable=[VariableApiHelper().to_message(variable) for variable in variables if variables])
+            variables=[VariableApiHelper().to_message(variable) for variable in variables if variables])
 
+    @endpoints.method(variable_resource, VariableListResponse,
+                      path='{id}', http_method='GET', name='get_one')
+    def get_variable(self, request):
+        variable = Variable.get_by_id(request.id)
+        if not variable:
+            raise endpoints.BadRequestException("That ID doesn't exist")
+        return VariableListResponse(
+            variables=[VariableApiHelper().to_message(variable)])
+
+    @endpoints.method(VariableRequest, VariableListResponse,
+                      path='/variables', http_method='POST', name='create')
     def create_variable(self, request):
-        if not(request.title and request.tipo):
-            raise endpoints.BadRequestException('Title and type are required')
+        if not(request.name and request.tipo):
+            raise endpoints.BadRequestException('name and type are required')
         variable = Variable.create(
-            request.title,
+            request.name,
             request.tipo,
             request.keywords,
             request.description,
@@ -34,4 +46,33 @@ class VariableEndpoint(BaseApiController):
             )
         if not variable:
             raise endpoints.BadRequestException('Something went wrong')
-        return VariableResponse()
+        return VariableListResponse(
+            variables=[VariableApiHelper().to_message(variable)])
+
+    @endpoints.method(variable_resource, VariableListResponse,
+                      path='{id}', http_method='PUT', name='update')
+    def update_variable(self, request):
+        variable = Variable.get_by_id(request.id)
+        if not variable:
+            raise endpoints.BadRequestException("That ID doesn't exist")
+        updated_variable = Variable.update(
+            variable,
+            request.name,
+            request.tipo,
+            request.keywords,
+            request.description,
+            request.definitions
+            )
+        if not updated_variable:
+            raise endpoints.BadRequestException('Something went wrong')
+        return VariableListResponse(
+            variables=[VariableApiHelper().to_message(variable)])
+
+    @endpoints.method(variable_resource, message_types.VoidMessage,
+                      path='{id}', http_method='DELETE', name='delete')
+    def delete_variable(self, request):
+        variable = Variable.get_by_id(request.id)
+        if not variable:
+            raise endpoints.BadRequestException("That ID doesn't exist")
+        variable.key.delete()
+        return message_types.VoidMessage()
