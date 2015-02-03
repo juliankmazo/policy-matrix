@@ -21,7 +21,7 @@
 <div class="row">
   <div class="col-lg-11">
     <h3>
-        Start a New Study
+      Start a New Study
     </h3>
     <p class="bg-primary-blue text-center">General Study Information</p>
   </div>
@@ -32,67 +32,62 @@
 	<div class="row">
 	  <div class="col-lg-11">
 	  	<div class="form-horizontal" >
-	      <label class="col-sm-2 control-label">Study Title</label>
-				<div class="col-sm-10">
+	      <label class="col-sm-3 control-label">Study Title</label>
+				<div class="col-sm-9">
 	        {{input value=model.title type="text" placeholder="Write the title of the study" class="form-control m-5"}}
 	      </div>
-	  	</div>
-	  	<div class="form-horizontal" >
-				<label class="col-sm-2 control-label">Country</label>
-				<div class="col-sm-10">
+				<label class="col-sm-3 control-label">Country</label>
+				{{!-- Este debería ser un select control --}}
+				<div class="col-sm-9">
 	        {{input value=model.country type="text" placeholder="Select the country" class="form-control m-5"}}
 	      </div>
-	  	</div>
-	  </div>
-	  <br>
-	  <br>
-	  <br>
-	  <div class="col-lg-11">
-      <label for="inputTelCasa" class="col-sm-4 col-sm-offset-1 control-label">Define the Variables:</label>
-      <div class="col-sm-7"  style="margin-top:7px;">
-        <a href="/variable/new" class="form-control-static">+ Add new variable</a>
-      </div>
-      <label for="inputDirCasa" class="col-sm-2 col-sm-offset-3 control-label">1.</label>
-      <div class="col-sm-7">
-        <p class="form-control-static" style="padding-bottom:0px">Rural Institutions are strenghtened</p>
-      </div>
-      <label for="inputDirCasa" class="col-sm-2 col-sm-offset-3 control-label">2.</label>
-      <div class="col-sm-7">
-        <p class="form-control-static" style="padding-bottom:0px">Access to rural services and infrastructure</p>
-      </div>
-      <label for="inputDirCasa" class="col-sm-2 col-sm-offset-3 control-label">2.</label>
-      <div class="col-sm-7">
-      	<p class="form-control-static" style="padding-bottom:0px">Enhance Market access and productivity</p>
-      </div>
-      <label for="inputDirCasa" class="col-sm-2 col-sm-offset-3 control-label">4.</label>
-      <div class="col-sm-7">
-      	<p class="form-control-static" style="padding-bottom:0px">Access to land & sustainable management of natural resources</p>
-      </div>
-      <label for="inputDirCasa" class="col-sm-2 col-sm-offset-3 control-label">5.</label>
-      <div class="col-sm-7">
-        <p class="form-control-static" style="padding-bottom:0px">Decent rural employment</p>
-      </div>
-      <label for="inputDirCasa" class="col-sm-2 col-sm-offset-3 control-label">7.</label>
-      <div class="col-sm-7">
-      	<p class="form-control-static" style="padding-bottom:0px">Social protection</p>
-      </div>
-    </div>
-	  <div class="col-lg-11">
-      <label for="inputTelCasa" class="col-sm-4 col-sm-offset-1 control-label">Define cross-cutting issues:</label>
-      <div class="col-sm-7"  style="margin-top:7px;">
-        <a class="form-control-static">+ Add new cross-cutting issue</a>
-      </div>
-      <label for="inputDirCasa" class="col-sm-2 col-sm-offset-3 control-label">1.</label>
-      <div class="col-sm-7">
-        <p class="form-control-static" style="padding-bottom:0px">Gender</p>
-      </div>
-      <label for="inputDirCasa" class="col-sm-2 col-sm-offset-3 control-label">2.</label>
-      <div class="col-sm-7">
-        <p class="form-control-static" style="padding-bottom:0px">Governance</p>
-      </div>
+	      <div class="form-group">
+				  <label class="col-sm-3 col-sm-offset-1 control-label">Define the Variables:</label>
+				  <div class="col-sm-7">
+				    <p class="form-control-static">{{#link-to 'variables.new' this}}+ Add new variable{{/link-to}}</p>
+				  </div>
+				  <label class="col-sm-3 col-sm-offset-1 control-label">1.</label>
+				  <div class="col-sm-7">
+				    <p class="form-control-static" style="padding-bottom:0px">Rural Institutions are strenghtened</p>
+				  </div>
+				  <label class="col-sm-3 col-sm-offset-1 control-label">2.</label>
+				  <div class="col-sm-7">
+				    <p class="form-control-static" style="padding-bottom:0px">Access to rural services and infrastructure</p>
+				  </div>
+				  <label class="col-sm-3 col-sm-offset-1 control-label">3.</label>
+		      <div class="col-sm-7">
+		      	<p class="form-control-static" style="padding-bottom:0px">Enhance Market access and productivity</p>
+		      </div>
+		      <label class="col-sm-3 col-sm-offset-1 control-label">4.</label>
+				  <div class="col-sm-7">
+				    <p class="form-control-static" style="padding-bottom:0px">Access to land & sustainable management of natural resources</p>
+				  </div>
+				  <label class="col-sm-3 col-sm-offset-1 control-label">5.</label>
+		      <div class="col-sm-7">
+		      	<p class="form-control-static" style="padding-bottom:0px">Decent rural employment</p>
+		      </div>
+		      <label class="col-sm-3 col-sm-offset-1 control-label">6.</label>
+				  <div class="col-sm-7">
+				    <p class="form-control-static" style="padding-bottom:0px">Social protection</p>
+				  </div>
+			  </div>
+			  <div class="form-group">
+				  <label class="col-sm-3 col-sm-offset-1 control-label">Define new P&P:</label>
+				  <div class="col-sm-7">
+				    <p class="form-control-static">{{#link-to 'policies.new' this}}+ Add new policy or program{{/link-to}}</p>
+				  </div>
+				  <label class="col-sm-3 col-sm-offset-1 control-label">1.</label>
+				  <div class="col-sm-7">
+				    <p class="form-control-static" style="padding-bottom:0px">Gender</p>
+				  </div>
+				  <label class="col-sm-3 col-sm-offset-1 control-label">2.</label>
+				  <div class="col-sm-7">
+				    <p class="form-control-static" style="padding-bottom:0px">Governance</p>
+				  </div>
+			  </div>
+  		</div>
 	  </div>
 	</div>
-	<br>
 	<div class="col-lg-11 text-center">
 	  <div class="row">
 	  	<input  class="btn btn-primary-blue" style="margin:15px;" type="submit" value="Save Changes"/>

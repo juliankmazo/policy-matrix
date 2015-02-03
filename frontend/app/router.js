@@ -15,6 +15,11 @@ Router.map(function() {
       this.route("new");
     });
     this.resource("variable", { path: '/variable/:variable_id' }, function() {});
+
+    this.resource("policies", function() {
+      this.route("new");
+    });
+    this.resource("policy", { path: '/policy/:policy_id' }, function() {});
   });
 });
 
