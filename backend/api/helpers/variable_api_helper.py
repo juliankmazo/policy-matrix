@@ -11,7 +11,7 @@ class VariableApiHelper(BaseApiHelper):
     def to_message(self, entity):
         return VariableResponse(
             id=entity.key.id(),
-            title=entity.title,
+            name=entity.name,
             tipo=entity.tipo,
             keywords=entity.keywords,
             description=entity.description,

@@ -3,7 +3,7 @@ from google.appengine.ext import ndb
 
 
 class Variable(BaseModel):
-    title = ndb.StringProperty()
+    name = ndb.StringProperty()
     tipo = ndb.StringProperty()
     keywords = ndb.StringProperty()
     description = ndb.StringProperty()
@@ -14,10 +14,10 @@ class Variable(BaseModel):
         return Variable.query().fetch()
 
     @classmethod
-    def create(cls, title, tipo, keywords, description, definitions):
-        if title and tipo:
+    def create(cls, name, tipo, keywords, description, definitions):
+        if name and tipo:
             variable = Variable(
-                title=title,
+                name=name,
                 tipo=tipo,
                 keywords=keywords,
                 description=description,
@@ -28,13 +28,18 @@ class Variable(BaseModel):
         return False
 
     @classmethod
-    def update(cls, variable, title, tipo, keywords, description, definitions):
-        if title and tipo:
-            variable.title = title
-            variable.tipo = tipo
-            variable.keywords = keywords
-            variable.description = description
-            variable.definitions = definitions
+    def update(cls, variable, name, tipo, keywords, description, definitions):
+        if variable:
+            if name:
+                variable.name = name
+            if tipo:
+                variable.tipo = tipo
+            if tipo:
+                variable.keywords = keywords
+            if tipo:
+                variable.description = description
+            if tipo:
+                variable.definitions = definitions
             variable.put()
             return variable
         else:
