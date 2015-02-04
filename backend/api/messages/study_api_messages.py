@@ -15,4 +15,3 @@ class StudyListResponse(messages.Message):
 
 class StudyRequest(messages.Message):
     title = messages.StringField(1)
-    country = messages.StringField(2)

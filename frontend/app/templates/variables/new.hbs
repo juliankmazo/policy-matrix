@@ -1,29 +1,34 @@
-<!-- Page Heading -->
 <div class="row">
   <div class="col-lg-11">
     <h3>
       Add New Variable
     </h3>
+    <p class="bg-primary-blue text-center">Current Study</p>
+    <div class="row">
+      <div class="form-horizontal" >
+        <label class="col-sm-2 control-label" style="padding-top:12px">Study Title:</label>
+        <div class="col-sm-10">
+          <p class="form-control-static" style="font-size:24px"><strong>{{model.title}}</strong></p>
+        </div>
+      </div>
+    </div>
     <p class="bg-primary-blue text-center">Variable Information</p>
   </div>
 </div>
-<!-- /.row -->
 <form {{action "save" on="submit"}}>
   <h6 style="color:red">{{errorMessage}}</h6>
   <div class="row">
     <div class="col-lg-11">
       <div class="form-horizontal" >
-        <label class="col-sm-3 control-label">Variable Name</label>
+        <label class="col-sm-3 control-label">Variable Name:</label>
         <div class="col-sm-9">
           {{input value=model.name type="text" placeholder="Write the name of the variable" class="form-control m-5"}}
         </div>
-        <label class="col-sm-3 control-label">Type</label>
-        {{!-- Este debería ser un select control --}}
+        <label class="col-sm-3 control-label">Type:</label>
         <div class="col-sm-9">
-          {{input value=model.tipo type="text" placeholder="Select category of the variable" class="form-control m-5"}}
+          {{view "select" content=typeOptions prompt="Select category of the variable" class="form-control m-5" value=model.tipo}}
         </div>
-        <label class="col-sm-3 control-label">Description</label>
-        {{!-- Este debería ser un textarea --}}
+        <label class="col-sm-3 control-label">Description:</label>
         <div class="col-sm-9">
           {{input value=model.description type="text" placeholder="Add a description for this variable" class="form-control m-5"}}
         </div>

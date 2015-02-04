@@ -11,6 +11,5 @@ class StudyApiHelper(BaseApiHelper):
     def to_message(self, entity):
         return StudyResponse(
             id=entity.key.id(),
-            title=entity.title,
-            country=entity.country
+            title=entity.title
             )
