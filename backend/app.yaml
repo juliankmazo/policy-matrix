@@ -1,4 +1,4 @@
-application: inversiones-va
+application: policy-matrix
 version: 1
 runtime: python27
 api_version: 1
@@ -40,8 +40,6 @@ libraries:
   version: latest
 - name: endpoints
   version: 1.0
-- name: ssl
-  version: latest
 - name: jinja2
   version: latest
 
