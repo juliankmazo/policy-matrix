@@ -28,7 +28,8 @@ class VariableEndpoint(BaseApiController):
     def get_variable(self, request):
         variable = Variable.get_by_id(request.id)
         if not variable:
-            raise endpoints.BadRequestException("That ID doesn't exist")
+            raise endpoints.NotFoundException(
+              "The variable ID: " + str(request.id) + " doesn't exist")
         return VariableListResponse(
             variables=[VariableApiHelper().to_message(variable)])
 
@@ -45,7 +46,7 @@ class VariableEndpoint(BaseApiController):
             request.definitions
             )
         if not variable:
-            raise endpoints.BadRequestException('Something went wrong')
+            raise endpoints.InternalServerErrorException('Something went wrong')
         return VariableListResponse(
             variables=[VariableApiHelper().to_message(variable)])
 
@@ -54,7 +55,8 @@ class VariableEndpoint(BaseApiController):
     def update_variable(self, request):
         variable = Variable.get_by_id(request.id)
         if not variable:
-            raise endpoints.BadRequestException("That ID doesn't exist")
+            raise endpoints.NotFoundException(
+              "The variable ID: " + str(request.id) + " doesn't exist")
         updated_variable = Variable.update(
             variable,
             request.name,
@@ -73,6 +75,7 @@ class VariableEndpoint(BaseApiController):
     def delete_variable(self, request):
         variable = Variable.get_by_id(request.id)
         if not variable:
-            raise endpoints.BadRequestException("That ID doesn't exist")
+            raise endpoints.NotFoundException(
+              "The variable ID: " + str(request.id) + " doesn't exist")
         variable.key.delete()
         return message_types.VoidMessage()

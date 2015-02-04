@@ -21,7 +21,8 @@ class StudyEndpoint(BaseApiController):
                       name='get_all')
     def get_studies(self, request):
         studies = Study.query().fetch()
-        return StudyListResponse(studies=[StudyApiHelper().to_message(study) for study in studies if studies])
+        return StudyListResponse(
+          studies=[StudyApiHelper().to_message(study) for study in studies if studies])
 
     @endpoints.method(Study_resource, StudyListResponse,
                       path='{id}', http_method='GET',
@@ -29,7 +30,8 @@ class StudyEndpoint(BaseApiController):
     def get_study(self, request):
         study = Study.get_by_id(request.id)
         if not study:
-            raise endpoints.BadRequestException("That study ID doesn't exist")
+            raise endpoints.NotFoundException(
+              "The study ID: " + str(request.id) + " doesn't exist")
         return StudyListResponse(studies=[StudyApiHelper().to_message(study)])
 
     @endpoints.method(StudyRequest, StudyListResponse,
@@ -49,7 +51,8 @@ class StudyEndpoint(BaseApiController):
     def update_study(self, request):
         study = Study.get_by_id(request.id)
         if not study:
-            raise endpoints.BadRequestException("That study ID doesn't exist")
+            raise endpoints.NotFoundException(
+              "The study ID: " + str(request.id) + " doesn't exist")
         if not request.title:
             raise endpoints.BadRequestException('The data: title, country are obligatory.')
         study = StudyHelper.update(study.key, request.title)
@@ -63,6 +66,7 @@ class StudyEndpoint(BaseApiController):
     def delete_study(self, request):
         study = Study.get_by_id(request.id)
         if not study:
-            raise endpoints.BadRequestException("That study ID doesn't exist")
+            raise endpoints.NotFoundException(
+              "The study ID: " + str(request.id) + " doesn't exist")
         study.key.delete()
         return message_types.VoidMessage()
