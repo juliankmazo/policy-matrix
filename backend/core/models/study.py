@@ -7,4 +7,4 @@ class Study(BaseModel):
 
     # Informacion Personal
     title = ndb.StringProperty(required=True)
-    country = ndb.StringProperty(required=True)
+    country = ndb.StringProperty()

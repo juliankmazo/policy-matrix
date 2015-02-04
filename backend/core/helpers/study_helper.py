@@ -11,18 +11,17 @@ class StudyHelper(BaseHelper):
         return Study.query().order(Study.country).fetch()
 
     @classmethod
-    def create(cls, title, country):
-        if title and country:
-            study = Study(title=title, country=country).put()
+    def create(cls, title):
+        if title:
+            study = Study(title=title).put()
             return study
         return False
 
     @classmethod
-    def update(cls, key, title, country):
+    def update(cls, key, title):
         study = ndb.Key(urlsafe=key).get()
-        if title and country:
+        if title:
             study.title = title
-            study.country = country
             study.put()
             return study
         return False
