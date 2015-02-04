@@ -25,7 +25,8 @@ class Variable(BaseModel):
                 )
             variable.put()
             return variable
-        return False
+        else:
+            return False
 
     @classmethod
     def update(cls, variable, name, tipo, keywords, description, definitions):
