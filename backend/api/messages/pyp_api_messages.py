@@ -21,6 +21,7 @@ class PypResponse(messages.Message):
     totalBudget = messages.StringField(17)
     currency = messages.StringField(18)
     comments = messages.StringField(19)
+    objectives = messages.IntegerField(20, repeated=True)
 
 
 class PypListResponse(messages.Message):
@@ -46,3 +47,4 @@ class PypRequest(messages.Message):
     totalBudget = messages.StringField(16)
     currency = messages.StringField(17)
     comments = messages.StringField(18)
+    objectives = messages.IntegerField(19, repeated=True)
