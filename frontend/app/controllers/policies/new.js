@@ -270,7 +270,7 @@ export default Ember.ObjectController.extend(EmberValidations.Mixin,{
 		'model.country',
 		'model.title',
 		function() {
-			return !Ember.isEmpty(this.get('model.country')) && !Ember.isEmpty(this.get('model.title'))
+			return !Ember.isEmpty(this.get('model.country')) && !Ember.isEmpty(this.get('model.title'));
 			}
 		),
 
@@ -283,7 +283,7 @@ export default Ember.ObjectController.extend(EmberValidations.Mixin,{
 					_this.transitionToRoute('policy', pyp);
 				});
 			} else {
-				this.set('errorMessage', 'You have to specify a country and a title')
+				this.set('errorMessage', 'You have to specify a country and a title');
 			}
 			return false;
 		},

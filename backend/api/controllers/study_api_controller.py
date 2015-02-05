@@ -10,7 +10,6 @@ from api.messages import StudyRequest
 from api.messages import Study_resource
 
 from core.models import Study
-from core.helpers import StudyHelper
 
 
 @pmm_api.api_class(resource_name='studies', path='studies')
@@ -40,7 +39,7 @@ class StudyEndpoint(BaseApiController):
     def create_study(self, request):
         if not request.title:
             raise endpoints.BadRequestException('The data: title are obligatory.')
-        study = StudyHelper.create(request.title)
+        study = Study.create(request.title, request.variables)
         if not study:
             raise endpoints.BadRequestException('It was not possible to create the study')
         return StudyListResponse(studies=[StudyApiHelper().to_message(study.get())])
@@ -53,12 +52,10 @@ class StudyEndpoint(BaseApiController):
         if not study:
             raise endpoints.NotFoundException(
               "The study ID: " + str(request.id) + " doesn't exist")
-        if not request.title:
-            raise endpoints.BadRequestException('The data: title, country are obligatory.')
-        study = StudyHelper.update(study.key, request.title)
+        study = Study.update(study, request.title, request.variables)
         if not study:
             raise endpoints.BadRequestException('It was not possible to create the study')
-        return StudyListResponse(studies=[StudyApiHelper().to_message(study.get())])
+        return StudyListResponse(studies=[StudyApiHelper().to_message(study)])
 
     @endpoints.method(Study_resource, message_types.VoidMessage,
                       path='{id}', http_method='DELETE',

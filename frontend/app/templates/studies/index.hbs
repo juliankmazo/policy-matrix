@@ -9,8 +9,15 @@
 		<li><strong>ID: </strong>{{study.id}}</li>
 	{{/link-to}} 
 		<li><strong>Title: </strong>{{study.title}}</li>
-		<li><strong>Country: </strong>{{study.country}}</li>
+		<li><strong>Variables: </strong></li>
+		<ul>
+		  {{#each variable in study.variables}}
+		    <li>{{variable.name}}</li>
+		  {{/each}}
+		</ul>
 </ul>
+	{{#link-to 'study.edit' study class="btn btn-primary-blue" style="margin:15px;"}} <i class="fa fa-fw fa-edit"></i>{{/link-to}}
+	<button {{action "delete" study}} class="btn btn-danger" style="margin:15px;"><i class="fa fa-fw fa-trash"></i></button>
 {{/each}}
 
 {{outlet}}

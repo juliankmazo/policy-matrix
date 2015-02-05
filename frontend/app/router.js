@@ -6,9 +6,9 @@ var Router = Ember.Router.extend({
 });
 
 Router.map(function() {
-    this.resource("studies", function() {
-    this.route("new");
-  });
+  this.resource("studies", function() {
+  this.route("new");
+});
   this.resource("study", { path: '/study/:study_id' }, function() {
     this.route("edit");
   });
@@ -19,7 +19,7 @@ Router.map(function() {
   this.resource("variable", { path: '/variable/:variable_id' }, function() {
     this.route("edit");
   });
-  
+
   this.resource("policies", function() {
     this.route("new");
   });

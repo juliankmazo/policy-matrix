@@ -11,5 +11,6 @@ class StudyApiHelper(BaseApiHelper):
     def to_message(self, entity):
         return StudyResponse(
             id=entity.key.id(),
-            title=entity.title
+            title=entity.title,
+            variables=[variable_key.id() for variable_key in entity.variables]
             )

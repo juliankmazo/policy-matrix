@@ -6,7 +6,6 @@ from api.controllers import BaseApiController
 from api.helpers import VariableApiHelper
 
 from api.messages import VariableRequest
-from api.messages import VariableResponse
 from api.messages import VariableListResponse
 from api.messages import variable_resource
 

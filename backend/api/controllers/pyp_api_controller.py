@@ -10,7 +10,6 @@ from api.messages import PypRequest
 from api.messages import Pyp_resource
 
 from core.models import Pyp
-# from core.models import PypHelper
 
 
 @pmm_api.api_class(resource_name='pyps', path='pyps')
