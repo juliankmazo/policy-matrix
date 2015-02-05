@@ -19,5 +19,11 @@ export default DS.RESTSerializer.extend({
     if (!payload.studies) {
       payload.studies=[];
     }
+    if (!payload.variables) {
+      payload.variables=[];
+    }
+    if (!payload.pyps) {
+      payload.pyps=[];
+    }
   }
 });
