@@ -1,5 +1,6 @@
 from protorpc import messages
 
+
 class PypResponse(messages.Message):
     id = messages.IntegerField(1)
     country = messages.StringField(2)
