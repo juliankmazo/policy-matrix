@@ -21,6 +21,7 @@ class Pyp(BaseModel):
     total_budget = ndb.StringProperty()
     currency = ndb.StringProperty()
     comments = ndb.StringProperty()
+    objectives = ndb.IntegerProperty(repeated=True)
 
     @classmethod
     def get_all(cls):
@@ -47,7 +48,7 @@ class Pyp(BaseModel):
                 source=entity.source,
                 total_budget=entity.totalBudget,
                 currency=entity.currency,
-                comments=entity.comments
+                comments=entity.comments,
                 )
             pyp.put()
             return pyp
@@ -93,6 +94,8 @@ class Pyp(BaseModel):
                 pyp.currency = entity.currency
             if entity.comments:
                 pyp.comments = entity.comments
+            if entity.objectives:
+                pyp.objectives = entity.objectives
             pyp.put()
             return pyp
         else:

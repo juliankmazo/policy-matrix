@@ -28,5 +28,6 @@ class PypApiHelper(BaseApiHelper):
             source=entity.source,
             totalBudget=entity.total_budget,
             currency=entity.currency,
-            comments=entity.comments
+            comments=entity.comments,
+            objectives=entity.objectives
             )

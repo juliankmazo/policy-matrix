@@ -18,6 +18,11 @@ from pyp_api_messages import PypRequest
 from pyp_api_messages import PypResponse
 from pyp_api_messages import PypListResponse
 
+from objective_api_messages import ObjectiveRequest
+from objective_api_messages import ObjectiveResponse
+from objective_api_messages import ObjectiveListResponse
+
+
 
 
 # This Resource container is created for reading parameters from the URL request
@@ -34,5 +39,10 @@ variable_resource = endpoints.ResourceContainer(
 
 Pyp_resource = endpoints.ResourceContainer(
     PypRequest,
+    id=messages.IntegerField(1, variant=messages.Variant.INT64, required=True)
+)
+
+Objective_resource = endpoints.ResourceContainer(
+    ObjectiveRequest,
     id=messages.IntegerField(1, variant=messages.Variant.INT64, required=True)
 )
