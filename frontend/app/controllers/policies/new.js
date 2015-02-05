@@ -261,5 +261,31 @@ export default Ember.ObjectController.extend(EmberValidations.Mixin,{
 		return "flag-icon-" + selectedObject.toLowerCase();
 	}.property('selectedObject'),
 
-	actions: {}
+	// selectedCountry: function() {
+	// 	var selectedObject = this.get("selectedObject") || "";
+	// 	return selectedObject
+	// }.property('selectedObject'),
+
+	isValid: Ember.computed(
+		'model.country',
+		'model.title',
+		function() {
+			return !Ember.isEmpty(this.get('model.country')) && !Ember.isEmpty(this.get('model.title'))
+			}
+		),
+
+	actions: {
+		save: function() {
+			if (this.get('isValid')) {
+				var _this = this;
+				// this.get('model').set('country', selectedObject);
+				this.get('model').save().then(function(pyp) {
+					_this.transitionToRoute('policy', pyp);
+				});
+			} else {
+				this.set('errorMessage', 'You have to specify a country and a title')
+			}
+			return false;
+		},
+	}
 });

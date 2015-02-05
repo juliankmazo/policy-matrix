@@ -16,12 +16,12 @@
         <div class="col-sm-9 m-5">
           <div class="input-group">
             <span class="input-group-addon" id="basic-addon1"><span {{bind-attr class="flagClass :flag-icon"}}></span></span>
-            {{view "select" content=countryOptions optionValuePath="content.id" optionLabelPath="content.name" prompt="Select a country" class="form-control m-5" value=selectedObject selection=model.country}}
+            {{view "select" content=countryOptions optionValuePath="content.id" optionLabelPath="content.name" prompt="Select a country" class="form-control m-5" value=selectedObject}}
           </div>
         </div>
         <label class="col-sm-3 control-label">P&P Title:</label>
         <div class="col-sm-9">
-          {{input value=model.name type="text" placeholder="Write the title of the policy or program" class="form-control m-5"}}
+          {{input value=model.title type="text" placeholder="Write the title of the policy or program" class="form-control m-5"}}
         </div>
         <label class="col-sm-3 control-label">General information:</label>
         <div class="col-sm-9">
@@ -30,7 +30,7 @@
         <label class="col-sm-3 control-label">Contact person:</label>
         <label class="col-sm-1 control-label">Name:</label>
         <div class="col-sm-3">
-          {{input value=model.description type="text" placeholder="Name" class="form-control m-5"}}
+          {{input value=model.contactPerson type="text" placeholder="Name" class="form-control m-5"}}
         </div>
         <label class="col-sm-1 control-label">Email:</label>
         <div class="col-sm-4">
@@ -46,15 +46,15 @@
         </div>
         <label class="col-sm-3 control-label">Typology:</label>
         <div class="col-sm-9">
-          {{view "select" content=typologyOptions prompt="Select a typology" class="form-control m-5"}}
+          {{view "select" content=typologyOptions prompt="Select a typology" class="form-control m-5" selection=model.typology}}
         </div>
         <label class="col-sm-3 control-label">Regulatory Framework:</label>
         <div class="col-sm-4">
-          {{view "select" content=typologyOptions prompt="Select an option" class="form-control m-5"}}
+          {{view "select" content=typologyOptions prompt="Select an option" class="form-control m-5" selection=model.regulatoryFramework}}
         </div>
         <label class="col-sm-1 control-label">Reference:</label>
         <div class="col-sm-4">
-          {{input value=model.description type="text" placeholder="Define details" class="form-control m-5"}}
+          {{input value=model.regulatoryFrameworkReference type="text" placeholder="Define details" class="form-control m-5"}}
         </div>
         <label class="col-sm-3 control-label">Relations with others P&P:</label>
         <label class="col-sm-1 control-label">P&P:</label>
@@ -67,35 +67,35 @@
         </div>
         <label class="col-sm-3 control-label">Beneficiaries:</label>
         <div class="col-sm-9">
-          {{input value=model.description type="text" placeholder="Add beneficiaries" class="form-control m-5"}}
+          {{input value=model.beneficiaries type="text" placeholder="Add beneficiaries" class="form-control m-5"}}
         </div>
         <label class="col-sm-3 control-label">Geographical coverage:</label>
         <div class="col-sm-4">
-          {{view "select" content=typologyOptions prompt="Select coverage" class="form-control m-5"}}
+          {{view "select" content=typologyOptions prompt="Select coverage" class="form-control m-5" selection=model.geographicalCoverage}}
         </div>
         <label class="col-sm-1 control-label">Specify:</label>
         <div class="col-sm-4">
-          {{input value=model.description type="text" placeholder="Write the name of the place or region" class="form-control m-5"}}
+          {{input value=model.geographicalPlace type="text" placeholder="Write the name of the place or region" class="form-control m-5"}}
         </div>
         <label class="col-sm-3 control-label">Date of entry into force:</label>
         <div class="col-sm-4">
-          {{input value=model.description type="text" placeholder="Starting date" class="form-control m-5"}}
+          {{input value=model.dateEntry type="text" placeholder="Starting date" class="form-control m-5"}}
         </div>
         <label class="col-sm-1 control-label">Timeframe:</label>
         <div class="col-sm-4">
-          {{input value=model.description type="text" placeholder="Define the interval" class="form-control m-5"}}
+          {{input value=model.timeFrame type="text" placeholder="Define the interval" class="form-control m-5"}}
         </div>
         <label class="col-sm-3 control-label">Total Budget:</label>
         <div class="col-sm-4">
-          {{input value=model.description type="number" placeholder="Define the amount of money" class="form-control m-5"}}
+          {{input value=model.totalBudget type="number" placeholder="Define the amount of money" class="form-control m-5"}}
         </div>
         <label class="col-sm-1 control-label">Currency:</label>
         <div class="col-sm-4">
-          {{view "select" content=typologyOptions prompt="Select the money currency" class="form-control m-5"}}
+          {{view "select" content=typologyOptions prompt="Select the money currency" class="form-control m-5" selection=model.currency}}
         </div>
         <label class="col-sm-3 control-label">Comments:</label>
         <div class="col-sm-9">
-          {{textarea value=model.description rows=2 placeholder="Write any comment or observation" class="form-control m-5"}}
+          {{textarea value=model.comments rows=2 placeholder="Write any comment or observation" class="form-control m-5"}}
         </div>
       </div>
     </div>
