@@ -1,0 +1,15 @@
+<h4>Total created policies: {{model.length}}</h4>
+
+{{#each pyp in model}}
+
+<ul> 
+	{{#link-to 'policy' pyp}}		
+		<li><strong>ID: </strong>{{pyp.id}}</li>
+	{{/link-to}} 
+		<li><strong>Title: </styg>{{pyp.title}}</li>
+		<li><strong>Country: </strong>{{pyp.country}}</li>
+</ul>
+{{/each}}
+
+
+{{outlet}}
