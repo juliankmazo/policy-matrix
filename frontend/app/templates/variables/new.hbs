@@ -8,29 +8,30 @@
       <div class="form-horizontal" >
         <label class="col-sm-2 control-label" style="padding-top:12px">Study Title:</label>
         <div class="col-sm-10">
-          <p class="form-control-static" style="font-size:24px"><strong>{{model.title}}</strong></p>
+          <p class="form-control-static" style="font-size:24px"><strong>{{model.study.title}}</strong></p>
         </div>
       </div>
     </div>
+    <br>
     <p class="bg-primary-blue text-center">Variable Information</p>
   </div>
 </div>
-<form {{action "save" on="submit"}}>
+<form>
   <h6 style="color:red">{{errorMessage}}</h6>
   <div class="row">
     <div class="col-lg-11">
       <div class="form-horizontal" >
         <label class="col-sm-3 control-label">Variable Name:</label>
         <div class="col-sm-9">
-          {{input value=model.name type="text" placeholder="Write the name of the variable" class="form-control m-5"}}
+          {{input value=model.variable.name type="text" placeholder="Write the name of the variable" class="form-control m-5"}}
         </div>
         <label class="col-sm-3 control-label">Type:</label>
         <div class="col-sm-9">
-          {{view "select" content=typeOptions prompt="Select category of the variable" class="form-control m-5" value=model.tipo}}
+          {{view "select" content=typeOptions prompt="Select category of the variable" class="form-control m-5" value=model.variable.tipo}}
         </div>
         <label class="col-sm-3 control-label">Description:</label>
         <div class="col-sm-9">
-          {{input value=model.description type="text" placeholder="Add a description for this variable" class="form-control m-5"}}
+          {{textarea value=model.variable.description rows=2 placeholder="Add a description for this variable" class="form-control m-5"}}
         </div>
       </div>
     </div>
@@ -111,7 +112,7 @@
   </div>
   <div class="col-lg-11 text-center">
     <div class="row">        
-      <input  class="btn btn-primary-blue" style="margin:15px;" type="submit" value="Save Changes"/>
+      <button {{action "save"}} class="btn btn-primary-blue" style="margin:15px;">Save Changes</button>
       <button {{action "cancel"}} class="btn btn-default" style="margin:15px;">Cancel</button>
     </div>
   </div>

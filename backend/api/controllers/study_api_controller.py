@@ -39,7 +39,7 @@ class StudyEndpoint(BaseApiController):
                       name='create')
     def create_study(self, request):
         if not request.title:
-            raise endpoints.BadRequestException('The data: title, country are obligatory.')
+            raise endpoints.BadRequestException('The data: title are obligatory.')
         study = StudyHelper.create(request.title)
         if not study:
             raise endpoints.BadRequestException('It was not possible to create the study')
