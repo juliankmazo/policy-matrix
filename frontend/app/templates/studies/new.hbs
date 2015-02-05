@@ -15,14 +15,11 @@
 	  	<div class="form-horizontal" >
 	      <label class="col-sm-3 control-label">Study Title</label>
 				<div class="col-sm-9">
-	        {{input value=model.title type="text" placeholder="Write the title of the study" class="form-control m-5"}}
+	        {{input value=model.study.title type="text" placeholder="Write the title of the study" class="form-control m-5"}}
 	      </div>
 			  <label class="col-sm-3 control-label">Define the Variables:</label>
-			  <div class="col-sm-6">
-			    {{view "select" prompt="Add an existing variable" class="form-control m-5"}}
-			  </div>
-			  <div class="col-sm-3">
-			    <p class="form-control-static"><button {{action "newVariable"}} class="btn btn-primary-blue" style="padding:0px 10px;margin:0px;">+ Add new variable</button></p>
+			  <div class="col-sm-9">
+			    {{view "select" content=listVariables optionValuePath="content.id" optionLabelPath="content.name" prompt="Add an existing variable" class="form-control m-5"}}
 			  </div>
 			  <label class="col-sm-3 control-label">1.</label>
 			  <div class="col-sm-7">
@@ -48,19 +45,17 @@
 			  <div class="col-sm-7">
 			    <p class="form-control-static" style="padding-bottom:0px">Social protection</p>
 			  </div>
-			  <div class="form-group">
-				  <label class="col-sm-3 control-label">Define new P&P:</label>
-				  <div class="col-sm-7">
-			    	<p class="form-control-static"><button {{action "newPolicy"}} class="btn btn-primary-blue" style="padding:0px 10px;margin:0px;">+ Add new Policy or Program</button></p>
-				  </div>
-				  <label class="col-sm-3 control-label">1.</label>
-				  <div class="col-sm-7">
-				    <p class="form-control-static" style="padding-bottom:0px">Gender</p>
-				  </div>
-				  <label class="col-sm-3 control-label">2.</label>
-				  <div class="col-sm-7">
-				    <p class="form-control-static" style="padding-bottom:0px">Governance</p>
-				  </div>
+			  <label class="col-sm-3 control-label">Define new P&P:</label>
+				  <div class="col-sm-9">
+			    {{view "select" content=listPyps optionValuePath="content.id" optionLabelPath="content.title" prompt="Add an existing policy or program" class="form-control m-5"}}
+			  </div>
+			  <label class="col-sm-3 control-label">1.</label>
+			  <div class="col-sm-7">
+			    <p class="form-control-static" style="padding-bottom:0px">Gender</p>
+			  </div>
+			  <label class="col-sm-3 control-label">2.</label>
+			  <div class="col-sm-7">
+			    <p class="form-control-static" style="padding-bottom:0px">Governance</p>
 			  </div>
   		</div>
 	  </div>
