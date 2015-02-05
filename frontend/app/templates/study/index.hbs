@@ -1,7 +1,10 @@
 <ul>
 	<li>Study Title: {{model.title}}</li>
-	<li>Country: {{model.country}}</li>
 	<li>Id: {{model.id}}</li>
 </ul>
+
+{{#link-to 'study.edit' model class="btn btn-primary-blue"}}		
+	Edit Study
+{{/link-to}} 
 
 {{outlet}}

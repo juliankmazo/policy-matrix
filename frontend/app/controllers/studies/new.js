@@ -3,9 +3,21 @@ import EmberValidations from 'ember-validations';
 
 export default Ember.Controller.extend(EmberValidations.Mixin,{
 	isValid: Ember.computed(
-		'model.title',
+		'model.study.title',
 		function() {
-		return !Ember.isEmpty(this.get('model.title'));
+		return !Ember.isEmpty(this.get('model.study.title'));
+		}
+	),
+	listVariables: Ember.computed(
+		'model.variable',
+		function() {
+			return this.get('model.variable');
+		}
+	),
+	listPyps: Ember.computed(
+		'model.pyp',
+		function() {
+			return this.get('model.pyp');
 		}
 	),
 	actions: {
@@ -34,7 +46,7 @@ export default Ember.Controller.extend(EmberValidations.Mixin,{
 		save: function(){
 			if (this.get('isValid')){
 				var _this = this;
-				this.get('model').save().then(function(study){
+				this.get('model.study').save().then(function(study){
 					_this.transitionToRoute('study', study);
 				});
 			} else {
