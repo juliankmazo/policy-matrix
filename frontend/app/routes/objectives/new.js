@@ -6,6 +6,12 @@ export default Ember.Route.extend({
 			pyp: this.modelFor('policy')
 		});
 	},
+	deactivate: function() {
+		var model = this.modelFor('objectives/new');
+		if (model.get('isNew')) {
+			model.destroyRecord();
+		}
+	},
 	actions: {
 		save: function() {
 			var _this = this;
