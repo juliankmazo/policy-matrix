@@ -18,52 +18,58 @@
 	        {{input value=model.study.title type="text" placeholder="Write the title of the study" class="form-control m-5"}}
 	      </div>
 			  <label class="col-sm-3 control-label">Define the Variables:</label>
-			  <div class="col-sm-9">
-			    {{view "select" content=listVariables optionValuePath="content.id" optionLabelPath="content.name" prompt="Add an existing variable" class="form-control m-5"}}
+			  <div class="col-sm-6">
+			    {{view "select" content=listVariables optionValuePath="content.id" optionLabelPath="content.name" prompt="Add an existing variable" class="form-control m-5" selection=newVariable}}
 			  </div>
-			  <label class="col-sm-3 control-label">1.</label>
-			  <div class="col-sm-7">
-			    <p class="form-control-static" style="padding-bottom:0px">Rural Institutions are strenghtened</p>
+			  <div class="col-sm-3">
+			    <p class="form-control-static"><button {{action "newVariable"}} class="btn btn-primary-blue" style="padding:0px 10px;margin:0px;">+ Add new variable</button></p>
 			  </div>
-			  <label class="col-sm-3 control-label">2.</label>
-			  <div class="col-sm-7">
-			    <p class="form-control-static" style="padding-bottom:0px">Access to rural services and infrastructure</p>
-			  </div>
-			  <label class="col-sm-3 control-label">3.</label>
-	      <div class="col-sm-7">
-	      	<p class="form-control-static" style="padding-bottom:0px">Enhance Market access and productivity</p>
-	      </div>
-	      <label class="col-sm-3 control-label">4.</label>
-			  <div class="col-sm-7">
-			    <p class="form-control-static" style="padding-bottom:0px">Access to land & sustainable management of natural resources</p>
-			  </div>
-			  <label class="col-sm-3 control-label">5.</label>
-	      <div class="col-sm-7">
-	      	<p class="form-control-static" style="padding-bottom:0px">Decent rural employment</p>
-	      </div>
-	      <label class="col-sm-3 control-label">6.</label>
-			  <div class="col-sm-7">
-			    <p class="form-control-static" style="padding-bottom:0px">Social protection</p>
+			  <div class="col-sm-10 col-sm-offset-2">
+			  	<ol class="listV">
+				  {{#each variable in model.study.variables}}
+				  	<div class="row">
+				  		<div class="col-sm-1">
+					  		<button {{action 'removeVariable' variable}} class="btn btn-danger" style="padding:1px 6px"><span aria-hidden="true">&times;</span></button> 
+					  	</div>
+					  	<div class="col-sm-11">
+							  <li>
+							    <p class="form-control-static" style="padding-bottom:0px"><strong>{{variable.name}}</strong></p>
+							  </li>
+							</div>
+						</div>
+				  {{/each}}
+			  	</ol>
 			  </div>
 			  <label class="col-sm-3 control-label">Define new P&P:</label>
-				  <div class="col-sm-9">
-			    {{view "select" content=listPyps optionValuePath="content.id" optionLabelPath="content.title" prompt="Add an existing policy or program" class="form-control m-5"}}
+				  <div class="col-sm-6">
+			    {{view "select" content=listPyps optionValuePath="content.id" optionLabelPath="content.title" prompt="Add an existing policy or program" class="form-control m-5" selection=newPolicy}}
 			  </div>
-			  <label class="col-sm-3 control-label">1.</label>
-			  <div class="col-sm-7">
-			    <p class="form-control-static" style="padding-bottom:0px">Gender</p>
+			  <div class="col-sm-3">
+			    <p class="form-control-static"><button {{action "newPolicy"}} class="btn btn-primary-blue" style="padding:0px 10px;margin:0px;">+ Add new P&P</button></p>
 			  </div>
-			  <label class="col-sm-3 control-label">2.</label>
-			  <div class="col-sm-7">
-			    <p class="form-control-static" style="padding-bottom:0px">Governance</p>
+			  <div class="col-sm-10 col-sm-offset-2">
+			  	<ol class="listV">
+				  {{#each pyp in model.study.pyps}}
+					  <div class="row">
+				  		<div class="col-sm-1">
+					  		<button {{action 'removePolicy' pyp}} class="btn btn-danger" style="padding:1px 6px"><span aria-hidden="true">&times;</span></button> 
+					  	</div>
+					  	<div class="col-sm-11">
+							  <li> 
+							    <p class="form-control-static" style="padding-bottom:0px"><span {{bind-attr class="flagClass :flag-icon"}}></span>{{pyp.country}} - <strong>{{pyp.title}}</strong></p>
+							  </li>
+							</div>
+						</div>
+				  {{/each}}
+			  	</ol>
 			  </div>
   		</div>
 	  </div>
 	</div>
 	<div class="col-lg-11 text-center">
 	  <div class="row">
-	  	<input  class="btn btn-primary-blue" style="margin:15px;" type="submit" value="Save Changes"/>
-			<button {{action "cancel"}} class="btn btn-primary-blue" style="margin:15px;">Cancel</button>
+	  	<input  class="btn btn-primary-blue" style="margin:15px;" type="submit" value="Create New Study"/>
+			<button {{action "cancel" model.study}} class="btn btn-default" style="margin:15px;">Cancel</button>
 	  </div>
 	</div>
 </form>
