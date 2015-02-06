@@ -6,5 +6,11 @@ export default Ember.Route.extend({
           study: this.modelFor('study'),
           variable: this.store.createRecord('variable')
         });
-	}
+	},
+	// deactivate: function() {
+	// 	var model = this.modelFor('variables/new');
+	// 	if (model.variable.get('isNew')) {
+	// 		model.destroyRecord();
+	// 	}
+	// },
 });

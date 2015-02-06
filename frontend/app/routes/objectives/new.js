@@ -22,7 +22,7 @@ export default Ember.Route.extend({
 			});
 		},
 		cancel: function() {
-			this.transitionTo('objectives')
+			this.transitionTo('objectives');
 		}
 	}
-})
+});

@@ -1,37 +1,71 @@
-<div class="panel panel-default">
+<div class="panel panel-primary-blue">
   <div class="panel-heading">
-    <h3 class="panel-title">General Information</h3>
+    <h3 class="panel-title">{{#link-to 'policies'}}<span class="glyphicon glyphicon-chevron-left"></span>{{/link-to}} General Information</h3>
   </div>
   <div class="panel-body">
-    <ul>
-			<li>{{model.description}}</li>
-			<li>{{model.contactPerson}}</li>
-			<li>{{model.typology}}</li>
-			<li>{{model.regulatoryFramework}}</li>
-			<li>{{model.regulatoryFrameworkReference}}</li>
-			<li>{{model.parents}}</li>
-			<li>{{model.childrens}}</li>
-			<li>{{model.beneficiaries}}</li>
-			<li>{{model.geographicalCoverage}}</li>
-			<li>{{model.geographicalPlace}}</li>
-			<li>{{model.dateEntry}}</li>
-			<li>{{model.timeFrame}}</li>
-			<li>{{model.source}}</li>
-			<li>{{model.totalBudget}}</li>
-			<li>{{model.currency}}</li>
-			<li>{{model.comments}}</li>
-		{{!-- 	{{#each objectives in model.objectives}}
-				<li>{{objectives.title}}</li>
-			{{/each}} --}}
-		</ul>
-		<div class="row">
-			<div class="col-sm-3 col-sm-offset-3">
-				{{#link-to 'policy.edit' class="btn btn-primary btn-lg btn-block"}}<span class="glyphicon glyphicon-pencil"></span> Edit General Information{{/link-to}}
-			</div>
-			<div class="col-sm-3">
-				{{#link-to 'objectives' class="btn btn-primary btn-lg btn-block"}}<span class="glyphicon glyphicon-pencil"></span> Edit Technical Information{{/link-to}}
-			</div>
-		</div>
-  </div>
+  	<dl class="dl-horizontal">
+  		<dt>General information:</dt>
+		  <dd>{{model.description}}</dd>
+
+		  <dt>Contact person:</dt>
+		  <dd>{{model.contactPerson}}</dd>
+
+		  <dt>Typology:</dt>
+		  <dd>{{model.typology}}</dd>
+
+		  <dt>Regulatory Framework:</dt>
+		  <dd>{{model.regulatoryFramework}}</dd>
+
+		  <dt>Reference:</dt>
+		  <dd>{{model.regulatoryFrameworkReference}}</dd>
+
+		  <dt>P&P Parents:</dt>
+		  <dd>{{model.parents}}</dd>
+
+		  <dt>P&P Childrens:</dt>
+		  <dd>{{model.childrens}}</dd>
+
+		  <dt>Beneficiaries:</dt>
+		  <dd>{{model.beneficiaries}}</dd>
+
+		  <dt>Geographical coverage:</dt>
+		  <dd>{{model.geographicalCoverage}}</dd>
+
+		  <dt>Specify:</dt>
+		  <dd>{{model.geographicalPlace}}</dd>
+
+		  <dt>Date of entry into force:</dt>
+		  <dd>{{model.dateEntry}}</dd>
+
+		  <dt>Timeframe:</dt>
+		  <dd>{{model.timeFrame}}</dd>
+
+		  <dt>Total Budget:</dt>
+		  <dd>{{model.totalBudget}}</dd>
+
+		  <dt>Currency:</dt>
+		  <dd>{{model.currency}}</dd>
+
+		  <dt>Comments:</dt>
+		  <dd>{{model.comments}}</dd>
+
+		  <dt>Objectives:</dt>
+		  <dd>
+		  	<ul>
+			    {{#each objective in model.objectives}}
+			    	<li>{{objective.title}}</li>
+			    {{/each}}
+		    </ul>
+		  </dd>
+		</dl>
+	</div>
+</div>
+<div class="row">
+	<div class="col-sm-3 col-sm-offset-3">
+		{{#link-to 'policy.edit' class="btn btn-primary btn-lg btn-block"}}<span class="glyphicon glyphicon-pencil"></span> Edit General Information{{/link-to}}
+	</div>
+	<div class="col-sm-3">
+		{{#link-to 'objectives' class="btn btn-primary btn-lg btn-block"}}<span class="glyphicon glyphicon-pencil"></span> Edit Technical Information{{/link-to}}
+	</div>
 </div>
 {{liquid-outlet}}

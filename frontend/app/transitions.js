@@ -30,6 +30,12 @@ export default function(){
 	);
 
 	this.transition(
+		this.toRoute('policy.edit'),
+		this.use('toLeft'),
+		this.reverse('toRight')
+	);
+
+	this.transition(
 		this.fromRoute('studies.index'),
 		this.toRoute('studies.new'),
 		this.use('toUp'),

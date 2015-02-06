@@ -7,5 +7,11 @@ export default Ember.Route.extend({
           variable: this.store.find('variable'),
           pyp: this.store.find('pyp')
         });
-	}
+	},
+	// deactivate: function() {
+	// 	var model = this.modelFor('studies/new');
+	// 	if (model.get('isNew')) {
+	// 		model.destroyRecord();
+	// 	}
+	// }
 });
