@@ -102,9 +102,9 @@ class Pyp(BaseModel):
             return False
 
     @classmethod
-    def add_objective(cls, request):
+    def add_objective(cls, request, objective):
         pyp = Pyp.get_by_id(request.pyp)
         if pyp:
-            pyp.objectives.append(request.id)
+            pyp.objectives.append(objective.key.id())
             pyp.put()
         return
