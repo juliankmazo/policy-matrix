@@ -44,6 +44,12 @@ export default Ember.Controller.extend(EmberValidations.Mixin,{
 			}
 			return false;
 		},
+		removeVariable: function(variable){
+			var study = this.get('model.study');
+			study.get('variables').removeObject(variable);
+			study.save();
+			return false;
+		},
 		newPolicy: function(){
 			var newPolicy = this.get('newPolicy'),
 					study = this.get('model.study');

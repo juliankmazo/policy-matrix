@@ -25,12 +25,9 @@ class Objective(BaseModel):
     @classmethod
     def update(cls, objective, entity):
         if objective:
-            if entity.title:
-                objective.title = entity.title
-            if entity.subObj:
-                objective.subobj = entity.subObj
+            objective.title = entity.title
+            objective.subobj = entity.subObj
             objective.put()
             return objective
         else:
             return False
-

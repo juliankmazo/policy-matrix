@@ -31,16 +31,11 @@ class Variable(BaseModel):
     @classmethod
     def update(cls, variable, name, tipo, keywords, description, definitions):
         if variable:
-            if name:
-                variable.name = name
-            if tipo:
-                variable.tipo = tipo
-            if tipo:
-                variable.keywords = keywords
-            if tipo:
-                variable.description = description
-            if tipo:
-                variable.definitions = definitions
+            variable.name = name
+            variable.tipo = tipo
+            variable.keywords = keywords
+            variable.description = description
+            variable.definitions = definitions
             variable.put()
             return variable
         else:
