@@ -273,7 +273,6 @@ export default Ember.ObjectController.extend(EmberValidations.Mixin,{
 		save: function() {
 			if (this.get('isValid')) {
 				var _this = this;
-				// this.get('model').set('country', selectedObject);
 				this.get('model').save().then(function(pyp) {
 					_this.transitionToRoute('objectives', pyp);
 				});
