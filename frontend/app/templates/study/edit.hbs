@@ -2,7 +2,7 @@
 <div class="row">
   <div class="col-lg-11">
     <h3>
-      Start a New Study
+      Edit an Existing Study
     </h3>
     <p class="bg-primary-blue text-center">General Study Information</p>
   </div>
@@ -18,26 +18,36 @@
 	        {{input value=model.study.title type="text" placeholder="Write the title of the study" class="form-control m-5"}}
 	      </div>
 			  <label class="col-sm-3 control-label">Define the Variables:</label>
-			  <div class="col-sm-9">
-			    {{view "select" content=listVariables optionValuePath="content.id" optionLabelPath="content.name" prompt="Add an existing variable" class="form-control m-5"}}
+			  <div class="col-sm-6">
+			    {{view "select" content=listVariables optionValuePath="content.id" optionLabelPath="content.name" prompt="Add an existing variable" class="form-control m-5" selection=newVariable}}
 			  </div>
-			  {{#each variable in model.study.variables}}
-				  <label class="col-sm-3 control-label">{{_view.contentIndex}}.</label>
-				  <div class="col-sm-7">
-				    <p class="form-control-static" style="padding-bottom:0px">{{variable.name}}</p>
-				  </div>
-			  {{/each}}
+			  <div class="col-sm-3">
+			    <p class="form-control-static"><button {{action "newVariable"}} class="btn btn-primary-blue" style="padding:0px 10px;margin:0px;">+ Add new variable</button></p>
+			  </div>
+			  <div class="col-sm-9 col-sm-offset-3">
+			  	<ol class="listV">
+				  {{#each variable in model.study.variables}}
+					  <li> 
+					    <p class="form-control-static" style="padding-bottom:0px"><strong>{{variable.name}}</strong></p>
+					  </li>
+				  {{/each}}
+			  	</ol>
+			  </div>
 			  <label class="col-sm-3 control-label">Define new P&P:</label>
-				  <div class="col-sm-9">
+				  <div class="col-sm-6">
 			    {{view "select" content=listPyps optionValuePath="content.id" optionLabelPath="content.title" prompt="Add an existing policy or program" class="form-control m-5"}}
 			  </div>
-			  <label class="col-sm-3 control-label">1.</label>
-			  <div class="col-sm-7">
-			    <p class="form-control-static" style="padding-bottom:0px">Gender</p>
+			  <div class="col-sm-3">
+			    <p class="form-control-static"><button {{action "newPolicy"}} class="btn btn-primary-blue" style="padding:0px 10px;margin:0px;">+ Add new P&P</button></p>
 			  </div>
-			  <label class="col-sm-3 control-label">2.</label>
-			  <div class="col-sm-7">
-			    <p class="form-control-static" style="padding-bottom:0px">Governance</p>
+			  <div class="col-sm-9 col-sm-offset-3">
+			  	<ol class="listV">
+				  {{#each pyp in model.study.pyps}}
+					  <li> 
+					    <p class="form-control-static" style="padding-bottom:0px">{{pyp.country}} - <strong>{{pyp.title}}</strong></p>
+					  </li>
+				  {{/each}}
+			  	</ol>
 			  </div>
   		</div>
 	  </div>

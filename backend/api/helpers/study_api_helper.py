@@ -12,5 +12,6 @@ class StudyApiHelper(BaseApiHelper):
         return StudyResponse(
             id=entity.key.id(),
             title=entity.title,
-            variables=[variable_key.id() for variable_key in entity.variables]
+            variables=[variable_key.id() for variable_key in entity.variables],
+            pyps=[pyp_key.id() for pyp_key in entity.pyps]
             )

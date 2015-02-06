@@ -509,8 +509,6 @@ h4 .btn { display: inline-block; }
     color: #321c59;
 }
 
-
-
 .panel-yellowish {
     border-color: #444;
 }
@@ -531,4 +529,38 @@ h4 .btn { display: inline-block; }
 }
 .panel-yellowish > a{
     color: #444;
+}
+
+.faq {
+    counter-reset: my-badass-counter;
+}
+.faq dt {
+    position: relative;
+}
+.faq dt:before {
+    content: counter(my-badass-counter);
+    counter-increment: my-badass-counter;
+    position: absolute;
+    left: 0;
+    top: 0;
+    font: bold 20px/1 georgia;
+}
+.faq dd {
+    margin: 0 0 0 0;
+}   
+.faq dt, .faq dd {
+    padding-left: 25px;
+    padding-top: 5px;
+}
+// <div class="col-sm-9 col-sm-offset-3">
+//     <dl class="faq">
+//       {{#each variable in model.study.variables}}
+//         <dt><strong>{{variable.name}}</strong></dt>
+//         <dd>{{variable.name}}</dd>
+//       {{/each}}
+//     </dl>
+// </div>
+
+.listV li {
+    font-weight: bold
 }
