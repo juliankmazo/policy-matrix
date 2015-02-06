@@ -15,6 +15,12 @@
 		    <li>{{variable.name}}</li>
 		  {{/each}}
 		</ul>
+		<li><strong>Policies & Programs: </strong></li>
+		<ul>
+		  {{#each pyp in study.pyps}}
+		    <li>{{pyp.country}} - {{pyp.title}}<span {{bind-attr class="flagClass :flag-icon"}}></span></li>
+		  {{/each}}
+		</ul>
 </ul>
 	{{#link-to 'study.edit' study class="btn btn-primary-blue" style="margin:15px;"}} <i class="fa fa-fw fa-edit"></i>{{/link-to}}
 	<button {{action "delete" study}} class="btn btn-danger" style="margin:15px;"><i class="fa fa-fw fa-trash"></i></button>

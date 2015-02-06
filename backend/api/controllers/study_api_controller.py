@@ -39,7 +39,7 @@ class StudyEndpoint(BaseApiController):
     def create_study(self, request):
         if not request.title:
             raise endpoints.BadRequestException('The data: title are obligatory.')
-        study = Study.create(request.title, request.variables)
+        study = Study.create(request.title, request.variables, request.pyps)
         if not study:
             raise endpoints.BadRequestException('It was not possible to create the study')
         return StudyListResponse(studies=[StudyApiHelper().to_message(study.get())])
@@ -52,7 +52,7 @@ class StudyEndpoint(BaseApiController):
         if not study:
             raise endpoints.NotFoundException(
               "The study ID: " + str(request.id) + " doesn't exist")
-        study = Study.update(study, request.title, request.variables)
+        study = Study.update(study, request.title, request.variables, request.pyps)
         if not study:
             raise endpoints.BadRequestException('It was not possible to create the study')
         return StudyListResponse(studies=[StudyApiHelper().to_message(study)])
