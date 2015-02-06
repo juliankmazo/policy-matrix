@@ -257,14 +257,9 @@ export default Ember.ObjectController.extend(EmberValidations.Mixin,{
 	selectedObject: null,
 
 	flagClass: function() {
-		var selectedObject = this.get("selectedObject") || "";
+		var selectedObject = this.get("selectedObject.id") || "";
 		return "flag-icon-" + selectedObject.toLowerCase();
 	}.property('selectedObject'),
-
-	// selectedCountry: function() {
-	// 	var selectedObject = this.get("selectedObject") || "";
-	// 	return selectedObject
-	// }.property('selectedObject'),
 
 	isValid: Ember.computed(
 		'model.country',

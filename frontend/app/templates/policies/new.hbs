@@ -16,7 +16,7 @@
         <div class="col-sm-9 m-5">
           <div class="input-group">
             <span class="input-group-addon" id="basic-addon1"><span {{bind-attr class="flagClass :flag-icon"}}></span></span>
-            {{view "select" content=countryOptions optionValuePath="content.id" optionLabelPath="content.name" prompt="Select a country" class="form-control m-5" value=selectedObject}}
+            {{view "select" content=countryOptions optionValuePath="content.id" optionLabelPath="content.name" prompt="Select a country" class="form-control m-5" value=model.country selection=selectedObject}}
           </div>
         </div>
         <label class="col-sm-3 control-label">P&P Title:</label>
