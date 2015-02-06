@@ -23,8 +23,12 @@ Router.map(function() {
   this.resource("policies", function() {
     this.route("new");
   });
-  this.resource("policy", { path: '/policy/:policy_id' }, function() {
+  this.resource("policy", { path: '/policy/:pyp_id' }, function() {
+    this.resource("objectives", function() {
+      this.route("new");
+    });
     this.route("edit");
+    this.route("show");
   });
 });
 

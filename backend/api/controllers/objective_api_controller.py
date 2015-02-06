@@ -10,6 +10,7 @@ from api.messages import ObjectiveRequest
 from api.messages import Objective_resource
 
 from core.models import Objective
+from core.models import Pyp
 # from core.models import objectiveHelper
 
 
@@ -39,6 +40,8 @@ class ObjectiveEndpoint(BaseApiController):
         if not (request.title and request.pyp):
             raise endpoints.BadRequestException('title is required')
         objective = Objective.create(request)
+        if request.pyp:
+            Pyp.add_objective(request)
         if not objective:
             raise endpoints.InternalServerErrorException('Something went wrong')
         return ObjectiveListResponse(
