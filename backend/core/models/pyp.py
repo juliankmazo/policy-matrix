@@ -58,44 +58,25 @@ class Pyp(BaseModel):
     @classmethod
     def update(cls, pyp, entity):
         if pyp:
-            if entity.country:
-                pyp.country = entity.country
-            if entity.title:
-                pyp.title = entity.title
-            if entity.description:
-                pyp.description = entity.description
-            if entity.contactPerson:
-                pyp.contact_person = entity.contactPerson
-            if entity.typology:
-                pyp.typology = entity.typology
-            if entity.regulatoryFramework:
-                pyp.regulatory_framework = entity.regulatoryFramework
-            if entity.regulatoryFrameworkReference:
-                pyp.regulatory_framework_reference = entity.regulatoryFrameworkReference
-            if entity.parents:
-                pyp.parents = entity.parents
-            if entity.childrens:
-                pyp.childrens = entity.childrens
-            if entity.beneficiaries:
-                pyp.beneficiaries = entity.beneficiaries
-            if entity.geographicalCoverage:
-                pyp.geographical_coverage = entity.geographicalCoverage
-            if entity.geographicalPlace:
-                pyp.geographical_place = entity.geographicalPlace
-            if entity.dateEntry:
-                pyp.date_entry = entity.dateEntry
-            if entity.timeFrame:
-                pyp.time_frame = entity.timeFrame
-            if entity.source:
-                pyp.source = entity.source
-            if entity.totalBudget:
-                pyp.total_budget = entity.totalBudget
-            if entity.currency:
-                pyp.currency = entity.currency
-            if entity.comments:
-                pyp.comments = entity.comments
-            if entity.objectives:
-                pyp.objectives = entity.objectives
+            pyp.country = entity.country
+            pyp.title = entity.title
+            pyp.description = entity.description
+            pyp.contact_person = entity.contactPerson
+            pyp.typology = entity.typology
+            pyp.regulatory_framework = entity.regulatoryFramework
+            pyp.regulatory_framework_reference = entity.regulatoryFrameworkReference
+            pyp.parents = entity.parents
+            pyp.childrens = entity.childrens
+            pyp.beneficiaries = entity.beneficiaries
+            pyp.geographical_coverage = entity.geographicalCoverage
+            pyp.geographical_place = entity.geographicalPlace
+            pyp.date_entry = entity.dateEntry
+            pyp.time_frame = entity.timeFrame
+            pyp.source = entity.source
+            pyp.total_budget = entity.totalBudget
+            pyp.currency = entity.currency
+            pyp.comments = entity.comments
+            pyp.objectives = entity.objectives
             pyp.put()
             return pyp
         else:

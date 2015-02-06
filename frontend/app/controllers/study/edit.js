@@ -35,28 +35,28 @@ export default Ember.Controller.extend(EmberValidations.Mixin,{
 	newVariable: null,
 	actions: {
 		newVariable: function(){
-			var newVariable = this.get('newVariable');
+			var newVariable = this.get('newVariable'),
+					study = this.get('model.study');
 			if (newVariable){
-				this.get('model.study').set('variables', addObject(newVariable));
+				// console.log(this.get('model.study'))
+				study.get('variables').addObject(newVariable);
+				study.save();
 			}
-			// if (this.get('isValid')){
-			// 	var _this = this;
-			// 	this.get('model').save().then(function(study){
-			// 		_this.transitionToRoute('variables.new', study);
-			// 	});
-			// } else {
-			// 	this.set('errorMessage', 'You have to define the title of the study');
-			// }
-			// return false;
+			return false;
+		},
+		removeVariable: function(variable){
+			var study = this.get('model.study');
+			study.get('variables').removeObject(variable);
+			study.save();
+			return false;
 		},
 		newPolicy: function(){
-			if (this.get('isValid')){
-				var _this = this;
-				this.get('model').save().then(function(study){
-					_this.transitionToRoute('policies.new', study);
-				});
-			} else {
-				this.set('errorMessage', 'You have to define the title of the study');
+			var newPolicy = this.get('newPolicy'),
+					study = this.get('model.study');
+			if (newPolicy){
+				// console.log(this.get('model.study'))
+				study.get('pyps').addObject(newPolicy);
+				study.save();
 			}
 			return false;
 		},

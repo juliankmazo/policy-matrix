@@ -31,12 +31,9 @@ class Study(BaseModel):
     @classmethod
     def update(cls, study, title, variables=[], pyps=[]):
         if study:
-            if title:
-                study.title = title
-            if variables:
-                study.variables = [ndb.Key('Variable', variable) for variable in variables]
-            if pyps:
-                study.pyps = [ndb.Key('Pyp', pyp) for pyp in pyps]
+            study.title = title
+            study.variables = [ndb.Key('Variable', variable) for variable in variables]
+            study.pyps = [ndb.Key('Pyp', pyp) for pyp in pyps]
             study.put()
             return study
         else:

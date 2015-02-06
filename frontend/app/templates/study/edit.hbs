@@ -27,7 +27,7 @@
 			  <div class="col-sm-9 col-sm-offset-3">
 			  	<ol class="listV">
 				  {{#each variable in model.study.variables}}
-					  <li> 
+					  <li><button {{action 'removeVariable' variable}} class="btn btn-danger">x</button> 
 					    <p class="form-control-static" style="padding-bottom:0px"><strong>{{variable.name}}</strong></p>
 					  </li>
 				  {{/each}}
@@ -35,7 +35,7 @@
 			  </div>
 			  <label class="col-sm-3 control-label">Define new P&P:</label>
 				  <div class="col-sm-6">
-			    {{view "select" content=listPyps optionValuePath="content.id" optionLabelPath="content.title" prompt="Add an existing policy or program" class="form-control m-5"}}
+			    {{view "select" content=listPyps optionValuePath="content.id" optionLabelPath="content.title" prompt="Add an existing policy or program" class="form-control m-5" selection=newPolicy}}
 			  </div>
 			  <div class="col-sm-3">
 			    <p class="form-control-static"><button {{action "newPolicy"}} class="btn btn-primary-blue" style="padding:0px 10px;margin:0px;">+ Add new P&P</button></p>
