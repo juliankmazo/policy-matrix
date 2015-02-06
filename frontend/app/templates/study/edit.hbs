@@ -24,12 +24,19 @@
 			  <div class="col-sm-3">
 			    <p class="form-control-static"><button {{action "newVariable"}} class="btn btn-primary-blue" style="padding:0px 10px;margin:0px;">+ Add new variable</button></p>
 			  </div>
-			  <div class="col-sm-9 col-sm-offset-3">
+			  <div class="col-sm-10 col-sm-offset-2">
 			  	<ol class="listV">
 				  {{#each variable in model.study.variables}}
-					  <li><button {{action 'removeVariable' variable}} class="btn btn-danger">x</button> 
-					    <p class="form-control-static" style="padding-bottom:0px"><strong>{{variable.name}}</strong></p>
-					  </li>
+				  	<div class="row">
+				  		<div class="col-sm-1">
+					  		<button {{action 'removeVariable' variable}} class="btn btn-danger" style="padding:1px 6px"><span aria-hidden="true">&times;</span></button> 
+					  	</div>
+					  	<div class="col-sm-11">
+							  <li>
+							    <p class="form-control-static" style="padding-bottom:0px"><strong>{{variable.name}}</strong></p>
+							  </li>
+							</div>
+						</div>
 				  {{/each}}
 			  	</ol>
 			  </div>
@@ -40,12 +47,19 @@
 			  <div class="col-sm-3">
 			    <p class="form-control-static"><button {{action "newPolicy"}} class="btn btn-primary-blue" style="padding:0px 10px;margin:0px;">+ Add new P&P</button></p>
 			  </div>
-			  <div class="col-sm-9 col-sm-offset-3">
+			  <div class="col-sm-10 col-sm-offset-2">
 			  	<ol class="listV">
 				  {{#each pyp in model.study.pyps}}
-					  <li> 
-					    <p class="form-control-static" style="padding-bottom:0px">{{pyp.country}} - <strong>{{pyp.title}}</strong></p>
-					  </li>
+					  <div class="row">
+				  		<div class="col-sm-1">
+					  		<button {{action 'removePolicy' pyp}} class="btn btn-danger" style="padding:1px 6px"><span aria-hidden="true">&times;</span></button> 
+					  	</div>
+					  	<div class="col-sm-11">
+							  <li> 
+							    <p class="form-control-static" style="padding-bottom:0px"><span {{bind-attr class="flagClass :flag-icon"}}></span>{{pyp.country}} - <strong>{{pyp.title}}</strong></p>
+							  </li>
+							</div>
+						</div>
 				  {{/each}}
 			  	</ol>
 			  </div>
@@ -55,7 +69,8 @@
 	<div class="col-lg-11 text-center">
 	  <div class="row">
 	  	<input  class="btn btn-primary-blue" style="margin:15px;" type="submit" value="Save Changes"/>
-			<button {{action "cancel"}} class="btn btn-primary-blue" style="margin:15px;">Cancel</button>
+			<button {{action "cancel" model.study}} class="btn btn-default" style="margin:15px;">Cancel</button>
+			<button {{action "deleteStudy" model.study}} class="btn btn-danger" style="margin:15px;"><i class="fa fa-fw fa-trash"></i> Delete Study</button>
 	  </div>
 	</div>
 </form>
