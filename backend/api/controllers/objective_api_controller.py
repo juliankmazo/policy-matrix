@@ -40,10 +40,9 @@ class ObjectiveEndpoint(BaseApiController):
         if not (request.title and request.pyp):
             raise endpoints.BadRequestException('title is required')
         objective = Objective.create(request)
-        if request.pyp:
-            Pyp.add_objective(request)
         if not objective:
             raise endpoints.InternalServerErrorException('Something went wrong')
+        Pyp.add_objective(request, objective)
         return ObjectiveListResponse(
             objectives=[ObjectiveApiHelper().to_message(objective)])
 
