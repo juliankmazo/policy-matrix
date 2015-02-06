@@ -18,5 +18,6 @@ export default DS.Model.extend({
 	source: DS.attr('string'),
 	totalBudget: DS.attr('string'),
 	currency: DS.attr('string'),
-	comments: DS.attr('string')
+	comments: DS.attr('string'),
+	objectives: DS.hasMany('objective')
 });

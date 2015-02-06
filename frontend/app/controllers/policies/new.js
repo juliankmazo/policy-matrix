@@ -280,7 +280,7 @@ export default Ember.ObjectController.extend(EmberValidations.Mixin,{
 				var _this = this;
 				// this.get('model').set('country', selectedObject);
 				this.get('model').save().then(function(pyp) {
-					_this.transitionToRoute('policy', pyp);
+					_this.transitionToRoute('objectives', pyp);
 				});
 			} else {
 				this.set('errorMessage', 'You have to specify a country and a title');
