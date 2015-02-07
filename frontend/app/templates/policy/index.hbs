@@ -3,8 +3,10 @@
     <h3 class="panel-title">{{#link-to 'policies'}}<span class="glyphicon glyphicon-chevron-left"></span>{{/link-to}} General Information</h3>
   </div>
   <div class="panel-body">
+  <p class="bg-primary-blue text-center" style="margin:0px -15px 15px -15px">General Information</p>
   	<dl class="dl-horizontal">
-  		<dt>General information:</dt>
+
+  		<dt>Description:</dt>
 		  <dd>{{model.description}}</dd>
 
 		  <dt>Contact person:</dt>
@@ -48,8 +50,10 @@
 
 		  <dt>Comments:</dt>
 		  <dd>{{model.comments}}</dd>
-
-		  <dt>Objectives:</dt>
+		</dl>
+		<p class="bg-primary-blue text-center" style="margin:0px -15px 15px -15px">Technical Information</p>
+		<dl class="dl-horizontal">
+			<dt>Objectives:</dt>
 		  <dd>
 		  	<ul>
 			    {{#each objective in model.objectives}}
@@ -61,11 +65,14 @@
 	</div>
 </div>
 <div class="row">
-	<div class="col-sm-3 col-sm-offset-3">
-		{{#link-to 'policy.edit' class="btn btn-primary btn-lg btn-block"}}<span class="glyphicon glyphicon-pencil"></span> Edit General Information{{/link-to}}
+	<div class="col-sm-4 col-sm-offset-2">
+		{{#link-to 'policy.edit' class="btn btn-primary-blue btn-lg btn-block"}}<span class="glyphicon glyphicon-pencil"></span>  Edit General Information {{/link-to}}
 	</div>
-	<div class="col-sm-3">
-		{{#link-to 'objectives' class="btn btn-primary btn-lg btn-block"}}<span class="glyphicon glyphicon-pencil"></span> Edit Technical Information{{/link-to}}
+	<div class="col-sm-4">
+		{{#link-to 'objectives' class="btn btn-primary-blue btn-lg btn-block"}}<span class="glyphicon glyphicon-pencil"></span>  Edit Technical Information {{/link-to}}
 	</div>
 </div>
+<br>
+<br>
+
 {{liquid-outlet}}

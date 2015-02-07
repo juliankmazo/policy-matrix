@@ -9,9 +9,11 @@ export default Ember.Route.extend({
         });
 	},
 	// deactivate: function() {
-	// 	var model = this.modelFor('studies/new');
-	// 	if (model.get('isNew')) {
-	// 		model.destroyRecord();
+	// 	var model = this.modelFor('studies');
+	// 	if (model){
+	// 		if (model.get('isNew')) {
+	// 			model.destroyRecord();
+	// 		}
 	// 	}
 	// }
 });

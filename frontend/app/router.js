@@ -7,8 +7,8 @@ var Router = Ember.Router.extend({
 
 Router.map(function() {
   this.resource("studies", function() {
-  this.route("new");
-});
+    this.route("new");
+  });
   this.resource("study", { path: '/study/:study_id' }, function() {
     this.route("edit");
   });
@@ -24,11 +24,10 @@ Router.map(function() {
     this.route("new");
   });
   this.resource("policy", { path: '/policy/:pyp_id' }, function() {
+    this.route("edit");
     this.resource("objectives", function() {
       this.route("new");
     });
-    this.route("edit");
-    this.route("show");
   });
 });
 

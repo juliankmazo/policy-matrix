@@ -14,18 +14,16 @@ export default Ember.ObjectController.extend(EmberValidations.Mixin,{
 	actions: {
 		save: function(){
 			if (this.get('isValid')){
-				var _this = this,
-						variable = this.get('model');
-				variable.save().then(function(){
-					_this.transitionToRoute('variables');
-				});
+				var variable = this.get('model');
+				variable.save();
+				this.transitionToRoute('variable', this.get('model'));
 			} else {
 				this.set('errorMessage', 'You have to fill all the fields');
 			}
 			return false;
 		},
 		cancel: function(){
-			this.transitionToRoute('variables');
+			this.transitionToRoute('variable', this.get('model'));
 			return false;
 		}
 	}

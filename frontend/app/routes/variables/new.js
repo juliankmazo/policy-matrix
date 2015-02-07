@@ -1,16 +1,13 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
-	model: function(){
-		return Ember.RSVP.hash({
-          study: this.modelFor('study'),
-          variable: this.store.createRecord('variable')
-        });
+	model: function() {
+		return this.store.createRecord('variable');
 	},
-	// deactivate: function() {
-	// 	var model = this.modelFor('variables/new');
-	// 	if (model.variable.get('isNew')) {
-	// 		model.destroyRecord();
-	// 	}
-	// },
+	deactivate: function() {
+		var model = this.modelFor('variables/new');
+		if (model.get('isNew')) {
+			model.destroyRecord();
+		}
+	},
 });

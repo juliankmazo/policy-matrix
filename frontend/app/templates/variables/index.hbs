@@ -1,0 +1,16 @@
+<h4>Total created variables: {{model.length}}</h4>
+
+{{#each variable in model}}
+
+<ul> 
+	{{#link-to 'variable' variable}}		
+		<li><strong>ID: </strong>{{variable.id}}</li>
+	{{/link-to}} 
+		<li><strong>Name: </styg>{{variable.name}}</li>
+		<li><strong>Type: </styg>{{variable.tipo}}</li>
+		<li><strong>Description: </strong>{{variable.description}}</li>
+</ul>
+{{/each}}
+
+
+{{liquid-outlet}}

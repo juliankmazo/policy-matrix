@@ -1,10 +1,46 @@
-<ul>
-	<li>Study Title: {{model.title}}</li>
-	<li>Id: {{model.id}}</li>
-</ul>
+<div class="row">
+	<div class="col-sm-12">
+		<h2><small>Study: </small>{{model.title}}</h2>
+		<div class="panel panel-primary-blue">
+		  <div class="panel-heading">
+		    <h3 class="panel-title">{{#link-to 'studies'}}<span class="glyphicon glyphicon-chevron-left"></span>{{/link-to}} Study General Information</h3>
+		  </div>
 
-{{#link-to 'study.edit' model class="btn btn-primary-blue"}}		
-	Edit Study
-{{/link-to}} 
-
-{{liquid-outlet}}
+		  <div class="panel-body">
+		  	<p class="bg-primary-blue text-center" style="margin:0px -15px 15px -15px">Variables</p>
+		  	<dl class="dl-horizontal">
+		  		<dt>Variables:</dt>
+				  <dd>
+				  	<ul>
+					    {{#each variable in model.variables}}
+					    	<li>{{variable.name}}</li>
+					    {{/each}}
+				    </ul>
+				  </dd>
+				</dl>
+	
+				<p class="bg-primary-blue text-center" style="margin:0px -15px 15px -15px">Technical Information</p>
+				<dl class="dl-horizontal">
+					<dt>Policies and Programs:</dt>
+				  <dd>
+				  	<ul>
+					    {{#each pyp in model.pyps}}
+					    	<li>{{pyp.title}}</li>
+					    {{/each}}
+				    </ul>
+				  </dd>
+				</dl>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-4 col-sm-offset-2">
+				{{#link-to 'study.edit' class="btn btn-primary-blue btn-lg btn-block"}}<span class="glyphicon glyphicon-pencil"></span>     Edit Study Information {{/link-to}}
+			</div>
+			<div class="col-sm-4">
+				{{#link-to 'objectives' class="btn btn-orangeish btn-lg btn-block"}}<span class="glyphicon glyphicon-th"></span>     Generate P&P MATRIX {{/link-to}}
+			</div>
+		</div>
+		<br>
+		<br>
+	</div>
+</div>

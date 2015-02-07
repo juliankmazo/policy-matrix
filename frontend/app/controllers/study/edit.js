@@ -50,11 +50,6 @@ export default Ember.Controller.extend(EmberValidations.Mixin,{
 			}
 			return false;
 		},
-		// flagClass: function() {
-		// 	var pyp = this.get("id") || "";
-		// 	return "flag-icon-" + pyp.toLowerCase();
-		// }.property('id'),
-
 		removeVariable: function(variable){
 			var study = this.get('model.study'),
 			    listVariables = this.get('listVariables');
