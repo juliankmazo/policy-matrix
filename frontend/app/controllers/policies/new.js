@@ -285,7 +285,6 @@ export default Ember.ObjectController.extend(EmberValidations.Mixin,{
 			return false;
 		}
 	},
-	
 	typologyOptions: [
 		"Policy",
 		"Program",
