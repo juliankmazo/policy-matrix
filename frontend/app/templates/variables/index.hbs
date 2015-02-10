@@ -16,6 +16,9 @@
 			{{/each}}
 			</ul>
 </ul>
+	{{#link-to 'variable.edit' variable class="btn btn-primary-blue" style="margin:15px;"}} <i class="fa fa-fw fa-edit"></i>{{/link-to}}
+	<button {{action "delete" variable}} class="btn btn-danger"><i class="fa fa-fw fa-trash"></i></button>
+	<br>
 {{/each}}
 
 

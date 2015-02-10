@@ -7,10 +7,10 @@ export default Ember.Route.extend({
           keyword: this.store.createRecord('keyword')
         });
 	},
-	deactivate: function() {
-		var model = this.modelFor('variables/new');
-		if (model.get('isNew')) {
-			model.destroyRecord();
-		}
-	},
+	// deactivate: function() {
+	// 	var model = this.modelFor('variables/new');
+	// 	if (model.get('isNew')) {
+	// 		model.destroyRecord();
+	// 	}
+	// },
 });

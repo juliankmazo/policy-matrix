@@ -11,6 +11,12 @@ export default Ember.ObjectController.extend(EmberValidations.Mixin,{
 					 !Ember.isEmpty(this.get('model.tipo'));
 		}
 	),
+	isKeywordValid: Ember.computed(
+		'model.keyword.name',
+		function() {
+			return !Ember.isEmpty(this.get('model.keyword.name'));
+		}
+	),
 	actions: {
 		save: function(){
 			if (this.get('isValid')){
@@ -26,6 +32,18 @@ export default Ember.ObjectController.extend(EmberValidations.Mixin,{
 		},
 		cancel: function(){
 			this.transitionToRoute('variables');
+			return false;
+		},
+		addKeyword: function(){
+			if (this.get('isKeywordValid')){
+				var _this = this,
+						variable = this.get('model.variable');
+				variable.save().then(function(variable){
+					_this.transitionToRoute('variable.edit', variable);
+				});
+			} else {
+				this.set('errorMessage', 'You have to fill all the fields');
+			}
 			return false;
 		}
 	}
