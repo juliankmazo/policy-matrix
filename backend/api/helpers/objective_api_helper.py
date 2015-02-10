@@ -12,6 +12,8 @@ class ObjectiveApiHelper(BaseApiHelper):
         return ObjectiveResponse(
             id=entity.key.id(),
             title=entity.title,
-            subObj=entity.subobj,
-            pyp=entity.pyp
+            components=entity.components,
+            pyp=entity.pyp,
+            definition=entity.definition,
+            target=entity.target
             )

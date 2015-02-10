@@ -23,6 +23,14 @@ from objective_api_messages import ObjectiveRequest
 from objective_api_messages import ObjectiveResponse
 from objective_api_messages import ObjectiveListResponse
 
+from component_api_messages import ComponentRequest
+from component_api_messages import ComponentResponse
+from component_api_messages import ComponentListResponse
+
+from output_api_messages import OutputRequest
+from output_api_messages import OutputResponse
+from output_api_messages import OutputListResponse
+
 
 
 
@@ -45,5 +53,15 @@ Pyp_resource = endpoints.ResourceContainer(
 
 Objective_resource = endpoints.ResourceContainer(
     ObjectiveRequest,
+    id=messages.IntegerField(1, variant=messages.Variant.INT64, required=True)
+)
+
+Component_resource = endpoints.ResourceContainer(
+    ComponentRequest,
+    id=messages.IntegerField(1, variant=messages.Variant.INT64, required=True)
+)
+
+Output_resource = endpoints.ResourceContainer(
+    OutputRequest,
     id=messages.IntegerField(1, variant=messages.Variant.INT64, required=True)
 )
