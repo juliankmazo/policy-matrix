@@ -11,6 +11,7 @@ Router.map(function() {
   });
   this.resource("study", { path: '/study/:study_id' }, function() {
     this.route("edit");
+    this.route("matrix");
   });
 
   this.resource("variables", function() {

@@ -7,5 +7,17 @@ export default Ember.Route.extend({
           variable: this.store.find('variable'),
           pyp: this.store.find('pyp')
         });
+	},
+	actions: {
+		reloadContentAfterEdit: function() {
+			this.refresh();
+		}
 	}
+	// deactivate: function() {
+	// 	var model = this.modelFor('variable/edit');
+
+	// 	if (model.get('isDirty')) {
+	// 		model.rollback();
+	// 	}
+	// }
 });

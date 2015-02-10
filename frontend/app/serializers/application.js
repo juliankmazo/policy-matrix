@@ -1,7 +1,10 @@
 import DS from 'ember-data';
 import Ember from 'ember';
 
-export default DS.RESTSerializer.extend({
+export default DS.RESTSerializer.extend(DS.EmbeddedRecordsMixin,{
+  attrs:{
+    keywords: {embedded: 'always'}
+  },
 
 	serializeIntoHash: function(hash, type, record, options) {
 		Ember.merge(hash, this.serialize(record, options));

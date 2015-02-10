@@ -22,8 +22,9 @@
 		  {{/each}}
 		</ul>
 </ul>
+	{{#link-to 'study.matrix' study class="btn btn-orangeish" style="margin:15px;"}} <i class="fa fa-fw fa-th"></i>{{/link-to}}
 	{{#link-to 'study.edit' study class="btn btn-primary-blue" style="margin:15px;"}} <i class="fa fa-fw fa-edit"></i>{{/link-to}}
-	<button {{action "delete" study}} class="btn btn-danger" style="margin:15px;"><i class="fa fa-fw fa-trash"></i></button>
+	<button {{action "delete" study}} class="btn btn-danger"><i class="fa fa-fw fa-trash"></i></button>
 {{/each}}
 
 {{liquid-outlet}}

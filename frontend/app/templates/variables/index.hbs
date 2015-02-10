@@ -6,9 +6,15 @@
 	{{#link-to 'variable' variable}}		
 		<li><strong>ID: </strong>{{variable.id}}</li>
 	{{/link-to}} 
-		<li><strong>Name: </styg>{{variable.name}}</li>
-		<li><strong>Type: </styg>{{variable.tipo}}</li>
+		<li><strong>Name: {{variable.name}}</strong></li>
+		<li><strong>Type: </strong>{{variable.tipo}}</li>
 		<li><strong>Description: </strong>{{variable.description}}</li>
+		<li><strong>keywords: </strong></li>
+			<ul>
+			{{#each keyword in variable.keywords}}
+				<li><strong>{{keyword.name}}: </strong>{{keyword.definition}}</li>
+			{{/each}}
+			</ul>
 </ul>
 {{/each}}
 

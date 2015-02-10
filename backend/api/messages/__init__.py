@@ -10,6 +10,7 @@ from study_api_messages import StudyRequest
 from study_api_messages import StudyResponse
 from study_api_messages import StudyListResponse
 
+from variable_api_messages import KeywordMessage
 from variable_api_messages import VariableRequest
 from variable_api_messages import VariableResponse
 from variable_api_messages import VariableListResponse

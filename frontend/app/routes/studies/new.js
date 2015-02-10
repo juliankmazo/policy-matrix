@@ -8,6 +8,11 @@ export default Ember.Route.extend({
           pyp: this.store.find('pyp')
         });
 	},
+	actions: {
+		reloadContentAfterEdit: function() {
+			this.refresh();
+		}
+	}
 	// deactivate: function() {
 	// 	var model = this.modelFor('studies');
 	// 	if (model){
