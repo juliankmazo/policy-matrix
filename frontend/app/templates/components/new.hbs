@@ -1,0 +1,15 @@
+<form class="form-horizontal">
+	<div class="form-group">
+		<label class="col-sm-2 contro-label">New component</label>
+		<div class="col-sm-6">
+			{{input value=model.title placeholder='Title of the component' class="form-control"}}
+		</div>
+		<div class="col-sm-2">
+	      <button {{action "save"}} class="btn btn-success btn-block"><span class="glyphicon glyphicon-ok"></span></button>
+	    </div>
+	    <div class="col-sm-2">
+	      <button {{action "cancel"}} class="btn btn-danger btn-block"><span class="glyphicon glyphicon-remove"></span></button>
+	    </div>
+	</div>
+</form>
+{{outlet}}

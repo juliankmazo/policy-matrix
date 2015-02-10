@@ -1,6 +1,7 @@
 <ul>
 	{{#each objective in model}}
-	<li>{{objective.title}}</li>
+	<li>{{#link-to 'objectives.show' objective}}{{objective.title}}{{/link-to}}</li>
 	{{/each}}
+	<li>{{#link-to 'objectives.new' class="btn btn-primary-blue"}}<span class="glyphicon glyphicon-plus"></span>{{/link-to}}</li>
 </ul>
-{{#link-to 'objectives.new' class="btn btn-primary-blue"}}<span class="glyphicon glyphicon-plus"></span>{{/link-to}}</li>
+
