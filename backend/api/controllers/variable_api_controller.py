@@ -41,8 +41,7 @@ class VariableEndpoint(BaseApiController):
             request.name,
             request.tipo,
             request.keywords,
-            request.description,
-            request.definitions
+            request.description
             )
         if not variable:
             raise endpoints.InternalServerErrorException('Something went wrong')
@@ -61,8 +60,7 @@ class VariableEndpoint(BaseApiController):
             request.name,
             request.tipo,
             request.keywords,
-            request.description,
-            request.definitions
+            request.description
             )
         if not updated_variable:
             raise endpoints.BadRequestException('Something went wrong')

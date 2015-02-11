@@ -16,8 +16,7 @@ class VariableApiHelper(BaseApiHelper):
             name=entity.name,
             tipo=entity.tipo,
             keywords=[KeywordApiHelper().to_message(keyword) for keyword in entity.keywords if entity.keywords],
-            description=entity.description,
-            definitions=entity.definitions
+            description=entity.description
             )
 
 

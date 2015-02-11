@@ -6,5 +6,4 @@ export default DS.Model.extend({
   description: DS.attr('string'),
   definitions: DS.attr('string'),
   keywords: DS.hasMany('keyword', {embedded: 'always'}),
-  studies: DS.hasMany('study')
 });

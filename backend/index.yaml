@@ -9,29 +9,3 @@ indexes:
 # manually, move them above the marker line.  The index.yaml file is
 # automatically uploaded to the admin console when you next deploy
 # your application using appcfg.py.
-
-- kind: Abono
-  properties:
-  - name: ruta
-  - name: creado
-
-- kind: Cliente
-  properties:
-  - name: ruta
-  - name: nombres
-
-- kind: Credito
-  properties:
-  - name: estado
-  - name: creado
-
-- kind: Credito
-  properties:
-  - name: estado
-  - name: ruta
-  - name: creado
-
-- kind: Transaccion
-  properties:
-  - name: ruta
-  - name: creado

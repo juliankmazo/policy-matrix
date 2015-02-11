@@ -13,7 +13,6 @@ class VariableResponse(messages.Message):
     tipo = messages.StringField(3)
     keywords = messages.MessageField(KeywordMessage, 4, repeated=True)
     description = messages.StringField(5)
-    definitions = messages.StringField(6)
 
 
 class VariableListResponse(messages.Message):
@@ -25,4 +24,3 @@ class VariableRequest(messages.Message):
     tipo = messages.StringField(2)
     keywords = messages.MessageField(KeywordMessage, 3, repeated=True)
     description = messages.StringField(4)
-    definitions = messages.StringField(5)

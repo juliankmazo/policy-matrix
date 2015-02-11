@@ -5,7 +5,7 @@ export default Ember.Controller.extend(EmberValidations.Mixin,{
 	isValid: Ember.computed(
 		'model.study.title',
 		function() {
-		return !Ember.isEmpty(this.get('model.study.title'));
+			return !Ember.isEmpty(this.get('model.study.title'));
 		}
 	),
 	listVariables: Ember.computed(

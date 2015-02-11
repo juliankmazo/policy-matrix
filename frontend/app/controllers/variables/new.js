@@ -4,11 +4,11 @@ import EmberValidations from 'ember-validations';
 export default Ember.ObjectController.extend(EmberValidations.Mixin,{
 	typeOptions:['Core Area', 'Cross-cutting theme' ],
 	isValid: Ember.computed(
-		'model.name',
-		'model.tipo',
+		'model.variable.name',
+		'model.variable.tipo',
 		function() {
-		return !Ember.isEmpty(this.get('model.name')) &&
-					 !Ember.isEmpty(this.get('model.tipo'));
+		return !Ember.isEmpty(this.get('model.variable.name')) &&
+					 !Ember.isEmpty(this.get('model.variable.tipo'));
 		}
 	),
 	isKeywordValid: Ember.computed(
@@ -21,7 +21,7 @@ export default Ember.ObjectController.extend(EmberValidations.Mixin,{
 		save: function(){
 			if (this.get('isValid')){
 				var _this = this,
-						variable = this.get('model');
+						variable = this.get('model.variable');
 				variable.save().then(function(){
 					_this.transitionToRoute('variables');
 				});

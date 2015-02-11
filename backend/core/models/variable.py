@@ -9,21 +9,19 @@ class Variable(BaseModel):
     tipo = ndb.StringProperty()
     keywords = ndb.KeyProperty(Keyword, repeated=True)
     description = ndb.StringProperty()
-    definitions = ndb.StringProperty()
 
     @classmethod
     def get_all(cls):
         return Variable.query().fetch()
 
     @classmethod
-    def create(cls, name, tipo, keywords, description, definitions):
+    def create(cls, name, tipo, keywords, description):
         if name and tipo:
             variable = Variable(
                 name=name,
                 tipo=tipo,
                 keywords=keywords,
-                description=description,
-                definitions=definitions
+                description=description
                 )
             variable.put()
             return variable
@@ -31,13 +29,12 @@ class Variable(BaseModel):
             return False
 
     @classmethod
-    def update(cls, variable, name, tipo, keywords, description, definitions):
+    def update(cls, variable, name, tipo, keywords, description):
         if variable:
             variable.name = name
             variable.tipo = tipo
             variable.keywords = [Keyword.update(keyword) for keyword in keywords]
             variable.description = description
-            variable.definitions = definitions
             variable.put()
             return variable
         else:

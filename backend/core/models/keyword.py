@@ -4,7 +4,7 @@ from core.models import BaseModel
 
 class Keyword(BaseModel):
     name = ndb.StringProperty()
-    definition = ndb.StringProperty()
+    definition = ndb.TextProperty()
 
     @classmethod
     def get_all(cls):
