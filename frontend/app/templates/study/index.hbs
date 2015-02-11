@@ -25,7 +25,7 @@
 				  <dd>
 				  	<ul>
 					    {{#each pyp in model.pyps}}
-					    	<li>{{pyp.country}} - {{pyp.title}}</li>
+					    	<li><span {{bind-attr class=pyp.flagClass}}></span> - {{pyp.title}}</li>
 					    {{/each}}
 				    </ul>
 				  </dd>

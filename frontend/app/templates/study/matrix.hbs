@@ -12,15 +12,19 @@
 		<table class="table table-bordered table-condensed table-hover centered-cells">
 			<thead>
 				<tr>
-					<th rowspan="3">Policies</th>
+					<th rowspan="2" colspan="4">Policies</th>
 					<th {{bind-attr colspan=tripleLen}}>Variables</th>
 				</tr>
 				<tr>
-					<th class="success" {{bind-attr colspan=model.variables.length}}>Implementation</th>
-					<th class="warning" {{bind-attr colspan=model.variables.length}}>Modalities</th>
+					<th class="success" {{bind-attr colspan=model.variables.length}}>Objectives</th>
+					<th class="warning" {{bind-attr colspan=model.variables.length}}>Measurements</th>
 					<th class="info" {{bind-attr colspan=model.variables.length}}>Activities</th>
 				</tr>
 				<tr>
+					<th>Policy</th>
+					<th>Objective</th>
+					<th>Component</th>
+					<th>Output</th>
 					{{#each index in varIndex}}
 						<th class="success">{{index}}</th>
 					{{/each}}
@@ -33,9 +37,12 @@
 				</tr>
 			</thead>
 			<tbody>
-				{{#each row in tripleVarIndex}}
+				{{#each pyp in model.pyps}}
 				<tr>
-					<td><strong>Policy or Program Outputs # {{row}}</strong></td>
+					<td><strong>{{pyp.title}}</strong></td>
+					<td><strong>General Objective </strong></td>
+					<td><strong>Specific Objectives</strong></td>
+					<td><strong>Output</strong></td>
 					{{#each index in tripleVarIndex}}
 						<th>{{input style="max-width: 80%"}}</th>
 					{{/each}}

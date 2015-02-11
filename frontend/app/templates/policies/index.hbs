@@ -7,9 +7,9 @@
 		<li><strong>ID: </strong>{{pyp.id}}</li>
 	{{/link-to}} 
 		<li><strong>Title: </styg>{{pyp.title}}</li>
-		<li><strong>Country: </strong>{{pyp.country}}</li>
+		<li><strong>Country: </strong><span {{bind-attr class=pyp.flagClass}}></span> {{pyp.countryName}}</li>
 </ul>
-{{/each}}
 
+{{/each}}
 
 {{liquid-outlet}}
