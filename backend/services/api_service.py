@@ -4,7 +4,6 @@ from api.controllers import StudyEndpoint
 from api.controllers import VariableEndpoint
 from api.controllers import PypEndpoint
 from api.controllers import ObjectiveEndpoint
-from api.controllers import ComponentEndpoint
 from api.controllers import OutputEndpoint
 
 APPLICATION = endpoints.api_server([
@@ -12,6 +11,5 @@ APPLICATION = endpoints.api_server([
                                     VariableEndpoint,
                                     PypEndpoint,
                                     ObjectiveEndpoint,
-                                    ComponentEndpoint,
                                     OutputEndpoint
                                     ])

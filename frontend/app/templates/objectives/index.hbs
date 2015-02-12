@@ -2,11 +2,11 @@
 	{{#each objective in model}}
 	<li>{{objective.title}}</li>
 		<ul>
-			{{#each component in objective.components}}
-				<li>{{component.title}}</li>
+			{{#each output in objective.outputs}}
+				<li>{{output.title}}</li>
 			{{/each}}
 			<li>
-				{{#link-to 'components.new' objective class="btn btn-xs btn-primary-blue"}}
+				{{#link-to 'outputs.new' objective class="btn btn-xs btn-primary-blue"}}
 					<span class="glyphicon glyphicon-plus"></span>
 				{{/link-to}}
 			</li>

@@ -12,8 +12,9 @@ class ObjectiveApiHelper(BaseApiHelper):
         return ObjectiveResponse(
             id=entity.key.id(),
             title=entity.title,
-            components=entity.components,
+            outputs=entity.outputs,
             pyp=entity.pyp,
-            definition=entity.definition,
+            description=entity.description,
+            baseline=entity.baseline,
             target=entity.target
             )
