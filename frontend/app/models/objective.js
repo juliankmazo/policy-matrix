@@ -5,5 +5,10 @@ export default DS.Model.extend({
   components: DS.hasMany('component', {async: true}),
   pyp: DS.belongsTo('pyp'),
   definition: DS.attr('string'),
-  target: DS.attr('string')
+  target: DS.attr('string'),
+
+  // Computed Properties
+	numberComponentsPlusOne: Ember.computed('components', function(){
+		return this.get('components.length')+1;
+	}),
 });

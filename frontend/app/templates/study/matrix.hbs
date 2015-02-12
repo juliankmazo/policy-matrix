@@ -16,15 +16,15 @@
 					<th {{bind-attr colspan=tripleLen}}>Variables</th>
 				</tr>
 				<tr>
-					<th class="success" {{bind-attr colspan=model.variables.length}}>Objectives</th>
+					<th class="success" {{bind-attr colspan=model.variables.length}}>GeneralObjectives</th>
 					<th class="warning" {{bind-attr colspan=model.variables.length}}>Measurements</th>
 					<th class="info" {{bind-attr colspan=model.variables.length}}>Activities</th>
 				</tr>
 				<tr>
 					<th>Policy</th>
-					<th>Objective</th>
-					<th>Component</th>
-					<th>Output</th>
+					<th>General Objective</th>
+					<th>Specific Objectives</th>
+					<th>Outputs</th>
 					{{#each index in varIndex}}
 						<th class="success">{{index}}</th>
 					{{/each}}
@@ -38,15 +38,20 @@
 			</thead>
 			<tbody>
 				{{#each pyp in model.pyps}}
-				<tr>
-					<td><strong>{{pyp.title}}</strong></td>
-					<td><strong>General Objective </strong></td>
-					<td><strong>Specific Objectives</strong></td>
-					<td><strong>Output</strong></td>
-					{{#each index in tripleVarIndex}}
-						<th>{{input style="max-width: 80%"}}</th>
+					<tr>
+						<td {{bind-attr rowspan=pyp.numberObjectivesPlusOne}}><strong>{{pyp.title}}</strong> len= {{pyp.numberObjectivesPlusOne}}</td>
+						<td {{bind-attr rowspan=pyp.numberObjectivesPlusOne}}><strong></strong></td>
+						<td {{bind-attr rowspan=pyp.numberObjectivesPlusOne}}><strong>Specific Objectives</strong></td>
+						<td {{bind-attr rowspan=pyp.numberObjectivesPlusOne}}><strong>Output</strong></td>
+					</tr>
+					{{#each row in pyp.objectives}}
+						<tr>
+						
+						{{#each index in tripleVarIndex}}
+							<th>{{input style="max-width: 80%"}}</th>
+						{{/each}}
+						</tr>
 					{{/each}}
-				</tr>
 				{{/each}}
 			</tbody>
 		</table>

@@ -1,6 +1,6 @@
 import Ember from 'ember';
 import ColumnDefinition from 'ember-cli-ember-table/column-definition'
-// import ColumnDefinition from '../column-definition';
+
 
 export default Ember.Controller.extend({
 	tripleLen: Ember.computed(
@@ -16,6 +16,7 @@ export default Ember.Controller.extend({
 			for (var i=0; i<this.get('model.variables.length'); i++) { 
 		    array.push(i+1);
 			}
+			console.log(_.first(array));
 			return array;
 		}
 	),
@@ -28,5 +29,13 @@ export default Ember.Controller.extend({
 			}
 			return array;
 		}
-	)
+	),
+	// firstItem: function(){
+	// 	// if (row == this.get('model.pyps.firstObject')){
+	// 	// 	return true;
+	// 	// } else {
+	// 	// 	return false;
+	// 	// }
+	// 	console.log(this.get('model.pyps.firstObject.id'));
+	// }.property('model.pyps.@each')
 });

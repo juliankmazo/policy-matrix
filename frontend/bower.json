@@ -17,6 +17,7 @@
     "bootstrap": "~3.3.2",
     "jquery-ui": "1.10.1",
     "jquery-mousewheel": "~3.1.4",
-    "antiscroll": "fa3f81d3c07b647a63036da1de859fcaf1355993"
+    "antiscroll": "fa3f81d3c07b647a63036da1de859fcaf1355993",
+    "lodash": "^2.4.0"
   }
 }
