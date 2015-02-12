@@ -19,13 +19,13 @@
 				  </dd>
 				</dl>
 	
-				<p class="bg-primary-blue text-center" style="margin:0px -15px 15px -15px">Technical Information</p>
+				<p class="bg-primary-blue text-center" style="margin:0px -15px 15px -15px">Policies and Programs</p>
 				<dl class="dl-horizontal">
 					<dt>Policies and Programs:</dt>
 				  <dd>
 				  	<ul>
 					    {{#each pyp in model.pyps}}
-					    	<li>{{pyp.title}}</li>
+					    	<li><span {{bind-attr class=pyp.flagClass}}></span> - {{pyp.title}}</li>
 					    {{/each}}
 				    </ul>
 				  </dd>

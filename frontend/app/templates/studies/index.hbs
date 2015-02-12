@@ -10,15 +10,15 @@
 	{{/link-to}} 
 		<li><strong>Title: </strong>{{study.title}}</li>
 		<li><strong>Variables: </strong></li>
-		<ul>
+		<ol>
 		  {{#each variable in study.variables}}
 		    <li>{{variable.name}}</li>
 		  {{/each}}
-		</ul>
+		</ol>
 		<li><strong>Policies & Programs: </strong></li>
 		<ul>
 		  {{#each pyp in study.pyps}}
-		    <li>{{pyp.country}} - {{pyp.title}}<span {{bind-attr class="flagClass :flag-icon"}}></span></li>
+		    <li><span {{bind-attr class=pyp.flagClass}}></span> - {{pyp.title}}</li>
 		  {{/each}}
 		</ul>
 </ul>

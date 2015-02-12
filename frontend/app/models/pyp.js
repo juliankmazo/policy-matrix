@@ -1,4 +1,5 @@
 import DS from 'ember-data';
+import { COUNTRIES_NAMES } from "../utils/countries";
 
 export default DS.Model.extend({
   country: DS.attr('string'),
@@ -19,5 +20,12 @@ export default DS.Model.extend({
 	totalBudget: DS.attr('string'),
 	currency: DS.attr('string'),
 	comments: DS.attr('string'),
-	objectives: DS.hasMany('objective', {async: true})
+	objectives: DS.hasMany('objective', {async: true}),
+	flagClass: Ember.computed('country', function(){
+		var code = this.get('country') || "";
+		return "flag-icon flag-icon-" + code.toLowerCase();
+	}),
+	countryName: Ember.computed('country', function(){
+		return COUNTRIES_NAMES[this.get('country')]
+	})
 });
