@@ -1,9 +1,9 @@
-<h3>{{model.title}}</h3>
+{{!-- <h3>{{model.title}}</h3>
 <ul>
-	{{#each component in model}}
-	<li>{{#link-to 'components.show' component}}{{component.title}}{{/link-to}}</li>
+	{{#each component in model.components}}
+	<li>{{component.title}}</li>
 	{{/each}}
 	<li>{{#link-to 'components.new' class="btn btn-primary-blue"}}<span class="glyphicon glyphicon-plus"></span>{{/link-to}}</li>
-</ul>
+</ul> --}}
 
 {{outlet}}

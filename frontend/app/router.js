@@ -27,11 +27,13 @@ Router.map(function() {
   this.resource("policy", { path: '/policy/:pyp_id' }, function() {
     this.route("edit");
     this.resource("objectives", function() {
-      this.route("new");
-      this.route("show", {path: ':objective_id'}, function(){
-        this.resource("components", function() {
-          this.route("new")
+      this.route("index", { path: '' }, function() {
+        this.route("new");
+        this.route("show", {path: ':objective_id'}, function(){
+          this.resource("components", function() {
+            this.route("new");
         });
+      });
       });
     });
   });

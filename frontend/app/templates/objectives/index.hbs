@@ -1,7 +1,17 @@
 <ul>
 	{{#each objective in model}}
-	<li>{{#link-to 'objectives.show' objective}}{{objective.title}}{{/link-to}}</li>
+	<li>{{objective.title}}</li>
+		<ul>
+			{{#each component in objective.components}}
+				<li>{{component.title}}</li>
+			{{/each}}
+			<li>
+				{{#link-to 'components.new' objective class="btn btn-xs btn-primary-blue"}}
+					<span class="glyphicon glyphicon-plus"></span>
+				{{/link-to}}
+			</li>
+		</ul>
 	{{/each}}
-	<li>{{#link-to 'objectives.new' class="btn btn-primary-blue"}}<span class="glyphicon glyphicon-plus"></span>{{/link-to}}</li>
+	<li>{{#link-to 'objectives.index.new' class="btn btn-primary-blue"}}<span class="glyphicon glyphicon-plus"></span>{{/link-to}}</li>
 </ul>
-
+{{liquid-outlet}}
