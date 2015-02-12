@@ -4,7 +4,10 @@ from core.models import BaseModel
 
 class Output(BaseModel):
     title = ndb.StringProperty()
-    component = ndb.IntegerProperty()
+    objective = ndb.IntegerProperty()
+    description = ndb.StringProperty()
+    baseline = ndb.StringProperty()
+    target = ndb.StringProperty()
 
     @classmethod
     def get_all(cls):
@@ -12,11 +15,13 @@ class Output(BaseModel):
 
     @classmethod
     def create(cls, entity):
-        if entity.title and entity.component:
+        if entity.title and entity.objective:
             output = Output(
                 title=entity.title,
-                component=entity.component,
-                definition=entity.definition)
+                objective=entity.objective,
+                description=entity.description,
+                baseline=entity.baseline,
+                target=entity.target)
             output.put()
             return output
         else:
@@ -26,7 +31,11 @@ class Output(BaseModel):
     def update(cls, output, entity):
         if output:
             output.title = entity.title
+            output.description = entity.description
+            output.baseline = entity.baseline
+            output.target = entity.target
             output.put()
             return output
         else:
             return False
+

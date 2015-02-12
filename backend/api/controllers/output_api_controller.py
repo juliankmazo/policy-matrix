@@ -10,7 +10,7 @@ from api.messages import OutputRequest
 from api.messages import Output_resource
 
 from core.models import Output
-from core.models import Component
+from core.models import Objective
 # from core.models import outputHelper
 
 
@@ -37,12 +37,12 @@ class OutputEndpoint(BaseApiController):
     @endpoints.method(OutputRequest, OutputListResponse,
                       path='/outputs', http_method='POST', name='create')
     def create_output(self, request):
-        if not (request.title and request.component):
+        if not (request.title and request.objective):
             raise endpoints.BadRequestException('title is required')
         output = Output.create(request)
         if not output:
             raise endpoints.InternalServerErrorException('Something went wrong')
-        Component.add_output(request, output)
+        Objective.add_output(request, output)
         return OutputListResponse(
             outputs=[OutputApiHelper().to_message(output)])
 

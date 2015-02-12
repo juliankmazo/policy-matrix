@@ -4,9 +4,10 @@ from core.models import BaseModel
 
 class Objective(BaseModel):
     title = ndb.StringProperty()
-    components = ndb.IntegerProperty(repeated=True)
+    outputs = ndb.IntegerProperty(repeated=True)
     pyp = ndb.IntegerProperty()
-    definition = ndb.StringProperty()
+    description = ndb.StringProperty()
+    baseline = ndb.StringProperty()
     target = ndb.StringProperty()
 
     @classmethod
@@ -19,7 +20,8 @@ class Objective(BaseModel):
             objective = Objective(
                 title=entity.title,
                 pyp=entity.pyp,
-                definition=entity.definition,
+                description=entity.description,
+                baseline=entity.baseline,
                 target=entity.target)
             objective.put()
             return objective
@@ -30,8 +32,9 @@ class Objective(BaseModel):
     def update(cls, objective, entity):
         if objective:
             objective.title = entity.title
-            objective.components = entity.components
-            objective.definition = entity.definition
+            objective.outputs = entity.outputs
+            objective.description = entity.description
+            objective.baseline = entity.baseline
             objective.target = entity.target
             objective.put()
             return objective
@@ -39,9 +42,9 @@ class Objective(BaseModel):
             return False
 
     @classmethod
-    def add_component(cls, request, component):
+    def add_output(cls, request, output):
         objective = Objective.get_by_id(request.objective)
         if objective:
-            objective.components.append(component.key.id())
+            objective.outputs.append(output.key.id())
             objective.put()
         return

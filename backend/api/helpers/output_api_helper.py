@@ -12,5 +12,8 @@ class OutputApiHelper(BaseApiHelper):
         return OutputResponse(
             id=entity.key.id(),
             title=entity.title,
-            component=entity.component,
+            objective=entity.objective,
+            description=entity.description,
+            baseline=entity.baseline,
+            target=entity.target
             )

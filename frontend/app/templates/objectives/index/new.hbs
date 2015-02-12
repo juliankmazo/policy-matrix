@@ -1,0 +1,33 @@
+<form class="form-horizontal">
+	<h4>New objective</h4>
+	<div class="form-group">
+		<label class="col-sm-2 contro-label">Title</label>
+		<div class="col-sm-6">
+			{{input value=model.title placeholder='Title of the objective' class="form-control"}}
+		</div>
+		<div class="col-sm-2">
+	    <button {{action "save"}} class="btn btn-success btn-block"><span class="glyphicon glyphicon-ok"></span></button>
+	  </div>
+    <div class="col-sm-2">
+      <button {{action "cancel"}} class="btn btn-danger btn-block"><span class="glyphicon glyphicon-remove"></span></button>
+    </div>
+	</div>
+	<div class="form-group">
+		<label class="col-sm-2 contro-label">Description</label>
+		<div class="col-sm-6">
+			{{input value=model.description placeholder='Description of the objective' class="form-control"}}
+		</div>
+	</div>
+	<div class="form-group">
+		<label class="col-sm-2 contro-label">Baseline</label>
+		<div class="col-sm-6">
+			{{input value=model.baseline placeholder='Baseline of the objective' class="form-control"}}
+		</div>
+	</div>
+	<div class="form-group">
+		<label class="col-sm-2 contro-label">Target</label>
+		<div class="col-sm-6">
+			{{input value=model.target placeholder='Target of the objective' class="form-control"}}
+		</div>
+	</div>
+</form>
