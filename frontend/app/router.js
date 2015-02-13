@@ -32,12 +32,11 @@ Router.map(function() {
         this.route("show", {path: ':objective_id'}, function(){
           this.resource("outputs", function() {
             this.route("new");
+          });
         });
-      });
       });
     });
   });
-
 });
 
 export default Router;

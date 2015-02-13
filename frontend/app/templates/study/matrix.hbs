@@ -46,13 +46,35 @@
 									<td {{bind-attr rowspan=pyp.totalOutputs}}><strong>{{pyp.totalOutputs}}</strong></td>
 								{{/if}}
 								{{#if output.isFirst}}
-									<td data-toggle="tooltip" data-placement="top" {{bind-attr title=objective.title rowspan=objective.outputs.length}}>{{objective.title}}</td>
+									<td data-toggle="tooltip" data-placement="top" {{bind-attr title=objective.title rowspan=objective.outputs.length}}>{{matrix-content body=objective.title number=1}}</td>
 								{{/if}}	
-								<td><strong>{{output.title}}</strong></td>		
-								{{#each index in tripleVarIndex}}
-									<td>{{input style="max-width: 80%"}}</td>
-									{{!-- id1 id2 id3 value --}}
+								<td><strong>{{output.title}}</strong></td>
+
+								{{#each variable in model.variables}}
+									{{matrix-new 
+										study=model 
+										variable=variable 
+										output=output 
+										score1=score 
+										store=store}}
 								{{/each}}
+								{{#each variable in model.variables}}
+									{{matrix-new 
+										study=model 
+										variable=variable 
+										output=output 
+										score1=score 
+										store=store}}
+								{{/each}}
+								{{#each variable in model.variables}}
+									{{matrix-new 
+										study=model 
+										variable=variable 
+										output=output 
+										score1=score 
+										store=store}}
+								{{/each}}
+
 							</tr>
 						{{/each}}
 					{{/each}}

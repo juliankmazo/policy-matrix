@@ -5,7 +5,8 @@ var EmberApp = require('ember-cli/lib/broccoli/ember-app');
 var app = new EmberApp({
   'ember-bootstrap': {
       'importBootstrapTheme': true
-  }
+  },
+  'emberCliFontAwesome': { 'includeFontAwesomeAssets': false }
 });
 
 // Use `app.import` to add additional libraries to the generated
@@ -22,7 +23,7 @@ var app = new EmberApp({
 // along with the exports of each module as its value.
 
 app.import('bower_components/flag-icon-css/css/flag-icon.css');
-// app.import('bower_components/flag-icon-css/flags');
+
 
 // module.exports = app.toTree();
 
@@ -33,4 +34,4 @@ var flagAssets = pickFiles('bower_components/flag-icon-css/flags',{
     destDir: '/flags'
 });
 
-module.exports = mergeTrees([app.toTree(), flagAssets]);
+module.exports = mergeTrees([app.toTree(), flagAssets], { overwrite: true });

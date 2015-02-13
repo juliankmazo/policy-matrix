@@ -48,4 +48,11 @@ export default function(){
 		this.use('toUp'),
 		this.reverse('toDown')
 	);
+
+	this.transition(
+		this.hasClass('cell'),
+		this.toModel(true),
+		this.use('crossFade', {duration:100}),
+		this.reverse('crossFade')
+	);
 }
