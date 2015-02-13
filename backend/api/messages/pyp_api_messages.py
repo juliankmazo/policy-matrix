@@ -22,6 +22,7 @@ class PypResponse(messages.Message):
     currency = messages.StringField(18)
     comments = messages.StringField(19)
     objectives = messages.IntegerField(20, repeated=True)
+    totalOutputs = messages.IntegerField(21)
 
 
 class PypListResponse(messages.Message):

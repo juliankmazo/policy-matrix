@@ -8,9 +8,10 @@ export default DS.Model.extend({
   basline: DS.attr('string'),
   target: DS.attr('string'),
   definition: DS.attr('string'),
-
   // Computed Properties
 	numberComponentsPlusOne: Ember.computed('components', function(){
 		return this.get('components.length')+1;
 	}),
 });
+
+

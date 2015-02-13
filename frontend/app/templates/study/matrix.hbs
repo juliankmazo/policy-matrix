@@ -38,19 +38,23 @@
 			</thead>
 			<tbody>
 				{{#each pyp in model.pyps}}
-					<tr>
-						<td {{bind-attr rowspan=pyp.numberObjectivesPlusOne}}><strong>{{pyp.title}}</strong> len= {{pyp.numberObjectivesPlusOne}}</td>
-						<td {{bind-attr rowspan=pyp.numberObjectivesPlusOne}}><strong></strong></td>
-						<td {{bind-attr rowspan=pyp.numberObjectivesPlusOne}}><strong>Specific Objectives</strong></td>
-						<td {{bind-attr rowspan=pyp.numberObjectivesPlusOne}}><strong>Output</strong></td>
-					</tr>
-					{{#each row in pyp.objectives}}
-						<tr>
-						
-						{{#each index in tripleVarIndex}}
-							<th>{{input style="max-width: 80%"}}</th>
+					{{#each objective in pyp.objectives itemController="study/objective"}}
+						{{#each output in objective.outputs itemController="study/output"}}
+							<tr>
+								{{#if objective.isFirst}}
+									<td {{bind-attr rowspan=pyp.totalOutputs}}><strong>{{pyp.title}}</strong></td>
+									<td {{bind-attr rowspan=pyp.totalOutputs}}><strong>{{pyp.totalOutputs}}</strong></td>
+								{{/if}}
+								{{#if output.isFirst}}
+									<td data-toggle="tooltip" data-placement="top" {{bind-attr title=objective.title rowspan=objective.outputs.length}}>{{objective.title}}</td>
+								{{/if}}	
+								<td><strong>{{output.title}}</strong></td>		
+								{{#each index in tripleVarIndex}}
+									<td>{{input style="max-width: 80%"}}</td>
+									{{!-- id1 id2 id3 value --}}
+								{{/each}}
+							</tr>
 						{{/each}}
-						</tr>
 					{{/each}}
 				{{/each}}
 			</tbody>

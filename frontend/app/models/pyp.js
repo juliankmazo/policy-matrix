@@ -21,11 +21,9 @@ export default DS.Model.extend({
 	currency: DS.attr('string'),
 	comments: DS.attr('string'),
 	objectives: DS.hasMany('objective', {async: true}),
+	totalOutputs: DS.attr('number'),
 	
 	// Computed Properties
-	numberObjectivesPlusOne: Ember.computed('objectives', function(){
-		return this.get('objectives.length')+1;
-	}),
 	flagClass: Ember.computed('country', function(){
 		var code = this.get('country') || "";
 		return "flag-icon flag-icon-" + code.toLowerCase();

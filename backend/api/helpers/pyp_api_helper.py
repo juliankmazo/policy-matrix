@@ -2,11 +2,20 @@ from api.helpers import BaseApiHelper
 from api.messages import PypResponse
 
 from core.models import Pyp
+from core.models import Objective
 
 
 class PypApiHelper(BaseApiHelper):
 
     _model = Pyp
+
+    def total_outputs(self, entity):
+        sumOutputs = 0
+        if entity.objectives:
+            for objective_id in entity.objectives:
+                sumOutputs += len(Objective.get_by_id(objective_id).outputs)
+            return sumOutputs
+        return 0
 
     def to_message(self, entity):
         return PypResponse(
@@ -29,5 +38,6 @@ class PypApiHelper(BaseApiHelper):
             totalBudget=entity.total_budget,
             currency=entity.currency,
             comments=entity.comments,
-            objectives=entity.objectives
+            objectives=entity.objectives,
+            totalOutputs=self.total_outputs(entity)
             )
