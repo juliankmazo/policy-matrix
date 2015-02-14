@@ -16,10 +16,14 @@ class Cell(BaseModel):
 
     @classmethod
     def create(cls, entity):
-        if entity.study:
+        if entity.study and entity.variable and entity.output:
             cell = Cell(
-                name=entity.name,
-                definition=entity.definition)
+                score=entity.score,
+                scoreIndex=entity.scoreIndex,
+                study=entity.study,
+                variable=entity.variable,
+                output=entity.output
+                )
             cell.put()
             return cell
         else:
@@ -29,12 +33,12 @@ class Cell(BaseModel):
     def update(cls, entity):
         if entity.id:
             cell = Cell.get_by_id(entity.id)
-        else:
-            cell = Cell.create(entity)
-        if cell:
-            cell.name = entity.name
-            cell.definition = entity.definition
-            cell.put()
-            return cell.key
-        else:
-            return False
+            if cell:
+                cell.score = entity.score,
+                cell.scoreIndex = entity.scoreIndex,
+                cell.study = entity.study,
+                cell.variable = entity.variable,
+                cell.output = entity.output
+                cell.put()
+                return cell.key
+        return False
