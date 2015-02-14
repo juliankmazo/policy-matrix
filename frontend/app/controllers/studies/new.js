@@ -102,7 +102,7 @@ export default Ember.Controller.extend(EmberValidations.Mixin,{
 			return false;
 		},
 		cancel: function(study) {
-			this.transitionToRoute('study', study);
+			this.transitionToRoute('studies');
 			return false;
 		}
 	}

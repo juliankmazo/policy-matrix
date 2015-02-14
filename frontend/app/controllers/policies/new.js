@@ -281,7 +281,7 @@ export default Ember.ObjectController.extend(EmberValidations.Mixin,{
 			return false;
 		},
 		cancel: function() {
-			this.transitionToRoute('policy', this.get('model'));
+			this.transitionToRoute('policies');
 			return false;
 		}
 	},
