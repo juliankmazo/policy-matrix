@@ -19,6 +19,18 @@
           <div class="col-sm-9">
             {{textarea value=model.description rows=2 placeholder="Add general information" class="form-control m-5"}}
           </div>
+          <label class="col-sm-3 control-label">General Objective:</label>
+          <div class="col-sm-9">
+            {{input value=model.goName type="text" placeholder="Add the general objective" class="form-control m-5"}}
+          </div>
+          <label class="col-sm-3 control-label">Target:</label>
+          <div class="col-sm-9">
+            {{input value=model.goTarget type="text" placeholder="Add the general objective target" class="form-control m-5"}}
+          </div>
+          <label class="col-sm-3 control-label">Baseline:</label>
+          <div class="col-sm-9">
+            {{input value=model.goBaseline type="text" placeholder="Add the general objective baseline" class="form-control m-5"}}
+          </div>
           <label class="col-sm-3 control-label">Contact person:</label>
           <label class="col-sm-1 control-label">Name:</label>
           <div class="col-sm-3">

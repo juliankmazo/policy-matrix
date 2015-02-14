@@ -42,33 +42,37 @@
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
                     <li>
-                        <a><strong>STUDIES</strong></a>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#demo1"><strong>STUDIES</strong><i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="demo1" class="collapse">
+                            <li>
+                                {{#link-to 'studies.index' data-toggle="collapse" data-target="#demo2"}}<i class="fa fa-fw fa-clock-o"></i> Previous Studies{{/link-to}}
+                            </li>
+                            <li>
+                                {{#link-to 'studies.new' data-toggle="collapse" data-target="#demo2"}}<i class="fa fa-fw fa-sitemap"></i> Create New Study{{/link-to}}
+                            </li>
+                        </ul>
                     </li>
                     <li>
-                        {{#link-to 'studies.index' data-toggle="collapse" data-target="#demo2"}}<i class="fa fa-fw fa-clock-o"></i> Previous Files/Studies{{/link-to}}
+                        <a href="javascript:;" data-toggle="collapse" data-target="#demo2"><strong>VARIABLES</strong><i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="demo2" class="collapse">
+                            <li>
+                                {{#link-to 'variables.index' data-toggle="collapse" data-target="#demo2"}}<i class="fa fa-fw fa-clock-o"></i> Existing Variables{{/link-to}}
+                            </li>
+                            <li>
+                                {{#link-to 'variables.new' data-toggle="collapse" data-target="#demo2"}}<i class="fa fa-fw fa-sitemap"></i> Create New Variable{{/link-to}}
+                            </li>
+                        </ul>
                     </li>
                     <li>
-                        {{#link-to 'studies.new' data-toggle="collapse" data-target="#demo2"}}<i class="fa fa-fw fa-sitemap"></i> Create New Study{{/link-to}}
-                    </li>
-                    <br>
-                    <li>
-                        <a><strong>VARIABLES</strong></a>
-                    </li>
-                    <li>
-                        {{#link-to 'variables.index' data-toggle="collapse" data-target="#demo2"}}<i class="fa fa-fw fa-clock-o"></i> Existing Variables{{/link-to}}
-                    </li>
-                    <li>
-                        {{#link-to 'variables.new' data-toggle="collapse" data-target="#demo2"}}<i class="fa fa-fw fa-sitemap"></i> Create New Variable{{/link-to}}
-                    </li>
-                    <br>
-                    <li>
-                        <a><strong>POLICIES & PROGRAMS</strong></a>
-                    </li>
-                    <li>
-                        {{#link-to 'policies.index' data-toggle="collapse" data-target="#demo2"}}<i class="fa fa-fw fa-clock-o"></i> Existing Policies{{/link-to}}
-                    </li>
-                    <li>
-                        {{#link-to 'policies.new' data-toggle="collapse" data-target="#demo2"}}<i class="fa fa-fw fa-sitemap"></i> Create New Policy{{/link-to}}
+                        <a href="javascript:;" data-toggle="collapse" data-target="#demo3"><strong>POLICIES & PROGRAMS</strong><i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="demo3" class="collapse">
+                            <li>
+                                {{#link-to 'policies.index' data-toggle="collapse" data-target="#demo2"}}<i class="fa fa-fw fa-clock-o"></i> Existing Policies{{/link-to}}
+                            </li>
+                            <li>
+                                {{#link-to 'policies.new' data-toggle="collapse" data-target="#demo2"}}<i class="fa fa-fw fa-sitemap"></i> Create New Policy{{/link-to}}
+                            </li>
+                        </ul>
                     </li>
                 </ul>
             </div>

@@ -39,5 +39,8 @@ class PypApiHelper(BaseApiHelper):
             currency=entity.currency,
             comments=entity.comments,
             objectives=entity.objectives,
-            totalOutputs=self.total_outputs(entity)
+            totalOutputs=self.total_outputs(entity),
+            goName=entity.go_name,
+            goTarget=entity.go_target,
+            goBaseline=entity.go_baseline
             )
