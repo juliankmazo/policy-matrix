@@ -23,6 +23,10 @@ class Pyp(BaseModel):
     comments = ndb.StringProperty()
     objectives = ndb.IntegerProperty(repeated=True)
 
+    go_name = ndb.StringProperty()
+    go_target = ndb.StringProperty()
+    go_baseline = ndb.StringProperty()
+
     @classmethod
     def get_all(cls):
         return Pyp.query().fetch()
@@ -49,6 +53,9 @@ class Pyp(BaseModel):
                 total_budget=entity.totalBudget,
                 currency=entity.currency,
                 comments=entity.comments,
+                go_name=entity.go_name,
+                go_target=entity.go_target,
+                go_baseline=entity.go_baseline
                 )
             pyp.put()
             return pyp
@@ -77,6 +84,9 @@ class Pyp(BaseModel):
             pyp.currency = entity.currency
             pyp.comments = entity.comments
             pyp.objectives = entity.objectives
+            pyp.go_name = entity.go_name,
+            pyp.go_target = entity.go_target,
+            pyp.go_baseline = entity.go_baseline
             pyp.put()
             return pyp
         else:

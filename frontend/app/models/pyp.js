@@ -22,6 +22,10 @@ export default DS.Model.extend({
 	comments: DS.attr('string'),
 	objectives: DS.hasMany('objective', {async: true}),
 	totalOutputs: DS.attr('number'),
+
+	goName: DS.attr('string'),
+	goTarget: DS.attr('string'),
+	goBaseline: DS.attr('string'),
 	
 	// Computed Properties
 	flagClass: Ember.computed('country', function(){

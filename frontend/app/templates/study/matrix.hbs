@@ -39,39 +39,39 @@
 			<tbody>
 				{{#each pyp in model.pyps}}
 					{{#each objective in pyp.objectives itemController="study/objective"}}
-						{{#each output in objective.outputs itemController="study/output"}}
+						{{#each outputNUR in objective.outputs itemController="study/output"}}
 							<tr>
 								{{#if objective.isFirst}}
 									<td {{bind-attr rowspan=pyp.totalOutputs}}><strong>{{pyp.title}}</strong></td>
 									<td {{bind-attr rowspan=pyp.totalOutputs}}><strong>{{pyp.totalOutputs}}</strong></td>
 								{{/if}}
-								{{#if output.isFirst}}
+								{{#if outputNUR.isFirst}}
 									<td data-toggle="tooltip" data-placement="top" {{bind-attr title=objective.title rowspan=objective.outputs.length}}>{{matrix-content body=objective.title number=1}}</td>
 								{{/if}}	
-								<td><strong>{{output.title}}</strong></td>
+								<td><strong>{{outputNUR.title}}</strong></td>
 
 								{{#each variable in model.variables}}
 									{{matrix-new 
 										study=model 
-										variable=variable 
-										output=output 
-										score1=score 
+										variable=variable
+										outputNUR=outputNUR 
+										scoreIndex=1
 										store=store}}
 								{{/each}}
 								{{#each variable in model.variables}}
 									{{matrix-new 
 										study=model 
-										variable=variable 
-										output=output 
-										score1=score 
+										variable=variable
+										outputNUR=outputNUR 
+										scoreIndex=2
 										store=store}}
 								{{/each}}
 								{{#each variable in model.variables}}
 									{{matrix-new 
 										study=model 
-										variable=variable 
-										output=output 
-										score1=score 
+										variable=variable
+										outputNUR=outputNUR 
+										scoreIndex=3
 										store=store}}
 								{{/each}}
 

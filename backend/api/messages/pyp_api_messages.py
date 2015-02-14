@@ -23,6 +23,9 @@ class PypResponse(messages.Message):
     comments = messages.StringField(19)
     objectives = messages.IntegerField(20, repeated=True)
     totalOutputs = messages.IntegerField(21)
+    goName = messages.StringField(22)
+    goBaseline = messages.StringField(23)
+    goTarget = messages.StringField(24)
 
 
 class PypListResponse(messages.Message):
@@ -49,3 +52,6 @@ class PypRequest(messages.Message):
     currency = messages.StringField(17)
     comments = messages.StringField(18)
     objectives = messages.IntegerField(19, repeated=True)
+    goName = messages.StringField(20)
+    goBaseline = messages.StringField(21)
+    goTarget = messages.StringField(22)
