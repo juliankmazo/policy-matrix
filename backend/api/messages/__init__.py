@@ -23,10 +23,13 @@ from objective_api_messages import ObjectiveRequest
 from objective_api_messages import ObjectiveResponse
 from objective_api_messages import ObjectiveListResponse
 
-
 from output_api_messages import OutputRequest
 from output_api_messages import OutputResponse
 from output_api_messages import OutputListResponse
+
+from cell_api_messages import CellRequest
+from cell_api_messages import CellResponse
+from cell_api_messages import CellListResponse
 
 
 
@@ -55,5 +58,10 @@ Objective_resource = endpoints.ResourceContainer(
 
 Output_resource = endpoints.ResourceContainer(
     OutputRequest,
+    id=messages.IntegerField(1, variant=messages.Variant.INT64, required=True)
+)
+
+Cellresource = endpoints.ResourceContainer(
+    CellRequest,
     id=messages.IntegerField(1, variant=messages.Variant.INT64, required=True)
 )

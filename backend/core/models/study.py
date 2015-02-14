@@ -12,6 +12,7 @@ class Study(BaseModel):
     country = ndb.StringProperty()
     variables = ndb.KeyProperty(kind=Variable, repeated=True)
     pyps = ndb.KeyProperty(kind=Pyp, repeated=True)
+    cells = ndb.IntegerProperty(repeated=True)
 
     @classmethod
     def query_all(cls):
@@ -38,3 +39,11 @@ class Study(BaseModel):
             return study
         else:
             return False
+
+    @classmethod
+    def add_cell(cls, request, cell):
+        study = Study.get_by_id(request.study)
+        if study:
+            study.cells.append(cell.key.id())
+            study.put()
+        return
