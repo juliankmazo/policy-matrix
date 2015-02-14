@@ -2,35 +2,43 @@ from google.appengine.ext import ndb
 from core.models import BaseModel
 
 
-class Keyword(BaseModel):
-    name = ndb.StringProperty()
-    definition = ndb.TextProperty()
+class Cell(BaseModel):
+    score = ndb.IntegerProperty()
+    scoreIndex = ndb.IntegerProperty()
+
+    study = ndb.IntegerProperty(required=True)
+    variable = ndb.IntegerProperty(required=True)
+    output = ndb.IntegerProperty(required=True)
 
     @classmethod
     def get_all(cls):
-        return Keyword.query().fetch()
+        return Cell.query().fetch()
 
     @classmethod
     def create(cls, entity):
-        if entity.name:
-            keyword = Keyword(
-                name=entity.name,
-                definition=entity.definition)
-            keyword.put()
-            return keyword
+        if entity.study and entity.variable and entity.output:
+            cell = Cell(
+                score=entity.score,
+                scoreIndex=entity.scoreIndex,
+                study=entity.study,
+                variable=entity.variable,
+                output=entity.output
+                )
+            cell.put()
+            return cell
         else:
             return False
 
     @classmethod
     def update(cls, entity):
         if entity.id:
-            keyword = Keyword.get_by_id(entity.id)
-        else:
-            keyword = Keyword.create(entity)
-        if keyword:
-            keyword.name = entity.name
-            keyword.definition = entity.definition
-            keyword.put()
-            return keyword.key
-        else:
-            return False
+            cell = Cell.get_by_id(entity.id)
+            if cell:
+                cell.score = entity.score,
+                cell.scoreIndex = entity.scoreIndex,
+                cell.study = entity.study,
+                cell.variable = entity.variable,
+                cell.output = entity.output
+                cell.put()
+                return cell.key
+        return False
