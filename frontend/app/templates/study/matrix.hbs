@@ -43,10 +43,10 @@
 							<tr>
 								{{#if objective.isFirst}}
 									<td {{bind-attr rowspan=pyp.totalOutputs}}><strong>{{pyp.title}}</strong></td>
-									<td {{bind-attr rowspan=pyp.totalOutputs}}><strong>{{pyp.totalOutputs}}</strong></td>
+									<td {{bind-attr rowspan=pyp.totalOutputs}}><strong>{{matrix-content body=pyp.go_name number=""}}</strong></td>
 								{{/if}}
 								{{#if outputNUR.isFirst}}
-									<td data-toggle="tooltip" data-placement="top" {{bind-attr title=objective.title rowspan=objective.outputs.length}}>{{matrix-content body=objective.title number=1}}</td>
+									<td {{bind-attr rowspan=objective.outputs.length}}>{{matrix-content body=objective.title number=""}}</td>
 								{{/if}}	
 								<td><strong>{{outputNUR.title}}</strong></td>
 

@@ -6,3 +6,4 @@ from pyp import Pyp
 from study import Study
 from objective import Objective
 from output import Output
+from cell import Cell
