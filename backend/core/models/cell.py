@@ -2,35 +2,39 @@ from google.appengine.ext import ndb
 from core.models import BaseModel
 
 
-class Keyword(BaseModel):
-    name = ndb.StringProperty()
-    definition = ndb.TextProperty()
+class Cell(BaseModel):
+    score = ndb.IntegerProperty()
+    scoreIndex = ndb.IntegerProperty()
+
+    study = ndb.IntegerProperty(required=True)
+    variable = ndb.IntegerProperty(required=True)
+    output = ndb.IntegerProperty(required=True)
 
     @classmethod
     def get_all(cls):
-        return Keyword.query().fetch()
+        return Cell.query().fetch()
 
     @classmethod
     def create(cls, entity):
-        if entity.name:
-            keyword = Keyword(
+        if entity.study:
+            cell = Cell(
                 name=entity.name,
                 definition=entity.definition)
-            keyword.put()
-            return keyword
+            cell.put()
+            return cell
         else:
             return False
 
     @classmethod
     def update(cls, entity):
         if entity.id:
-            keyword = Keyword.get_by_id(entity.id)
+            cell = Cell.get_by_id(entity.id)
         else:
-            keyword = Keyword.create(entity)
-        if keyword:
-            keyword.name = entity.name
-            keyword.definition = entity.definition
-            keyword.put()
-            return keyword.key
+            cell = Cell.create(entity)
+        if cell:
+            cell.name = entity.name
+            cell.definition = entity.definition
+            cell.put()
+            return cell.key
         else:
             return False
