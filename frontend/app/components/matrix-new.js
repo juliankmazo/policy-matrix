@@ -11,21 +11,25 @@ export default Ember.Component.extend({
 				study = this.get("study"),
 				scoreIndex = this.get("scoreIndex"),
 				outputNUR = this.get("outputNUR.model"),
+				myCells = study.get("cells"),
 				self = this;
 
 		Ember.RSVP.hash({
 			variable: variable,
 			study: study,
 			scoreIndex: scoreIndex,
-			outputNUR: outputNUR
+			outputNUR: outputNUR,
+			myCells: myCells,
 		}).then(function(hash) {
 
-			var cell = _.chain(study.get("cells").toArray())
-				.filter(function(c) { return c.get("variable") === hash.variable; })
+			var cells = _.chain(hash.myCells.toArray())
+				.filter(function(c) { return c.get("variable.id") === hash.variable.id; })
 				.filter(function(c) { return c.get("scoreIndex") === hash.scoreIndex; })
-				.filter(function(c) { return c.get("outputNUR") === hash.outputNUR; })
-				.value()[0];
+				.filter(function(c) { return c.get("output.id") === hash.outputNUR.id; })
+				.value();
 
+			var cell = cells[0];
+			debugger;
 			if (!cell) {
 				cell = self.store.createRecord("cell", {
 				  scoreIndex: hash.scoreIndex,
@@ -35,6 +39,7 @@ export default Ember.Component.extend({
 				});
 			}
 
+			console.log('SCORE', cell.get('score'))
 			self.set("ownCell", cell);
 		});
 
