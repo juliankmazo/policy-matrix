@@ -31,8 +31,9 @@ export default Ember.Component.extend({
 			var cell = self.store.find('cell', {variable: hash.variable.id, 
 																					study: hash.study.id, 
 																				  scoreIndex: hash.scoreIndex, 
-																				  output: hash.outputNUR.id})[0];
-
+																				  output: hash.outputNUR.id})
+																				  	
+			
 			if (!cell) {
 				cell = self.store.createRecord("cell", {
 				  scoreIndex: hash.scoreIndex,
@@ -42,7 +43,7 @@ export default Ember.Component.extend({
 				});
 			}
 
-			console.log('SCORE', cell.get('score'))
+			
 			self.set("ownCell", cell);
 		});
 
