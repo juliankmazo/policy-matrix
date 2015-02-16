@@ -15,5 +15,8 @@ class OutputApiHelper(BaseApiHelper):
             objective=entity.objective,
             description=entity.description,
             baseline=entity.baseline,
-            target=entity.target
+            target=entity.target,
+            budget=entity.budget,
+            policyInstrument=entity.policy_instrument,
+            activity=entity.activity,
             )

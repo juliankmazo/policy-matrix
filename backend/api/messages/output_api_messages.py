@@ -8,6 +8,9 @@ class OutputResponse(messages.Message):
     description = messages.StringField(4)
     baseline = messages.StringField(5)
     target = messages.StringField(6)
+    budget = messages.StringField(7)
+    policyInstrument = messages.StringField(8)
+    activity = messages.StringField(9)
 
 
 class OutputListResponse(messages.Message):
@@ -20,3 +23,6 @@ class OutputRequest(messages.Message):
     description = messages.StringField(3)
     baseline = messages.StringField(4)
     target = messages.StringField(5)
+    budget = messages.StringField(6)
+    policyInstrument = messages.StringField(7)
+    activity = messages.StringField(8)

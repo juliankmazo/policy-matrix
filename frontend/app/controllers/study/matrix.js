@@ -19,14 +19,4 @@ export default Ember.Controller.extend({
 			return array;
 		}
 	),
-	tripleVarIndex: Ember.computed(
-		'model.variables',
-		function(){
-			var array = [];
-			for (var i=0; i<3*this.get('model.variables.length'); i++) { 
-		    array.push(i+1);
-			}
-			return array;
-		}
-	)
 });
