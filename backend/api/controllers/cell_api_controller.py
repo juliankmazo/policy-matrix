@@ -17,10 +17,16 @@ from core.models import Study
 @pmm_api.api_class(resource_name='cells', path='cells')
 class CellEndpoint(BaseApiController):
 
-    @endpoints.method(message_types.VoidMessage, CellListResponse,
+    @endpoints.method(CellRequest, CellListResponse,
                       path='/cells', http_method='GET', name='get_all')
     def get_cells(self, request):
-        cells = Cell.get_all()
+        cells = Cell.query()
+        if request.study and request.variable and request.output and request.scoreIndex:
+            cells = cells.filter(Cell.study == request.study)
+            cells = cells.filter(Cell.variable == request.variable)
+            cells = cells.filter(Cell.output == request.output)
+            cells = cells.filter(Cell.scoreIndex == request.scoreIndex)
+        cells = cells.fetch()
         return CellListResponse(
             cells=[CellApiHelper().to_message(cell) for cell in cells if cells])
 

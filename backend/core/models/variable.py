@@ -33,7 +33,7 @@ class Variable(BaseModel):
         if variable:
             variable.name = name
             variable.tipo = tipo
-            variable.keywords = [Keyword.update(keyword) for keyword in keywords]
+            variable.keywords = [Keyword.update(keyword) for keyword in keywords if keyword.name]
             variable.description = description
             variable.put()
             return variable

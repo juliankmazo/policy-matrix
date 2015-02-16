@@ -9,7 +9,10 @@
 		<li><strong>Title: </styg>{{pyp.title}}</li>
 		<li><strong>Country: </strong><span {{bind-attr class=pyp.flagClass}}></span> {{pyp.countryName}}</li>
 </ul>
-
+{{#link-to 'policy.edit' pyp class="btn btn-primary-blue" style="margin:15px;"}} <i class="fa fa-fw fa-edit"></i>{{/link-to}}
+<button {{action "delete" pyp}} class="btn btn-danger"><i class="fa fa-fw fa-trash"></i></button>
+<br>
+<br>
 {{/each}}
 
 {{liquid-outlet}}

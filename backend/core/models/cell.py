@@ -30,15 +30,13 @@ class Cell(BaseModel):
             return False
 
     @classmethod
-    def update(cls, entity):
-        if entity.id:
-            cell = Cell.get_by_id(entity.id)
-            if cell:
-                cell.score = entity.score,
-                cell.scoreIndex = entity.scoreIndex,
-                cell.study = entity.study,
-                cell.variable = entity.variable,
-                cell.output = entity.output
-                cell.put()
-                return cell.key
+    def update(cls, cell, entity):
+        if cell:
+            cell.score = entity.score,
+            cell.scoreIndex = entity.scoreIndex,
+            cell.study = entity.study,
+            cell.variable = entity.variable,
+            cell.output = entity.output
+            cell.put()
+            return cell.key
         return False

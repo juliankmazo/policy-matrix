@@ -11,13 +11,15 @@ export default Ember.Component.extend({
 				study = this.get("study"),
 				scoreIndex = this.get("scoreIndex"),
 				outputNUR = this.get("outputNUR.model"),
+				myCells = study.get("cells"),
 				self = this;
 
 		Ember.RSVP.hash({
 			variable: variable,
 			study: study,
 			scoreIndex: scoreIndex,
-			outputNUR: outputNUR
+			outputNUR: outputNUR,
+			myCells: myCells,
 		}).then(function(hash) {
 
 			// var cell = _.chain(study.get("cells").toArray())
@@ -40,6 +42,7 @@ export default Ember.Component.extend({
 				});
 			}
 
+			console.log('SCORE', cell.get('score'))
 			self.set("ownCell", cell);
 		});
 

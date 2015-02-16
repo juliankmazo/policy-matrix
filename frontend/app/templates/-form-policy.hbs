@@ -34,19 +34,19 @@
           <label class="col-sm-3 control-label">Contact person:</label>
           <label class="col-sm-1 control-label">Name:</label>
           <div class="col-sm-3">
-            {{input value=model.contactPerson type="text" placeholder="Name" class="form-control m-5"}}
+            {{input value=model.contactName type="text" placeholder="Name" class="form-control m-5"}}
           </div>
           <label class="col-sm-1 control-label">Email:</label>
           <div class="col-sm-4">
-            {{input type="text" placeholder="Name" class="form-control m-5"}}
+            {{input value=model.contactEmail type="text" placeholder="Email" class="form-control m-5"}}
           </div>
           <label class="col-sm-1 col-sm-offset-3 control-label">Job:</label>
           <div class="col-sm-3">
-            {{input type="text" placeholder="Name" class="form-control m-5"}}
+            {{input value=model.contactJob type="text" placeholder="Job and Institution" class="form-control m-5"}}
           </div>
           <label class="col-sm-1 control-label">Number:</label>
           <div class="col-sm-4">
-            {{input type="text" placeholder="Name" class="form-control m-5"}}
+            {{input value=model.contactNumber type="text" placeholder="Number" class="form-control m-5"}}
           </div>
           <label class="col-sm-3 control-label">Typology:</label>
           <div class="col-sm-9">
@@ -82,11 +82,27 @@
           </div>
           <label class="col-sm-3 control-label">Total Budget:</label>
           <div class="col-sm-4">
-            {{input value=model.totalBudget type="number" placeholder="Define the amount of money" class="form-control m-5"}}
+            {{input value=model.totalBudget type="text" placeholder="Define the amount of money" class="form-control m-5"}}
           </div>
           <label class="col-sm-1 control-label">Currency:</label>
           <div class="col-sm-4">
             {{view "select" content=currencyOptions optionValuePath="content.id" optionLabelPath="content.name" prompt="Select the money currency" class="form-control m-5" selection=model.currency}}
+          </div>
+          <label class="col-sm-3 control-label">Main Actor:</label>
+          <div class="col-sm-9">
+            {{input value=model.responsible type="text" placeholder="Main Actor/Institution of reference leading and/or responsible of the P&P" class="form-control m-5"}}
+          </div>
+          <label class="col-sm-3 control-label">Duties of Main Actor:</label>
+          <div class="col-sm-9">
+            {{input value=model.responsibleDuties type="text" placeholder="Duties and/or Responsabilities of the Main Actor/Institution" class="form-control m-5"}}
+          </div>
+          <label class="col-sm-3 control-label">Institutional Arrangements:</label>
+          <div class="col-sm-9">
+            {{input value=model.institutionalArrangements type="text" placeholder="Specify the Institutional Arrangements" class="form-control m-5"}}
+          </div>
+          <label class="col-sm-3 control-label">Source</label>
+          <div class="col-sm-9">
+            {{input value=model.source type="text" placeholder="Specify the source of the P&P information" class="form-control m-5"}}
           </div>
           <label class="col-sm-3 control-label">Comments:</label>
           <div class="col-sm-9">

@@ -8,6 +8,10 @@ class Output(BaseModel):
     description = ndb.StringProperty()
     baseline = ndb.StringProperty()
     target = ndb.StringProperty()
+    activity = ndb.StringProperty()
+    budget = ndb.StringProperty()
+    policy_instrument = ndb.StringProperty()
+    activity = ndb.StringProperty()
 
     @classmethod
     def get_all(cls):
@@ -21,7 +25,11 @@ class Output(BaseModel):
                 objective=entity.objective,
                 description=entity.description,
                 baseline=entity.baseline,
-                target=entity.target)
+                target=entity.target,
+                budget=entity.budget,
+                policy_instrument=entity.policyInstrument,
+                activity=entity.activity,
+                )
             output.put()
             return output
         else:
@@ -34,8 +42,10 @@ class Output(BaseModel):
             output.description = entity.description
             output.baseline = entity.baseline
             output.target = entity.target
+            output.budget = entity.budget
+            output.policy_instrument = entity.policyInstrument
+            output.activity = entity.activity
             output.put()
             return output
         else:
             return False
-

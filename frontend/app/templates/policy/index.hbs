@@ -10,16 +10,16 @@
 		  <dd>{{model.description}}</dd>
 
 		  <dt>General Objective</dt>
-		  <dd>{{model.go_name}}</dd>
+		  <dd>{{model.goName}}</dd>
 
 		  <dt>General Target</dt>
-		  <dd>{{model.go_target}}</dd>
+		  <dd>{{model.goTarget}}</dd>
 
 		  <dt>General Baseline</dt>
-		  <dd>{{model.go_baseline}}</dd>
+		  <dd>{{model.goBaseline}}</dd>
 
 		  <dt>Contact person:</dt>
-		  <dd>{{model.contactPerson}}</dd>
+		  <dd>{{model.contactName}} {{model.contactNumber}} {{model.contactEmail}} {{model.contactJob}}</dd>
 
 		  <dt>Typology:</dt>
 		  <dd>{{model.typology}}</dd>
@@ -29,12 +29,6 @@
 
 		  <dt>Reference:</dt>
 		  <dd>{{model.regulatoryFrameworkReference}}</dd>
-
-		  <dt>P&P Parents:</dt>
-		  <dd>{{model.parents}}</dd>
-
-		  <dt>P&P Childrens:</dt>
-		  <dd>{{model.childrens}}</dd>
 
 		  <dt>Beneficiaries:</dt>
 		  <dd>{{model.beneficiaries}}</dd>
@@ -57,6 +51,18 @@
 		  <dt>Currency:</dt>
 		  <dd>{{model.currency}}</dd>
 
+		  <dt>Main Actor:</dt>
+		  <dd>{{model.responsible}}</dd>
+
+		  <dt>Main Actor Duties:</dt>
+		  <dd>{{model.responsibleDuties}}</dd>
+
+		  <dt>Institutional Arrangements:</dt>
+		  <dd>{{model.institutionalArrangements}}</dd>
+
+		  <dt>Source:</dt>
+		  <dd>{{model.source}}</dd>
+
 		  <dt>Comments:</dt>
 		  <dd>{{model.comments}}</dd>
 		</dl>
@@ -64,11 +70,30 @@
 		<dl class="dl-horizontal">
 			<dt>Objectives:</dt>
 		  <dd>
-		  	<ul>
-			    {{#each objective in model.objectives}}
-			    	<li>{{objective.title}}</li>
-			    {{/each}}
-		    </ul>
+		  	<ol>
+					{{#each objective in model.objectives}}
+						<li> <strong>{{objective.title}}</strong></li>
+							<ul>
+								<li><strong>Description: </strong>{{objective.description}}</li>
+								<li><strong>Target: </strong>{{objective.target}}</li>
+								<li><strong>Baseline: </strong>{{objective.target}}</li>
+								<ol>
+									{{#each output in objective.outputs}}
+										<li><strong>{{output.title}}</strong></li>
+										<ul>
+											<li><strong>Description: </strong>{{output.description}}</li>
+											<li><strong>Target: </strong>{{output.target}}</li>
+											<li><strong>Baseline: </strong>{{output.target}}</li>
+											<li><strong>Policy Instrument: </strong>{{output.policyInstrument}}</li>
+											<li><strong>Activity: </strong>{{output.activity}}</li>
+											<li><strong>Budget: </strong>{{output.budget}}</li>
+										</ul>
+									{{/each}}
+								</ol>
+							</ul>
+						</li>
+					{{/each}}
+				</ol>
 		  </dd>
 		</dl>
 	</div>

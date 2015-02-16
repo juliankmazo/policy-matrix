@@ -41,12 +41,12 @@
 					{{#each objective in pyp.objectives itemController="study/objective"}}
 						{{#each outputNUR in objective.outputs itemController="study/output"}}
 							<tr>
-								{{#if objective.isFirst}}
-									<td {{bind-attr rowspan=pyp.totalOutputs}}><strong>{{pyp.title}}</strong></td>
-									<td {{bind-attr rowspan=pyp.totalOutputs}}><strong>{{matrix-content body=pyp.go_name number=""}}</strong></td>
-								{{/if}}
 								{{#if outputNUR.isFirst}}
-									<td {{bind-attr rowspan=objective.outputs.length}}>{{matrix-content body=objective.title number=""}}</td>
+									{{#if objective.isFirst}}
+									<td {{bind-attr rowspan=pyp.totalOutputs}}><strong>{{pyp.title}}</strong></td>
+									<td {{bind-attr rowspan=pyp.totalOutputs}}><strong>{{matrix-content body=pyp.goName number="objetivo general"}}</strong></td>
+									{{/if}}
+									<td {{bind-attr rowspan=objective.outputs.length}}>{{matrix-content body=objective.title number="objectivos especifico"}}</td>
 								{{/if}}	
 								<td><strong>{{outputNUR.title}}</strong></td>
 
@@ -74,7 +74,7 @@
 										scoreIndex=3
 										store=store}}
 								{{/each}}
-
+								
 							</tr>
 						{{/each}}
 					{{/each}}
