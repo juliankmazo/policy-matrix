@@ -11,11 +11,11 @@
 		  	<dl class="dl-horizontal">
 		  		<dt>Variables:</dt>
 				  <dd>
-				  	<ul>
+				  	<ol>
 					    {{#each variable in model.variables}}
-					    	<li>{{variable.name}}</li>
+					    	<li>{{#if variable.cc}}CC{{else}}CA{{/if}} - {{variable.name}}</li>
 					    {{/each}}
-				    </ul>
+				    </ol>
 				  </dd>
 				</dl>
 	

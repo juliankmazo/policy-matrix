@@ -6,7 +6,7 @@ export default Ember.Controller.extend({
 	tripleLen: Ember.computed(
 		'model.variables',
 		function(){
-			return 3*this.get('model.variables.length');
+			return 3*this.get('model.variables.length')+3;
 		}
 	),
 	varIndex: Ember.computed(

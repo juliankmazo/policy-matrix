@@ -6,6 +6,7 @@ class Pyp(BaseModel):
     country = ndb.StringProperty()
     title = ndb.StringProperty()
     description = ndb.StringProperty()
+    acronym = ndb.StringProperty()
     typology = ndb.StringProperty()
     regulatory_framework = ndb.StringProperty()
     regulatory_framework_reference = ndb.StringProperty()
@@ -47,6 +48,7 @@ class Pyp(BaseModel):
                 country=entity.country,
                 title=entity.title,
                 description=entity.description,
+                acronym=entity.acronym,
                 typology=entity.typology,
                 regulatory_framework=entity.regulatoryFramework,
                 regulatory_framework_reference=entity.regulatoryFrameworkReference,
@@ -83,6 +85,7 @@ class Pyp(BaseModel):
             pyp.country = entity.country
             pyp.title = entity.title
             pyp.description = entity.description
+            pyp.acronym = entity.acronym
             pyp.typology = entity.typology
             pyp.regulatory_framework = entity.regulatoryFramework
             pyp.regulatory_framework_reference = entity.regulatoryFrameworkReference

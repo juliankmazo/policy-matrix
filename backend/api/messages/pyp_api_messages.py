@@ -32,6 +32,7 @@ class PypResponse(messages.Message):
     contactNumber = messages.StringField(28)
     source = messages.StringField(29)
     comments = messages.StringField(30)
+    acronym = messages.StringField(31)
 
 
 class PypListResponse(messages.Message):
@@ -67,3 +68,4 @@ class PypRequest(messages.Message):
     contactNumber = messages.StringField(26)
     source = messages.StringField(27)
     comments = messages.StringField(28)
+    acronym = messages.StringField(29)

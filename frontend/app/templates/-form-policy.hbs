@@ -15,6 +15,10 @@
           <div class="col-sm-9">
             {{input value=model.title type="text" placeholder="Write the title of the policy or program" class="form-control m-5"}}
           </div>
+          <label class="col-sm-3 control-label">Acronym:</label>
+          <div class="col-sm-9">
+            {{input value=model.acronym type="text" placeholder="If the policy or program have an acronym please specify" class="form-control m-5"}}
+          </div>
           <label class="col-sm-3 control-label">Description:</label>
           <div class="col-sm-9">
             {{textarea value=model.description rows=2 placeholder="Add general information" class="form-control m-5"}}
@@ -86,7 +90,7 @@
           </div>
           <label class="col-sm-1 control-label">Currency:</label>
           <div class="col-sm-4">
-            {{view "select" content=currencyOptions optionValuePath="content.id" optionLabelPath="content.name" prompt="Select the money currency" class="form-control m-5" selection=model.currency}}
+            {{view "select" content=currencyOptions optionValuePath="content.id" optionLabelPath="content.name" prompt="Select the money currency" class="form-control m-5" value=model.currency}}
           </div>
           <label class="col-sm-3 control-label">Main Actor:</label>
           <div class="col-sm-9">
