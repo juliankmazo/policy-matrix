@@ -25,6 +25,9 @@ export default DS.RESTSerializer.extend({
     if (!payload.pyps) {
       payload.pyps=[];
     }
+    if (!payload.cells) {
+      payload.cells=[];
+    }
   }
 });
 

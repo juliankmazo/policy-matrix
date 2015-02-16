@@ -20,11 +20,16 @@ export default Ember.Component.extend({
 			outputNUR: outputNUR
 		}).then(function(hash) {
 
-			var cell = _.chain(study.get("cells").toArray())
-				.filter(function(c) { return c.get("variable") === hash.variable; })
-				.filter(function(c) { return c.get("scoreIndex") === hash.scoreIndex; })
-				.filter(function(c) { return c.get("outputNUR") === hash.outputNUR; })
-				.value()[0];
+			// var cell = _.chain(study.get("cells").toArray())
+			// 	.filter(function(c) { return c.get("variable") === hash.variable; })
+			// 	.filter(function(c) { return c.get("scoreIndex") === hash.scoreIndex; })
+			// 	.filter(function(c) { return c.get("outputNUR") === hash.outputNUR; })
+			// 	.value()[0];
+
+			var cell = self.store.find('cell', {variable: hash.variable.id, 
+																					study: hash.study.id, 
+																				  scoreIndex: hash.scoreIndex, 
+																				  output: hash.outputNUR.id})[0];
 
 			if (!cell) {
 				cell = self.store.createRecord("cell", {
