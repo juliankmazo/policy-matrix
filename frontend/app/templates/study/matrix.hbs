@@ -48,7 +48,7 @@
 									{{/if}}
 									<td {{bind-attr rowspan=objective.outputs.length}}>{{matrix-content body=objective.title number="objectivos especifico"}}</td>
 								{{/if}}	
-								<td><strong>{{outputNUR.title}}</strong></td>
+								<td>{{matrix-content body=outputNUR.title number="outputs"}}</td>
 
 								{{#each variable in model.variables}}
 									{{matrix-new 

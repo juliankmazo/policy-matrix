@@ -11,7 +11,6 @@ export default Ember.Component.extend({
 				study = this.get("study"),
 				scoreIndex = this.get("scoreIndex"),
 				outputNUR = this.get("outputNUR.model"),
-				myCells = study.get("cells"),
 				self = this;
 
 		Ember.RSVP.hash({
@@ -19,33 +18,28 @@ export default Ember.Component.extend({
 			study: study,
 			scoreIndex: scoreIndex,
 			outputNUR: outputNUR,
-			myCells: myCells,
 		}).then(function(hash) {
 
-			// var cell = _.chain(study.get("cells").toArray())
-			// 	.filter(function(c) { return c.get("variable") === hash.variable; })
-			// 	.filter(function(c) { return c.get("scoreIndex") === hash.scoreIndex; })
-			// 	.filter(function(c) { return c.get("outputNUR") === hash.outputNUR; })
-			// 	.value()[0];
-
-			var cell = self.store.find('cell', {variable: hash.variable.id, 
-																					study: hash.study.id, 
-																				  scoreIndex: hash.scoreIndex, 
-																				  output: hash.outputNUR.id})[0];
-
-			if (!cell) {
-				cell = self.store.createRecord("cell", {
-				  scoreIndex: hash.scoreIndex,
-				  study: hash.study,
-				  variable: hash.variable,
-				  output: hash.outputNUR,
-				});
+			var cell = self.store.find('cell', {
+				variable: hash.variable.id, 
+				study: hash.study.id, 
+			  scoreIndex: hash.scoreIndex, 
+			  output: hash.outputNUR.id}).then(
+				  function (cell){
+				  	cell = cell.toArray()[0];
+				  	if (!cell) {
+							cell = self.store.createRecord("cell", {
+							  scoreIndex: hash.scoreIndex,
+							  study: hash.study,
+							  variable: hash.variable,
+							  output: hash.outputNUR,
+							});
+						}
+						self.set("ownCell", cell);
+			  	}
+			  );
 			}
-
-			console.log('SCORE', cell.get('score'))
-			self.set("ownCell", cell);
-		});
-
+		);
 	}.observes("variable", "outputNUR", "study", "scoreIndex").on("didInsertElement"),
 
 	saveCell: function() {
