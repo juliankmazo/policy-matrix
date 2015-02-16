@@ -3,9 +3,9 @@ import Ember from 'ember';
 
 export default DS.RESTSerializer.extend({
 
-	// serializeIntoHash: function(hash, type, record, options) {
-	// 	Ember.merge(hash, this.serialize(record, options));
-	// },
+	serializeIntoHash: function(hash, type, record, options) {
+		Ember.merge(hash, this.serialize(record, options));
+	},
 
 	extractMeta: function(store, type, payload) {
     if (payload && payload.kind) {

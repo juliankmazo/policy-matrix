@@ -53,9 +53,9 @@ class Pyp(BaseModel):
                 total_budget=entity.totalBudget,
                 currency=entity.currency,
                 comments=entity.comments,
-                go_name=entity.go_name,
-                go_target=entity.go_target,
-                go_baseline=entity.go_baseline
+                go_name=entity.goName,
+                go_target=entity.goTarget,
+                go_baseline=entity.goBaseline
                 )
             pyp.put()
             return pyp
@@ -84,9 +84,9 @@ class Pyp(BaseModel):
             pyp.currency = entity.currency
             pyp.comments = entity.comments
             pyp.objectives = entity.objectives
-            pyp.go_name = entity.go_name,
-            pyp.go_target = entity.go_target,
-            pyp.go_baseline = entity.go_baseline
+            pyp.go_name = entity.goName
+            pyp.go_target = entity.goTarget
+            pyp.go_baseline = entity.goBaseline
             pyp.put()
             return pyp
         else:
