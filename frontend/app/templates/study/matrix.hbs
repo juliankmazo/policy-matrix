@@ -48,7 +48,7 @@
 									{{/if}}
 									<td {{bind-attr rowspan=objective.outputs.length}}>{{matrix-content body=objective.title number="objectivos especifico"}}</td>
 								{{/if}}	
-								<td><strong>{{outputNUR.title}}</strong></td>
+								<td>{{matrix-content body=outputNUR.title number="outputs"}}</td>
 
 								{{#each variable in model.variables}}
 									{{matrix-new 
@@ -74,7 +74,14 @@
 										scoreIndex=3
 										store=store}}
 								{{/each}}
-								
+								<td>
+									{{#modal-trigger controls=outputNUR.id}}
+										<span class="glyphicon glyphicon-stats"></span>
+									{{/modal-trigger}}
+									{{#modal-container id=outputNUR.id}}
+								  Ohai!
+									{{/modal-container}}
+								</td>
 							</tr>
 						{{/each}}
 					{{/each}}
