@@ -32,7 +32,8 @@ class Objective(BaseModel):
     def update(cls, objective, entity):
         if objective:
             objective.title = entity.title
-            objective.outputs = entity.outputs
+            if entity.outputs:
+                objective.outputs = entity.outputs
             objective.description = entity.description
             objective.baseline = entity.baseline
             objective.target = entity.target

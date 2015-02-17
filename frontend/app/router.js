@@ -30,8 +30,12 @@ Router.map(function() {
       this.route("index", { path: '' }, function() {
         this.route("new");
         this.route("show", {path: ':objective_id'}, function(){
+          this.route("edit");
           this.resource("outputs", function() {
             this.route("new");
+            this.route("show", {path: ':output_id'}, function(){
+              this.route("edit");
+            });
           });
         });
       });

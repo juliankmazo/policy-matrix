@@ -1,11 +1,11 @@
 <div {{action "toggleBody"}}>
   {{#if isShowingBody}}
-    {{truncate-text body}}
+    {{truncate-text body rows=rows}}
   {{else}}
     {{#if acronym}}
       {{acronym}}
     {{else}}
-    	{{truncate-text body limit=5}}
+    	{{truncate-text body limit=50 rows=rows}}
     {{/if}}
   {{/if}}
 </div>

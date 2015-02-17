@@ -98,7 +98,8 @@ class Pyp(BaseModel):
             pyp.time_frame = entity.timeFrame
             pyp.total_budget = entity.totalBudget
             pyp.currency = entity.currency
-            pyp.objectives = entity.objectives
+            if entity.objectives:
+                pyp.objectives = entity.objectives
             pyp.go_name = entity.goName
             pyp.go_target = entity.goTarget
             pyp.go_baseline = entity.goBaseline

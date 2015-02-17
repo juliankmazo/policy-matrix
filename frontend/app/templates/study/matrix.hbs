@@ -9,6 +9,7 @@
 		</ol>
 		<br>
 		<br>
+		{{!-- <div class="div-scroll"></div> --}}
 		<div class="div-table">
 			<table class="table table-bordered table-condensed table-hover centered-cells">
 				<thead>
@@ -47,12 +48,12 @@
 								<tr>
 									{{#if outputNUR.isFirst}}
 										{{#if objective.isFirst}}
-										<td {{bind-attr rowspan=pyp.totalOutputs}}><strong>{{pyp.title}}</strong></td>
-										<td {{bind-attr rowspan=pyp.totalOutputs}}><strong>{{matrix-content body=pyp.goName number="objetivo general"}}</strong></td>
+										<td {{bind-attr rowspan=pyp.totalOutputs}}><strong>{{pyp.title}} {{pyp.acronym}}</strong></td>
+										<td {{bind-attr rowspan=pyp.totalOutputs}}><strong>{{matrix-content body=pyp.goName rows=pyp.totalOutputs}}</strong></td>
 										{{/if}}
-										<td {{bind-attr rowspan=objective.outputs.length}}>{{matrix-content body=objective.title number="objectivos especifico"}}</td>
+										<td {{bind-attr rowspan=objective.outputs.length}}>{{matrix-content body=objective.title rows=objective.outputs.length}}</td>
 									{{/if}}	
-									<td>{{matrix-content body=outputNUR.title number="outputs"}}</td>
+									<td>{{matrix-content body=outputNUR.title}}</td>
 
 									{{#each variable in model.variables}}
 										{{matrix-new 
@@ -71,7 +72,7 @@
 											scoreIndex=2
 											store=store}}
 									{{/each}}
-									<td>{{matrix-content body=outputNUR.activity number="outputs"}}</td>
+									<td>{{matrix-content body=outputNUR.activity}}</td>
 									{{#each variable in model.variables}}
 										{{matrix-new 
 											study=model 
@@ -80,13 +81,17 @@
 											scoreIndex=3
 											store=store}}
 									{{/each}}
-									<td>{{matrix-content body=outputNUR.budget number="outputs"}}</td>
+									<td>{{matrix-content body=outputNUR.budget}}</td>
 								</tr>
 							{{/each}}
 						{{/each}}
 					{{/each}}
 				</tbody>
 			</table>
-		</div>	
+		</div>
+		<br>
+		<br>
+		<br>
+		<br>	
 	</div>
 </div>

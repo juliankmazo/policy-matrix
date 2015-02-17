@@ -19,4 +19,13 @@ export default Ember.Controller.extend({
 			return array;
 		}
 	),
+	scroll: function() {
+	  var self = this;
+	  this.$(".div-table").scroll(function(){
+	    self.$(".div-scroll").scrollLeft($(".div-table").scrollLeft());
+	  });
+	  this.$(".div-scroll").scroll(function(){
+	    self.$(".div-table").scrollLeft($(".div-scroll").scrollLeft());
+	  });
+	}
 });
