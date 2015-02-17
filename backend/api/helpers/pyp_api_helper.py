@@ -23,6 +23,7 @@ class PypApiHelper(BaseApiHelper):
             country=entity.country,
             title=entity.title,
             description=entity.description,
+            acronym=entity.acronym,
             typology=entity.typology,
             regulatoryFramework=entity.regulatory_framework,
             regulatoryFrameworkReference=entity.regulatory_framework_reference,

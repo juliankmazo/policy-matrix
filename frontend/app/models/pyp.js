@@ -4,6 +4,7 @@ import { COUNTRIES_NAMES } from "../utils/countries";
 export default DS.Model.extend({
   country: DS.attr('string'),
 	title: DS.attr('string'),
+	acronym: DS.attr('string'),
 	description: DS.attr('string'),
 	typology: DS.attr('string'),
 	regulatoryFramework: DS.attr('string'),

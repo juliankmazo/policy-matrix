@@ -1,19 +1,12 @@
 <div {{action "toggleBody"}}>
   {{#if isShowingBody}}
-    {{body}}
+    {{truncate-text body}}
   {{else}}
-  	{{number}}
+    {{#if acronym}}
+      {{acronym}}
+    {{else}}
+    	{{truncate-text body limit=5}}
+    {{/if}}
   {{/if}}
 </div>
 {{yield}}
-
-
-{{!--  <div {{action "toggleBody"}}>
-  {{#liquid-if isShowingBody class="cell"}}
-    {{body}}
-  {{else}}
-  	{{number}}
-  {{/liquid-if}}
-</div>
-{{yield}}
- --}}
