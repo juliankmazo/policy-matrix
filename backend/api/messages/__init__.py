@@ -6,6 +6,10 @@ import endpoints
 from protorpc import messages
 from protorpc import message_types
 
+from cell_api_messages import CellRequest
+from cell_api_messages import CellResponse
+from cell_api_messages import CellListResponse
+
 from study_api_messages import StudyRequest
 from study_api_messages import StudyResponse
 from study_api_messages import StudyListResponse
@@ -26,10 +30,6 @@ from objective_api_messages import ObjectiveListResponse
 from output_api_messages import OutputRequest
 from output_api_messages import OutputResponse
 from output_api_messages import OutputListResponse
-
-from cell_api_messages import CellRequest
-from cell_api_messages import CellResponse
-from cell_api_messages import CellListResponse
 
 
 

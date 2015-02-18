@@ -1,7 +1,9 @@
 from api.helpers import BaseApiHelper
+from api.helpers import CellApiHelper
 from api.messages import StudyResponse
 
 from core.models import Study
+from core.models import Cell
 
 
 class StudyApiHelper(BaseApiHelper):
@@ -14,5 +16,5 @@ class StudyApiHelper(BaseApiHelper):
             title=entity.title,
             variables=[variable_key.id() for variable_key in entity.variables],
             pyps=[pyp_key.id() for pyp_key in entity.pyps],
-            cells=entity.cells
+            cells=[CellApiHelper().to_message(Cell.get_by_id(cell)) for cell in entity.cells if Cell.get_by_id(cell)]
             )

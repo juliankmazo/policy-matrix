@@ -1,4 +1,5 @@
 from protorpc import messages
+from api.messages import CellResponse
 
 
 class StudyResponse(messages.Message):
@@ -6,7 +7,8 @@ class StudyResponse(messages.Message):
     title = messages.StringField(2)
     variables = messages.IntegerField(3, repeated=True)
     pyps = messages.IntegerField(4, repeated=True)
-    cells = messages.IntegerField(5, repeated=True)
+    # cells = messages.IntegerField(5, repeated=True)
+    cells = messages.MessageField(CellResponse, 5, repeated=True)
 
 
 class StudyListResponse(messages.Message):
