@@ -59,7 +59,7 @@ class CellEndpoint(BaseApiController):
         if not cell:
             raise endpoints.NotFoundException(
                 "The cell ID: " + str(request.id) + " doesn't exist")
-        updated_cell = cell.update(cell, request)
+        updated_cell = Cell.update(cell, request)
         if not updated_cell:
             raise endpoints.InternalServerErrorException('Something went wrong')
         return CellListResponse(
