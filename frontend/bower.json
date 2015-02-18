@@ -26,6 +26,7 @@
     "moment-timezone": "~0.3.0",
     "select2": "~3.5.2",
     "typeahead.js": "~0.10.5",
-    "sl-bootstrap": "softlayer/sl-bootstrap#~1.1.0"
+    "sl-bootstrap": "softlayer/sl-bootstrap#~1.1.0",
+    "d3": "~3.5.5"
   }
 }
