@@ -11,7 +11,6 @@ from api.messages import Cellresource
 
 from core.models import Cell
 from core.models import Study
-# from core.models import cellHelper
 
 
 @pmm_api.api_class(resource_name='cells', path='cells')
