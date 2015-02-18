@@ -1,0 +1,50 @@
+<form class="form-horizontal">
+	<div class="form-group">
+		<label class="col-sm-2 control-label">Title</label>
+		<div class="col-sm-6">
+			{{input value=model.title placeholder='Title of the output' class="form-control"}}
+		</div>
+		<div class="col-sm-2">
+	    <button {{action "save"}} class="btn btn-success btn-block"><span class="glyphicon glyphicon-ok"></span></button>
+	  </div>
+    <div class="col-sm-2">
+      <button {{action "cancel"}} class="btn btn-danger btn-block"><span class="glyphicon glyphicon-remove"></span></button>
+    </div>
+	</div>
+	<div class="form-group">
+		<label class="col-sm-2 control-label">Description</label>
+		<div class="col-sm-6">
+			{{input value=model.description placeholder='Description of the output' class="form-control"}}
+		</div>
+	</div>
+	<div class="form-group">
+		<label class="col-sm-2 control-label">Baseline</label>
+		<div class="col-sm-6">
+			{{input value=model.baseline placeholder='Baseline of the output' class="form-control"}}
+		</div>
+	</div>
+	<div class="form-group">
+		<label class="col-sm-2 control-label">Target</label>
+		<div class="col-sm-6">
+			{{input value=model.target placeholder='Target of the output' class="form-control"}}
+		</div>
+	</div>
+	<div class="form-group">
+		<label class="col-sm-2 control-label">Policy Instrument</label>
+		<div class="col-sm-6">
+			{{input value=model.policyInstrument placeholder='Policy instrument used by the output' class="form-control"}}
+		</div>
+	</div>
+	<div class="form-group">
+		<label class="col-sm-2 control-label">Activity</label>
+		<div class="col-sm-6">
+			{{input value=model.activity placeholder='Activity for this output' class="form-control"}}
+		</div>
+	</div>
+	<div class="form-group">
+		<label class="col-sm-2 control-label">Budget</label>
+		<div class="col-sm-6">
+			{{input value=model.budget placeholder='Budget of the output' class="form-control"}}
+		</div>
+	</div>
+</form>

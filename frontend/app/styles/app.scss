@@ -590,5 +590,21 @@ h4 .btn { display: inline-block; }
 }
 
 .col-fix{
-    width: 200px;
+    min-width: 120px;
+    max-width: 200px;
+}
+
+.div-table{
+    overflow-x: auto;
+}
+
+.div-scroll{
+    overflow-x: scroll;
+    overflow-y:hidden;
+    height: 20px;
+}
+
+.no-decoration{
+    text-decoration: none;
+    color: black;
 }

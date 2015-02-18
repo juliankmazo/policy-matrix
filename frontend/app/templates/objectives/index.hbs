@@ -1,17 +1,16 @@
-<ul>
+<ol>
 	{{#each objective in model}}
-	<li>{{objective.title}}</li>
-		<ul>
+	<li>{{#link-to 'objectives.index.show.edit' objective class="no-decoration"}}{{objective.title}}{{/link-to}}</li>
+		<ol>
 			{{#each output in objective.outputs}}
-				<li>{{output.title}}</li>
+				<li>{{#link-to 'outputs.show.edit' output class="no-decoration"}}{{output.title}}{{/link-to}}</li>
 			{{/each}}
-			<li>
 				{{#link-to 'outputs.new' objective class="btn btn-xs btn-primary-blue"}}
 					<span class="glyphicon glyphicon-plus"></span>
 				{{/link-to}}
 			</li>
-		</ul>
+		</ol>
 	{{/each}}
-	<li>{{#link-to 'objectives.index.new' class="btn btn-primary-blue"}}<span class="glyphicon glyphicon-plus"></span>{{/link-to}}</li>
-</ul>
+	{{#link-to 'objectives.index.new' class="btn btn-primary-blue"}}<span class="glyphicon glyphicon-plus"></span>{{/link-to}}</li>
+</ol>
 {{liquid-outlet}}
