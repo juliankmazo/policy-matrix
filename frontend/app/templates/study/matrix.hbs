@@ -87,8 +87,15 @@
 											<span class="glyphicon glyphicon-stats"></span>
 										{{/modal-trigger}}
 										{{#modal-container id=outputNUR.id}}
-										Si muetra algo esta monda?
-										{{chartist-chart data=chartData}}
+											{{#modal-title}}<strong>Horizontal Analysis</strong>{{/modal-title}}
+											<strong>OUTPUT:</strong> {{outputNUR.title}}
+											<strong>VARIABLE:</strong> 1
+											<br>
+											{{graph-average 
+													study=model
+													output=outputNUR
+													store=store
+													}}
 										{{/modal-container}}
 									</td>
 								</tr>

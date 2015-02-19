@@ -1,4 +1,5 @@
 import DS from 'ember-data';
+import Ember from 'ember';
 import { COUNTRIES_NAMES } from "../utils/countries";
 
 export default DS.Model.extend({
@@ -44,6 +45,6 @@ export default DS.Model.extend({
 		return "flag-icon flag-icon-" + code.toLowerCase();
 	}),
 	countryName: Ember.computed('country', function(){
-		return COUNTRIES_NAMES[this.get('country')]
+		return COUNTRIES_NAMES[this.get('country')];
 	})
 });

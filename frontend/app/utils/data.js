@@ -25,8 +25,8 @@ var BARDATA = [
 	{"letter": "X", "frequency":".00150"},
 	{"letter": "Y", "frequency":".01974"},
 	{"letter": "Z", "frequency":".00074"},
-]
+];
 
 export {
   BARDATA
-}
+};

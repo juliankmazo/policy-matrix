@@ -4,17 +4,30 @@ export default Ember.Component.extend({
 
 	createGraph: function(){
 		var study = this.get("study"),
-				variables = study.get("variables").toArray(),
+				// variables = study.get("variables").toArray(),
 				output = this.get("output.model"),
 				cells = study.get("cells").toArray(),
 				self = this;
 
-		var bardata = _.chain(cells).filter(function(c){ return c.get('output.id')==output.id;}).filter(function(c){return c.get('variable.id')==variables[0].id}).value();
-		
+		var sum1 = _.chain(cells)
+			.filter(function(c){ return c.get('output.id')===output.id;})
+			.filter(function(c){return c.get('scoreIndex')===1;})
+			.reduce(function(a,m,i,p) {var score = m.get('score')||0;return a + score/p.length;},0).value();
+
+		var sum2 = _.chain(cells)
+			.filter(function(c){ return c.get('output.id')===output.id;})
+			.filter(function(c){return c.get('scoreIndex')===2;})
+			.reduce(function(a,m,i,p) {var score = m.get('score')||0;return a + score/p.length;},0).value();
+
+		var sum3 = _.chain(cells)
+			.filter(function(c){ return c.get('output.id')===output.id;})
+			.filter(function(c){return c.get('scoreIndex')===3;})
+			.reduce(function(a,m,i,p) {var score = m.get('score')||0;return a + score/p.length;},0).value();
+
 		var bardata = [
-			{'letter': "General Objectives", "frequency": bardata[0].get('score')},
-			{'letter': "Measurements", "frequency": bardata[1].get('score')},
-			{'letter': "Activities", "frequency": bardata[2].get('score')},
+			{'color': "green",'letter': "General Objectives", "frequency": sum1},
+			{'color': "purple",'letter': "Measurements", "frequency": sum2},
+			{'color': "red",'letter': "Activities", "frequency": sum3},
 		];
 
 		var margin = {top: 20, right: 20, bottom: 30, left: 40},
@@ -22,7 +35,7 @@ export default Ember.Component.extend({
 		    height = 250 - margin.top - margin.bottom;
 
 		var x = d3.scale.ordinal()
-		    .rangeRoundBands([0, width], 0.08);
+		    .rangeRoundBands([0, width], 0.5);
 
 		var y = d3.scale.linear()
 		    .range([height, 0]);
@@ -35,7 +48,6 @@ export default Ember.Component.extend({
 		    .scale(y)
 		    .orient("left");
 		    
-
 		var svg = d3.select("#graph").append("svg")
 		    .attr("width", width + margin.left + margin.right)
 		    .attr("height", height + margin.top + margin.bottom)
@@ -43,6 +55,7 @@ export default Ember.Component.extend({
 		    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
 		var data = bardata;
+		var colors = d3.scale.category10();
 
 	  x.domain(data.map(function(d) { return d.letter; }));
 	  y.domain([0, 5]);
@@ -60,12 +73,13 @@ export default Ember.Component.extend({
 	      .attr("y", 6)
 	      .attr("dy", ".71em")
 	      .style("text-anchor", "end")
-	      .text("SCORE");
+	      .text("AVERAGE SCORE");
 
 	  svg.selectAll(".bar")
 	      .data(data)
 	    .enter().append("rect")
 	      .attr("class", "bar")
+	      .attr("fill", function(d,i) { return colors(i); })
 	      .attr("x", function(d) { return x(d.letter); })
 	      .attr("width", x.rangeBand())
 	      .attr("y", function(d) { return y(d.frequency); })
@@ -73,4 +87,8 @@ export default Ember.Component.extend({
 
 	}.on('didInsertElement'),
 
+	// http://alignedleft.com/tutorials
+	// http://www.jeromecukier.net/wp-content/uploads/2012/10/d3-cheat-sheet.pdf
+	// http://nvd3.org/examples/index.html
+	// http://anna.ps/talks/fel/#/
 });

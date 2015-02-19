@@ -42,8 +42,7 @@ export default Ember.Controller.extend(EmberValidations.Mixin,{
 	actions: {
 		newVariable: function(){
 			if (this.get('isValid')){
-				var _this = this,
-						newVariable = this.get('newVariable'),
+				var newVariable = this.get('newVariable'),
 						study = this.get('model.study');
 				if (newVariable){
 					study.get('variables').addObject(newVariable);
@@ -56,8 +55,7 @@ export default Ember.Controller.extend(EmberValidations.Mixin,{
 		},
 		removeVariable: function(variable){
 			if (this.get('isValid')){
-				var _this = this,
-						study = this.get('model.study');
+				var study = this.get('model.study');
 				study.get('variables').removeObject(variable);
 				study.save();
 			} else {
@@ -67,8 +65,7 @@ export default Ember.Controller.extend(EmberValidations.Mixin,{
 		},
 		newPolicy: function(){
 			if (this.get('isValid')){
-				var _this = this,
-						newPolicy = this.get('newPolicy'),
+				var newPolicy = this.get('newPolicy'),
 						study = this.get('model.study');
 				if (newPolicy){
 					study.get('pyps').addObject(newPolicy);
@@ -81,8 +78,7 @@ export default Ember.Controller.extend(EmberValidations.Mixin,{
 		},
 		removePolicy: function(pyp){
 			if (this.get('isValid')){
-				var _this = this,
-						study = this.get('model.study');
+				var study = this.get('model.study');
 				study.get('pyps').removeObject(pyp);
 				study.save();
 			} else {
@@ -101,7 +97,7 @@ export default Ember.Controller.extend(EmberValidations.Mixin,{
 			}
 			return false;
 		},
-		cancel: function(study) {
+		cancel: function() {
 			this.transitionToRoute('studies');
 			return false;
 		}

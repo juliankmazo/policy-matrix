@@ -615,17 +615,22 @@ h4 .btn { display: inline-block; }
 }
 
 
-.bar {
-  fill: steelblue;
-}
-
+// .bar1 {
+//   fill: #6c51bd;
+// }
+// .bar2 {
+//   fill: #36a1d7;
+// }
+// .bar3 {
+//   fill: #f6850a;
+// }
 .bar:hover {
   fill: brown;
 }
 
 
 .axis text {
-  font: 10px sans-serif;
+  font: 15px sans-serif;
 }
 
 .axis path,
