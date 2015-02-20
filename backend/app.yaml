@@ -9,26 +9,25 @@ handlers:
   static_files: favicon.ico
   upload: favicon\.ico
 
-- url: /static
-  static_dir: templates/static
+# - url: /static
+#   static_dir: templates/static
 
 - url: /_ah/spi/.*
   script: services.APPLICATION
 
-- url: /.*
-  script: main.app
+# - url: /.*
+#   script: main.app
 
-# - url: /fonts
-#   static_dir: dist/fonts
+- url: /fonts
+  static_dir: dist/fonts
 
-# - url: /assets
-#   static_dir: dist/assets
+- url: /assets
+  static_dir: dist/assets
 
-# - url: .*
-#   static_files: dist/index.html
-#   login: required
-#   upload: dist/index.html
-#   secure: always
+- url: .*
+  static_files: dist/index.html
+  upload: dist/index.html
+  secure: always
 
 builtins:
 - remote_api: on

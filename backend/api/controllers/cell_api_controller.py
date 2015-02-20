@@ -42,7 +42,7 @@ class CellEndpoint(BaseApiController):
     @endpoints.method(CellRequest, CellListResponse,
                       path='/cells', http_method='POST', name='create')
     def create_cell(self, request):
-        if not (request.score and request.study):
+        if not request.study and request.score >= 0:
             raise endpoints.BadRequestException('score is required')
         cell = Cell.create(request)
         if not cell:

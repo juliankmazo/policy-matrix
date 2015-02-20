@@ -1,4 +1,6 @@
 import Ember from 'ember';
+import _ from '../bower_components/lodash/dist/lodash.js';
+import d3 from '../bower_components/d3/d3.js';
 
 export default Ember.Component.extend({
 
@@ -6,12 +8,11 @@ export default Ember.Component.extend({
 		var study = this.get("study"),
 				variables = study.get("variables").toArray(),
 				output = this.get("output.model"),
-				cells = study.get("cells").toArray(),
-				self = this;
+				cells = study.get("cells").toArray();
 
-		var bardata = _.chain(cells).filter(function(c){ return c.get('output.id')==output.id;}).filter(function(c){return c.get('variable.id')==variables[0].id}).value();
+		var bardata = _.chain(cells).filter(function(c){ return c.get('output.id')===output.id;}).filter(function(c){return c.get('variable.id')===variables[0].id;}).value();
 		
-		var bardata = [
+		bardata = [
 			{'letter': "General Objectives", "frequency": bardata[0].get('score')},
 			{'letter': "Measurements", "frequency": bardata[1].get('score')},
 			{'letter': "Activities", "frequency": bardata[2].get('score')},

@@ -17,30 +17,14 @@ export default Ember.Component.extend({
 		var study = this.get("study"),
 				variables = study.get("variables").toArray(),
 				output = this.get("output.model"),
-				cells = study.get("cells").toArray(),
-				self = this;
+				cells = study.get("cells").toArray();
 
-		var sum1 = _.chain(cells)
-			.filter(function(c){ return c.get('output.id')===output.id;})
-			.filter(function(c){return c.get('scoreIndex')===1;})
-			.reduce(function(a,m,i,p) {var score = m.get('score')||0;return a + score/p.length;},0).value();
-
-		var sum2 = _.chain(cells)
-			.filter(function(c){ return c.get('output.id')===output.id;})
-			.filter(function(c){return c.get('scoreIndex')===2;})
-			.reduce(function(a,m,i,p) {var score = m.get('score')||0;return a + score/p.length;},0).value();
-
-		var sum3 = _.chain(cells)
-			.filter(function(c){ return c.get('output.id')===output.id;})
-			.filter(function(c){return c.get('scoreIndex')===3;})
-			.reduce(function(a,m,i,p) {var score = m.get('score')||0;return a + score/p.length;},0).value();
-
-		var fData = []
+		var fData = [];
 
 		for (var i=0; i<variables.length; i++){
 			var bardata = _.chain(cells)
-				.filter(function(c){ return c.get('output.id')==output.id;})
-				.filter(function(c){return c.get('variable.id')==variables[i].id}).value();
+				.filter(function(c){ return c.get('output.id')===output.id;})
+				.filter(function(c){return c.get('variable.id')===variables[i].id;}).value();
 			
 			fData.push({Variable: (i+1).toString(), score:{
 				low: bardata[0].get('score'), 
@@ -59,7 +43,7 @@ export default Ember.Component.extend({
     // function to handle histogram.
     function histoGram(fD){
         var hG={},    hGDim = {t: 60, r: 0, b: 30, l: 0};
-        hGDim.w = 350 - hGDim.l - hGDim.r, 
+        hGDim.w = 350 - hGDim.l - hGDim.r; 
         hGDim.h = 250 - hGDim.t - hGDim.b;
             
         //create svg for histogram.
@@ -75,7 +59,7 @@ export default Ember.Component.extend({
         // Add x-axis to the histogram svg.
         hGsvg.append("g").attr("class", "x axis")
             .attr("transform", "translate(0," + hGDim.h + ")")
-            .call(d3.svg.axis().scale(x).orient("bottom"))
+            .call(d3.svg.axis().scale(x).orient("bottom"));
 
         hGsvg.append("text")
 	        .attr("x", (hGDim.w / 2))             
@@ -118,7 +102,7 @@ export default Ember.Component.extend({
             leg.update(nD);
         }
         
-        function mouseout(d){    // utility function to be called on mouseout.
+        function mouseout(){    // utility function to be called on mouseout.
             // reset the pie-chart and legend.    
             pC.update(tF);
             leg.update(tF);
@@ -180,7 +164,7 @@ export default Ember.Component.extend({
                 return [v.Variable,v.score[d.data.type]];}),segColor(d.data.type));
         }
         //Utility function to be called on mouseout a pie slice.
-        function mouseout(d){
+        function mouseout(){
             // call the update function of histogram with all data.
             hG.update(fData.map(function(v){
                 return [v.Variable,v.total];}), barColor);
@@ -196,7 +180,7 @@ export default Ember.Component.extend({
     }
     
     // function to handle legend.
-    function legend(lD){
+    function setLegend(lD){
         var labels = ["Score 1", "Score 2", "Score 3"];
 
         var leg = {};
@@ -251,6 +235,6 @@ export default Ember.Component.extend({
 
     var hG = histoGram(sF), // create the histogram.
         pC = pieChart(tF), // create the pie-chart.
-        leg= legend(tF);  // create the legend.
+        leg= setLegend(tF);  // create the legend.
 	}.on('didInsertElement')
 });

@@ -24,6 +24,8 @@ var app = new EmberApp({
 
 app.import('bower_components/flag-icon-css/css/flag-icon.css');
 app.import('bower_components/d3/d3.js');
+app.import('bower_components/lodash/dist/lodash.js');
+
 
 // module.exports = app.toTree();
 

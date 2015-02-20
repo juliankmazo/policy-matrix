@@ -32,10 +32,10 @@ class Cell(BaseModel):
     @classmethod
     def update(cls, cell, entity):
         if cell:
-            cell.score = entity.score,
-            cell.scoreIndex = entity.scoreIndex,
-            cell.study = entity.study,
-            cell.variable = entity.variable,
+            cell.score = entity.score
+            cell.scoreIndex = entity.scoreIndex
+            cell.study = entity.study
+            cell.variable = entity.variable
             cell.output = entity.output
             cell.put()
             return cell

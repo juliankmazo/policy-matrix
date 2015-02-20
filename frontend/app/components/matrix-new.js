@@ -1,5 +1,4 @@
 import Ember from 'ember';
-// import { lodash as _ } from "lodash";
 
 export default Ember.Component.extend({
 	tagName: 'td',

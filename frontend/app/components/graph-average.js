@@ -6,8 +6,7 @@ export default Ember.Component.extend({
 		var study = this.get("study"),
 				// variables = study.get("variables").toArray(),
 				output = this.get("output.model"),
-				cells = study.get("cells").toArray(),
-				self = this;
+				cells = study.get("cells").toArray();
 
 		var sum1 = _.chain(cells)
 			.filter(function(c){ return c.get('output.id')===output.id;})
