@@ -21,6 +21,9 @@ handlers:
 - url: /fonts
   static_dir: dist/fonts
 
+- url: /flags
+  static_dir: dist/flags
+
 - url: /assets
   static_dir: dist/assets
 
