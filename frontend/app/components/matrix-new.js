@@ -23,10 +23,10 @@ export default Ember.Component.extend({
 		}).then(function(hash) {
 
 			var cell = _.chain(hash.mycells)
-				.filter(function(c){ return c.get('study.id')==hash.study.id;})
-				.filter(function(c){ return c.get('output.id')==hash.outputNUR.id;})
-				.filter(function(c){return c.get('variable.id')==hash.variable.id})
-				.filter(function(c){ return c.get('scoreIndex')==hash.scoreIndex;})
+				.filter(function(c){ return c.get('study.id')===hash.study.id;})
+				.filter(function(c){ return c.get('output.id')===hash.outputNUR.id;})
+				.filter(function(c){return c.get('variable.id')===hash.variable.id;})
+				.filter(function(c){ return c.get('scoreIndex')===hash.scoreIndex;})
 				.value()[0];
 
 			if (!cell) {

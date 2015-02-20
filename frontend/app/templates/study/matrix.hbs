@@ -18,15 +18,15 @@
 						<th {{bind-attr colspan=tripleLen}}>Variables</th>
 					</tr>
 					<tr>
-						<th rowspan="2" class="col-fix">Policy</th>
-						<th rowspan="2" class="col-fix">General Objective</th>
-						<th rowspan="2" class="col-fix">Specific Objectives</th>
-						<th rowspan="2" class="col-fix">Outputs</th>
-						<th class="success" {{bind-attr colspan=model.variables.length}}>GeneralObjectives</th>
-						<th rowspan="2" class="col-fix">Policy Instruments</th>
-						<th class="warning" {{bind-attr colspan=model.variables.length}}>Measurements</th>
-						<th rowspan="2" class="col-fix">Activities</th>
-						<th class="info" {{bind-attr colspan=model.variables.length}}>Activities</th>
+						<th class="success" rowspan="2" class="col-fix">Policy</th>
+						<th class="success" rowspan="2" class="col-fix">General Objective</th>
+						<th class="success" rowspan="2" class="col-fix">Specific Objectives</th>
+						<th class="success" rowspan="2" class="col-fix">Outputs</th>
+						<th class="success" {{bind-attr colspan=model.variables.length}}>Scoring 1</th>
+						<th class="warning" rowspan="2" class="col-fix">Policy Instruments</th>
+						<th class="warning" {{bind-attr colspan=model.variables.length}}>Scoring 2</th>
+						<th class="info" rowspan="2" class="col-fix">Activities</th>
+						<th class="info" {{bind-attr colspan=model.variables.length}}>Scoring 3</th>
 						<th rowspan="2" class="col-fix">Budget</th>
 					</tr>
 					<tr>
@@ -88,14 +88,17 @@
 										{{/modal-trigger}}
 										{{#modal-container id=outputNUR.id}}
 											{{#modal-title}}<strong>Horizontal Analysis</strong>{{/modal-title}}
-											<strong>OUTPUT:</strong> {{outputNUR.title}}
-											<strong>VARIABLE:</strong> 1
-											<br>
-											{{graph-average 
+											<strong>OUTPUT:</strong> {{outputNUR.title}}<br>
+											{{!-- {{graph-average 
 													study=model
 													output=outputNUR
 													store=store
-													}}
+													}} --}}
+											{{graph-variable
+												study=model
+												output=outputNUR
+												store=store
+											}}
 										{{/modal-container}}
 									</td>
 								</tr>
