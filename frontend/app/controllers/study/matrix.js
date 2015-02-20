@@ -1,5 +1,4 @@
-;import Ember from 'ember';
-import ColumnDefinition from 'ember-cli-ember-table/column-definition'
+import Ember from 'ember';
 
 
 export default Ember.Controller.extend({
@@ -19,13 +18,13 @@ export default Ember.Controller.extend({
 			return array;
 		}
 	),
-	scroll: function() {
-	  var self = this;
-	  this.$(".div-table").scroll(function(){
-	    self.$(".div-scroll").scrollLeft($(".div-table").scrollLeft());
-	  });
-	  this.$(".div-scroll").scroll(function(){
-	    self.$(".div-table").scrollLeft($(".div-scroll").scrollLeft());
-	  });
-	}
+	// scroll: function() {
+	//   var self = this;
+	//   this.$(".div-table").scroll(function(){
+	//     self.$(".div-scroll").scrollLeft($(".div-table").scrollLeft());
+	//   });
+	//   this.$(".div-scroll").scroll(function(){
+	//     self.$(".div-table").scrollLeft($(".div-scroll").scrollLeft());
+	//   });
+	// }
 });

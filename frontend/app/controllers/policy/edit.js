@@ -276,7 +276,7 @@ export default Ember.ObjectController.extend(EmberValidations.Mixin,{
 					_this.transitionToRoute('policy', pyp);
 				});
 			} else {
-				this.set('errorMessage', 'You have to at least specify a title and a country.')
+				this.set('errorMessage', 'You have to at least specify a title and a country.');
 			}
 			return false;
 			},

@@ -9,7 +9,7 @@ export function truncateText(text, options) {
 	  }
 	  return text;
 	} else {
-		return ""
+		return "";
 	}
 
 }
